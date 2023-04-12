@@ -1,0 +1,24 @@
+{
+  "routes": [
+    {
+      "heading": true,
+      "title": "Foundry Documentation",
+      "routes": [
+        {
+          "title": "Introduction",
+          "path": "/README.md"
+        }
+      ]
+    },
+    {
+      "heading": true,
+      "title": "FAQ",
+      "routes": [
+        {
+          "title": "Frequently Asked Questions",
+          "path": "/faq/README.md"
+        }
+      ]
+    }
+  ]
+}
