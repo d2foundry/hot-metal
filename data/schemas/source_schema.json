@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "activities": {
+    "type": "array",
+    "items": {
+      "$ref": "#/$defs/activity"
+    }
+  },
+  "$defs": {
+    "activity": {
+      "title": "Activity",
+      "type": "object",
+      "description": "Top-level activity from which there can be multiple loot sources.",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "rotationStartDate": {
+          "type": "string",
+          "description": "If this activity has sources that rotate, the date at reset where the rotation starts.",
+          "format": "date-time"
+        },
+        "rotationDuration": {
+          "type": "integer",
+          "description": "The time between each rotation change in millisconds"
+        },
+        "lootSources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/lootSource"
+          }
+        }
+      },
+      "required": ["description", "name"]
+    },
+    "lootSource": {
+      "type": "object",
+      "title": "Loot Source",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "loot": {
+          "type": "array",
+          "items": {
+            "description": "Bungie InventoryItem hash for the loot item",
+            "type": "integer"
+          }
+        }
+      },
+      "required": ["description", "name", "loot"]
+    },
+    "activityType": {
+      "type": "string",
+      "enum": ["raid", "dungeon"]
+    }
+  }
+}
