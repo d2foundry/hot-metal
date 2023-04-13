@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "private": "true",
   "scripts": {
-    "lint": "alex ."
+    "lint": "pnpm lint-language && pnpm prettier",
+    "lint-language": "alex .",
+    "prettier": "prettier --write ."
   },
   "license": "MIT",
   "dependencies": {
-    "alex": "^11.0.0"
+    "alex": "^11.0.0",
+    "prettier": "^2.8.7"
   }
 }
