@@ -1,0 +1,52 @@
+-----------------
+raw { fromMode: '100644',
+  toMode: '000000',
+  fromId: '59e61f95df9670cb933bcd6551601b3602460008',
+  toId: '0000000000000000000000000000000000000000',
+  status: 'D',
+  toFile: 'RAILS_VERSION',
+  fromFile: 'RAILS_VERSION' }
+-----------------
+raw { fromMode: '100644',
+  toMode: '100644',
+  fromId: 'c6c1c12e87b516a4b2ceb406e317301f6fba1c48',
+  toId: 'd40351e21140bb3af8630f699a85639a564558a3',
+  status: 'M',
+  toFile: 'RELEASING_RAILS.rdoc',
+  fromFile: 'RELEASING_RAILS.rdoc' }
+-----------------
+raw { fromMode: '000000',
+  toMode: '100644',
+  fromId: '0000000000000000000000000000000000000000',
+  toId: '3d4db092fd0fd1d1123323e66b47ac05e775cae3',
+  status: 'A',
+  toFile: 'new_file.txt',
+  fromFile: 'new_file.txt' }
+-----------------
+stats { added: 0, deleted: 1, fileA: 'RAILS_VERSION', fileB: undefined }
+-----------------
+stats { added: 1,
+  deleted: 0,
+  fileA: 'RELEASING_RAILS.rdoc',
+  fileB: undefined }
+-----------------
+stats { added: 1, deleted: 0, fileA: 'new_file.txt', fileB: undefined }
+-----------------
+noshow []
+-----------------
+patch { aPath: 'RELEASING_RAILS.rdoc',
+  bPath: 'RELEASING_RAILS.rdoc',
+  lines: 
+   [ '@@ -203,3 +203,4 @@ There are two simple steps for fixing the CI:',
+     ' 2. Fix it',
+     ' ',
+     ' Repeat these steps until the CI is green.',
+     '+\\n\\n123123123123123123123123123123' ],
+  isBlacklisted: false }
+-----------------
+patch { aPath: 'new_file.txt',
+  bPath: 'new_file.txt',
+  lines: [ '@@ -0,0 +1 @@', '+123123' ],
+  isBlacklisted: false }
+-----------------
+That's all folks

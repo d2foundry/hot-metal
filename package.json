@@ -1,0 +1,12 @@
+{
+  "name": "hot-metal",
+  "version": "1.0.0",
+  "private": "true",
+  "scripts": {
+    "lint": "alex ."
+  },
+  "license": "MIT",
+  "dependencies": {
+    "alex": "^11.0.0"
+  }
+}

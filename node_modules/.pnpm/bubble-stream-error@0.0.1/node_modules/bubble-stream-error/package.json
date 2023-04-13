@@ -1,0 +1,29 @@
+{
+  "author": "Alexandru Vladutu <alexandru.vladutu@gmail.com>",
+  "license": "MIT",
+  "name": "bubble-stream-error",
+  "description": "Bubble errors from an array of streams to a master/top stream",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alessioalex/bubble-stream-error.git"
+  },
+  "main": "bubble.js",
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "keywords": [
+    "bubble",
+    "error",
+    "stream",
+    "stream-error",
+    "bubble-stream-error"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "tap" : "0.4.x"
+  },
+  "scripts": {
+    "test": "node test/bubble.js"
+  }
+}

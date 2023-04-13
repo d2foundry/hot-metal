@@ -1,0 +1,132 @@
+:100644 100644 078d63f8f23a1d94c7ad08d2ca4ab9c46868d9e9 9a5d27ef92eacaf7eb4189164bc637c5f5ff0bee M	activerecord/CHANGELOG.md
+:100644 100644 168b338b973e9ac2133741018d6655e9422b6341 dedbbd358593f763c60ac0ff1beeb3f19047d5ef M	activerecord/lib/active_record/tasks/database_tasks.rb
+:100644 100644 5688931db209a233bc40766f9eef01c579a1c666 9ab64d03256b4b943efd2a0832e17aed9b8b3a09 M	activerecord/lib/active_record/tasks/sqlite_database_tasks.rb
+:100644 100644 d3ea8ebc72653e6a92b1e113cb04cb23e2bcc1eb c724c867ec0ccce354ca7ab255176f6704f57e83 M	railties/test/application/test_test.rb
+5	0	activerecord/CHANGELOG.md
+2	0	activerecord/lib/active_record/tasks/database_tasks.rb
+5	1	activerecord/lib/active_record/tasks/sqlite_database_tasks.rb
+52	2	railties/test/application/test_test.rb
+
+diff --git a/activerecord/CHANGELOG.md b/activerecord/CHANGELOG.md
+index 078d63f8f23a1d94c7ad08d2ca4ab9c46868d9e9..9a5d27ef92eacaf7eb4189164bc637c5f5ff0bee 100644
+--- a/activerecord/CHANGELOG.md
++++ b/activerecord/CHANGELOG.md
+@@ -1,3 +1,8 @@
++*   Fixed automatic maintaining test schema to properly handle sql structure
++    schema format. Fixes #15394.
++
++    *Wojciech Wnętrzak*
++
+ *   PostgreSQL support default values for enum types. Fixes #7814.
+ 
+     *Yves Senn*
+diff --git a/activerecord/lib/active_record/tasks/database_tasks.rb b/activerecord/lib/active_record/tasks/database_tasks.rb
+index 168b338b973e9ac2133741018d6655e9422b6341..dedbbd358593f763c60ac0ff1beeb3f19047d5ef 100644
+--- a/activerecord/lib/active_record/tasks/database_tasks.rb
++++ b/activerecord/lib/active_record/tasks/database_tasks.rb
+@@ -161,10 +161,12 @@ module ActiveRecord
+         when :ruby
+           file ||= File.join(db_dir, "schema.rb")
+           check_schema_file(file)
++          purge(current_config)
+           load(file)
+         when :sql
+           file ||= File.join(db_dir, "structure.sql")
+           check_schema_file(file)
++          purge(current_config)
+           structure_load(current_config, file)
+         else
+           raise ArgumentError, "unknown format #{format.inspect}"
+diff --git a/activerecord/lib/active_record/tasks/sqlite_database_tasks.rb b/activerecord/lib/active_record/tasks/sqlite_database_tasks.rb
+index 5688931db209a233bc40766f9eef01c579a1c666..9ab64d03256b4b943efd2a0832e17aed9b8b3a09 100644
+--- a/activerecord/lib/active_record/tasks/sqlite_database_tasks.rb
++++ b/activerecord/lib/active_record/tasks/sqlite_database_tasks.rb
+@@ -21,7 +21,11 @@ module ActiveRecord
+ 
+         FileUtils.rm(file) if File.exist?(file)
+       end
+-      alias :purge :drop
++
++      def purge
++        drop
++        create
++      end
+ 
+       def charset
+         connection.encoding
+diff --git a/railties/test/application/test_test.rb b/railties/test/application/test_test.rb
+index d3ea8ebc72653e6a92b1e113cb04cb23e2bcc1eb..c724c867ec0ccce354ca7ab255176f6704f57e83 100644
+--- a/railties/test/application/test_test.rb
++++ b/railties/test/application/test_test.rb
+@@ -125,12 +125,12 @@ module ApplicationTests
+ 
+       assert_unsuccessful_run "models/user_test.rb", "Migrations are pending"
+ 
+-      app_file 'db/structure.sql', <<-RUBY
++      app_file 'db/structure.sql', <<-SQL
+         CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL);
+         CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version");
+         CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255));
+         INSERT INTO schema_migrations (version) VALUES ('#{version}');
+-      RUBY
++      SQL
+ 
+       app_file 'config/initializers/disable_maintain_test_schema.rb', <<-RUBY
+         Rails.application.config.active_record.maintain_test_schema = false
+@@ -143,6 +143,56 @@ module ApplicationTests
+       assert_successful_test_run('models/user_test.rb')
+     end
+ 
++    test "sql structure migrations when adding column to existing table" do
++      output_1  = script('generate model user name:string')
++      version_1 = output_1.match(/(\d+)_create_users\.rb/)[1]
++
++      app_file 'test/models/user_test.rb', <<-RUBY
++        require 'test_helper'
++        class UserTest < ActiveSupport::TestCase
++          test "user" do
++            User.create! name: "Jon"
++          end
++        end
++      RUBY
++
++      app_file 'config/initializers/enable_sql_schema_format.rb', <<-RUBY
++        Rails.application.config.active_record.schema_format = :sql
++      RUBY
++
++      app_file 'db/structure.sql', <<-SQL
++        CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL);
++        CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version");
++        CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255));
++        INSERT INTO schema_migrations (version) VALUES ('#{version_1}');
++      SQL
++
++      assert_successful_test_run('models/user_test.rb')
++
++      output_2  = script('generate migration add_email_to_users')
++      version_2 = output_2.match(/(\d+)_add_email_to_users\.rb/)[1]
++
++      app_file 'test/models/user_test.rb', <<-RUBY
++        require 'test_helper'
++
++        class UserTest < ActiveSupport::TestCase
++          test "user" do
++            User.create! name: "Jon", email: "jon@doe.com"
++          end
++        end
++      RUBY
++
++      app_file 'db/structure.sql', <<-SQL
++        CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL);
++        CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version");
++        CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255));
++        INSERT INTO schema_migrations (version) VALUES ('#{version_1}');
++        INSERT INTO schema_migrations (version) VALUES ('#{version_2}');
++      SQL
++
++      assert_successful_test_run('models/user_test.rb')
++    end
++
+     private
+       def assert_unsuccessful_run(name, message)
+         result = run_test_file(name)
