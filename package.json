@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "alex": "^11.0.0",
+    "glob": "^10.0.0",
     "prettier": "^2.8.7"
   }
 }
