@@ -19,7 +19,7 @@ function collectPaths(routes, paths = []) {
 }
 
 async function main() {
-  const manifests = ["/docs/manifest.json"];
+  const manifests = ["docs/manifest.json"];
   let hadError = false;
 
   for (const manifest of manifests) {
