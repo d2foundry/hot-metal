@@ -1,0 +1,31 @@
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    types: [opened, synchronize]
+
+name: Build, test, and deploy
+
+env:
+  PNPM_VERSION: 8.2.0
+  NODE_MAINTENANCE_VERSION: 16
+  NODE_LTS_VERSION: 18
+
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_LTS_VERSION }}
+          check-latest: true
+
+      - run: npm i -g pnpm@${PNPM_VERSION}
+
+      - run: pnpm install
+      
+      - run: ./scripts/check-manifests.js
+      - run: pnpm lint

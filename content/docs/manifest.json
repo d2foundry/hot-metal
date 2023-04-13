@@ -6,7 +6,7 @@
       "routes": [
         {
           "title": "Introduction",
-          "path": "/README.md"
+          "path": "/content/docs/README.md"
         }
       ]
     },
@@ -16,7 +16,7 @@
       "routes": [
         {
           "title": "Frequently Asked Questions",
-          "path": "/faq/README.md"
+          "path": "/content/docs/faq/README.md"
         }
       ]
     }
