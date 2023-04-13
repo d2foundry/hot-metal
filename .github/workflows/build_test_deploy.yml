@@ -25,5 +25,7 @@ jobs:
 
       - run: npm i -g pnpm@${PNPM_VERSION}
 
+      - run: pnpm install
+      
       - run: ./scripts/check-manifests.js
       - run: pnpm lint
