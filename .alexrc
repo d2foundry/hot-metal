@@ -1,5 +1,6 @@
 {
   "allow": [
+    "addict",
     "attacks",
     "color",
     "dead",
@@ -19,6 +20,9 @@
     "invalid",
     "remains",
     "special",
-    "white"
+    "white",
+    "whitespace",
+    "weapon",
+    "weapons"
   ]
 }
