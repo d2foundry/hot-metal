@@ -4,99 +4,87 @@ import styles from "@/styles/Home.module.css";
 import useSWR from "swr";
 import { UiSchema } from "@rjsf/utils";
 import validator from "@rjsf/validator-ajv8";
-import Form from "@rjsf/core";
+import Form, { FormProps } from "@rjsf/core";
+import { useState } from "react";
 
 const GITHUB_JSON_SCHEMA_URI =
   "https://raw.githubusercontent.com/d2foundry/hot-metal/main/data/schemas/source_schema.json";
 
-// const data = {
-//   $schema: "http://json-schema.org/draft-07/schema#",
-//   title: "Activities",
-//   type: "array",
-//   items: {
-//     $ref: "#/definitions/activity",
-//   },
-//   additionalItems: {
-//     type: "boolean",
-//   },
-//   definitions: {
-//     activity: {
-//       title: "Activity",
-//       type: "object",
-//       description:
-//         "Top-level activity from which there can be multiple loot sources.",
-//       properties: {
-//         name: {
-//           title: "Activity Name",
-//           type: "string",
-//         },
-//         description: {
-//           title: "Activity Description",
-//           type: "string",
-//         },
-//         rotationStartDate: {
-//           title: "Rotation Start Date",
-//           type: "string",
-//           description:
-//             "If this activity has sources that rotate, the date at reset where the rotation starts.",
-//           format: "date-time",
-//         },
-//         rotationDuration: {
-//           title: "Rotation Duration (ms)",
-//           type: "integer",
-//           description: "The time between each rotation change in millisconds",
-//         },
-//         lootSources: {
-//           title: "Loot Sources",
-//           type: "array",
-//           items: {
-//             $ref: "#/definitions/lootSource",
-//           },
-//         },
-//       },
-//       required: ["description", "name"],
-//     },
-//     lootSource: {
-//       type: "object",
-//       title: "Loot Source",
-//       description:
-//         "An encounter, rotator instance, etc from which a group of items can drop.",
-//       properties: {
-//         name: {
-//           title: "Source Name",
-//           type: "string",
-//         },
-//         description: {
-//           title: "Source Description",
-//           type: "string",
-//         },
-//         lootItems: {
-//           title: "Loot Items",
-//           type: "array",
-//           items: {
-//             description: "Bungie InventoryItem hash for the loot item",
-//             type: "integer",
-//           },
-//         },
-//       },
-//       required: ["description", "name", "lootItems"],
-//     },
-//     activityType: {
-//       type: "string",
-//       enum: ["raid", "dungeon"],
-//     },
-//   },
-// };
+const GITHUB_ACTIVITY_JSON_SCHEMA_URI =
+  "https://raw.githubusercontent.com/d2foundry/hot-metal/main/data/schemas/activity_schema.json";
+
+const filename = "sources";
+
+const formData = {
+  activities: [
+    {
+      name: "Dares of Eternity",
+      description: "Chill with your homie Xur",
+    },
+  ],
+};
+
 const uiSchema: UiSchema = {
-  // activities: {
-  //   "ui:widget": "select", // could also be "select"
-  // },
+  activities: {
+    // "ui:widget": "CustomSelect", // could also be "select"
+  },
+  "ui:submitButtonOptions": {
+    norender: false,
+    submitText: "Save",
+  },
 };
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 export default function Home() {
-  const { data, error, isLoading } = useSWR(GITHUB_JSON_SCHEMA_URI, fetcher);
+  const [formState, setFormState] = useState(formData);
+  const [activityIdx, setActivityIdx] = useState(0);
+  // const { data, error, isLoading } = useSWR(GITHUB_JSON_SCHEMA_URI, fetcher);
+  const { data: activitySchema } = useSWR(
+    GITHUB_ACTIVITY_JSON_SCHEMA_URI,
+    fetcher
+  );
+
+  const handleSubmit: FormProps["onSubmit"] = (data) => {
+    setFormState((curr) => {
+      return {
+        ...curr,
+        activities: [
+          ...curr.activities.slice(0, activityIdx),
+          data.formData,
+          ...curr.activities.slice(activityIdx + 1),
+        ],
+      };
+    });
+  };
+
+  const handleSubmitPullRequest = () => {
+    const fileText = JSON.stringify(formState, undefined, 2);
+    console.log(fileText);
+    const encodedFileText = encodeURIComponent(fileText);
+    const githubQueryLink =
+      "https://github.com/d2foundry/hot-metal/new/main/data/api/new?value=" +
+      encodedFileText +
+      "&filename=" +
+      filename;
+    window.open(githubQueryLink);
+  };
+
+  const handleAdd = () => {
+    setActivityIdx(formState.activities.length);
+    setFormState((curr) => {
+      return {
+        ...curr,
+        activities: [
+          ...curr.activities,
+          {
+            name: "New Activity",
+            description: "",
+          },
+        ],
+      };
+    });
+  };
   return (
     <>
       <Head>
@@ -107,9 +95,32 @@ export default function Home() {
       </Head>
       <div className={styles.main}>
         <h1>Hot Metal</h1>
+        <p>First, log into Github. Then make your changes here!</p>
         <div>
-          {data ? (
-            <Form schema={data} validator={validator} uiSchema={uiSchema} />
+          {activitySchema ? (
+            <>
+              <select
+                value={activityIdx}
+                onChange={(e) => setActivityIdx(parseInt(e.target.value) || 0)}
+              >
+                {formState.activities.map((item, index) => (
+                  <option key={index} value={index} id="custom-select">
+                    {item.name}
+                  </option>
+                ))}
+              </select>
+              <button onClick={handleAdd}>Add new Activity +</button>
+              <Form
+                formData={formState.activities[activityIdx]}
+                schema={activitySchema}
+                validator={validator}
+                uiSchema={uiSchema}
+                onSubmit={handleSubmit}
+              />
+              <button onClick={handleSubmitPullRequest}>
+                Submit All Changes
+              </button>
+            </>
           ) : null}
         </div>
       </div>
