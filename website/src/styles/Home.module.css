@@ -1,10 +1,9 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6rem;
-  min-height: 100vh;
+  padding: 2rem 6rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .description {
@@ -97,7 +96,7 @@
 
 .center::before,
 .center::after {
-  content: '';
+  content: "";
   left: 50%;
   position: absolute;
   filter: blur(45px);
