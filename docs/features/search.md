@@ -15,9 +15,9 @@ You can select options using either your mouse or touch-enabled device, or by na
 
 ## Basic Search
 
-The base behavior of our search is to query for a weapon's name. If you simply type the weapon's name, results will be sorted by closest match.
+The base behavior of our search is to query for a weapon's name. As you type the weapon's name, results will be sorted by closest match.
 
-We use a "fuzzy search" algorithm, which means you can input text that's relatively close to the weapon's actual name and it'll still match. So no worries if you make a typo or can't remember how to spell it exactly.
+We use a "fuzzy search" algorithm, which means you can input text that's relatively close to the weapon's actual name and it'll still match, which allows some tolerance for typos or misspellings.
 
 In addition, this works across the weapon's entire name, so you can type in something like `adept` and get results of all the weapons with "Adept" in their names (although we also have a search filter for finding Adept weapons that includes Master-level variants such as Timelost, etc.)
 
@@ -36,7 +36,7 @@ As hinted at previously, you can select multiple filters to further narrow your 
 
 This works with filters of different types (so you can combine filters for `frame` and `weapon`), and with multiple `trait` selections. If you want to find weapons that can roll both Demolitionist and Adrenaline Junkie, selecting a `trait` filter and finding each will work, however they may not be in different columns. If you would like to query for traits in *different* columns, use the `trait_1` and `trait_2` filter.
 
-It's also worth noting that since these work as a logical **AND**, choosing multiple filters of the same type won't be able to match anything (aside from traits, as we just went over). This is because a weapon can't be both a Sidearm **AND** a Hand Cannon.
+It's also worth noting that since these work as a logical **AND**, choosing multiple filters of the same type won't be able to match anything (aside from traits, as we previously went over). This is because a weapon can't be both a Sidearm **AND** a Hand Cannon.
 
 ## Advanced Text Queries
 
@@ -44,11 +44,11 @@ Additionally, we support an advanced search syntax.
 
 Entering text in the form of a `keyword:value` pair will work the same as selecting from the base filter/autocomplete flow. Same keywords, same values (and we'll still show you the available options). Any text you enter that's not paired in this syntax is treated as a search for the weapon's name.
 
-If your query requires text with spaces in it, you can either escape it with double quotes, `weapon:"auto rifle"`, or you leave out the spaces, `weapon:autorifle`, which will work just the same. In fact, since we use the same fuzzy search in our queries as we do with weapon names, you can just leave it at `weapon:auto`, or some slightly misspelled version.
+If your query requires text with spaces in it, you can either escape it with double quotes, `weapon:"auto rifle"`, or you leave out the spaces, `weapon:autorifle`, which will work the same. In fact, since we use the same fuzzy search in our queries as we do with weapon names, you can leave it at `weapon:auto`, or some slightly misspelled version.
 
 ### Logical Operators
 
-White space works as a logical **AND** operator for multiple key/value pairs, in the same way as selecting multiple filters does. However you can also use a comma-separated list of values. For example, `trait:demolitionist,adrenalinejunkie` or even just `trait:demo,junkie`.
+White space works as a logical **AND** operator for multiple key/value pairs, in the same way as selecting multiple filters does. However you can also use a comma-separated list of values. For example, `trait:demolitionist,adrenalinejunkie` or `trait:demo,junkie`.
 
 A single pipe `|` works as a logical **OR** operator. Examples include: 
 - `rpm:390|450 weapon:pulserifle` to get Pulse Rifles across both of those subfamilies
