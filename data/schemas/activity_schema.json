@@ -1,0 +1,46 @@
+{
+  "title": "Activity",
+  "type": "object",
+  "description": "Top-level activity from which there can be multiple loot sources.",
+  "properties": {
+    "name": { "title": "Activity Name", "type": "string" },
+    "description": { "title": "Activity Description", "type": "string" },
+    "rotationStartDate": {
+      "title": "Rotation Start Date",
+      "type": "string",
+      "description": "If this activity has sources that rotate, the date at reset where the rotation starts.",
+      "format": "date-time"
+    },
+    "rotationDuration": {
+      "title": "Rotation Duration (ms)",
+      "type": "integer",
+      "description": "The time between each rotation change in millisconds"
+    },
+    "lootSources": {
+      "title": "Loot Sources",
+      "type": "array",
+      "items": { "$ref": "#/definitions/lootSource" }
+    }
+  },
+  "required": ["description", "name"],
+  "definitions": {
+    "lootSource": {
+      "type": "object",
+      "title": "Loot Source",
+      "description": "An encounter, rotator instance, etc from which a group of items can drop.",
+      "properties": {
+        "name": { "title": "Source Name", "type": "string" },
+        "description": { "title": "Source Description", "type": "string" },
+        "lootItems": {
+          "title": "Loot Items",
+          "type": "array",
+          "items": {
+            "description": "Bungie InventoryItem hash for the loot item",
+            "type": "integer"
+          }
+        }
+      },
+      "required": ["description", "name", "lootItems"]
+    }
+  }
+}
