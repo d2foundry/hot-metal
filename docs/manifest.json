@@ -19,6 +19,24 @@
           "path": "/docs/faq/README.md"
         }
       ]
+    },
+    {
+      "heading": true,
+      "title": "Features",
+      "routes": [
+        {
+          "title": "Roll Editor",
+          "path": "/docs/features/roll-editor.md"
+        },
+        {
+          "title": "Search",
+          "path": "/docs/features/search.md"
+        },
+        {
+          "title": "Compare",
+          "path": "/docs/features/compare.md"
+        }
+      ]
     }
   ]
 }
