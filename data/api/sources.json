@@ -24,6 +24,10 @@
       ],
       "name": "Foo",
       "description": "Bar"
+    },
+    {
+      "name": "Cool cool cool",
+      "description": "aaaa"
     }
   ]
 }
