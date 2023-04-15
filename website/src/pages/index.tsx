@@ -2,10 +2,10 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 
 import useSWR from "swr";
-import { UiSchema } from "@rjsf/utils";
+import { StrictRJSFSchema, UiSchema } from "@rjsf/utils";
 import validator from "@rjsf/validator-ajv8";
 import Form, { FormProps } from "@rjsf/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const GITHUB_JSON_SCHEMA_URI =
   "https://raw.githubusercontent.com/d2foundry/hot-metal/main/data/schemas/source_schema.json";
@@ -13,14 +13,17 @@ const GITHUB_JSON_SCHEMA_URI =
 const GITHUB_ACTIVITY_JSON_SCHEMA_URI =
   "https://raw.githubusercontent.com/d2foundry/hot-metal/main/data/schemas/activity_schema.json";
 
-const formData = {
-  activities: [
-    {
-      name: "Dares of Eternity",
-      description: "Chill with your homie Xur",
-    },
-  ],
-};
+const GITHUB_SOURCE_API_DATA_URI =
+  "https://raw.githubusercontent.com/d2foundry/hot-metal/main/data/api/sources.json";
+
+// const formData = {
+//   activities: [
+//     {
+//       name: "Dares of Eternity",
+//       description: "Chill with your homie Xur",
+//     },
+//   ],
+// };
 
 const uiSchema: UiSchema = {
   activities: {
@@ -35,7 +38,11 @@ const uiSchema: UiSchema = {
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 export default function Home() {
-  const [formState, setFormState] = useState(formData);
+  const [formState, setFormState] = useState<StrictRJSFSchema>();
+  const { data: formData } = useSWR(GITHUB_SOURCE_API_DATA_URI, fetcher);
+  useEffect(() => {
+    setFormState(formData);
+  }, [formData]);
   const [activityIdx, setActivityIdx] = useState(0);
   // const { data, error, isLoading } = useSWR(GITHUB_JSON_SCHEMA_URI, fetcher);
   const { data: activitySchema } = useSWR(
@@ -44,7 +51,7 @@ export default function Home() {
   );
 
   const handleSubmit: FormProps["onSubmit"] = (data) => {
-    setFormState((curr) => {
+    setFormState((curr: StrictRJSFSchema) => {
       return {
         ...curr,
         activities: [
@@ -58,7 +65,7 @@ export default function Home() {
 
   const handleSubmitPullRequest = () => {
     const fileText = JSON.stringify(formState, undefined, 2);
-    console.log(fileText);
+
     const encodedFileText = encodeURIComponent(fileText);
     const githubQueryLink =
       "https://github.com/d2foundry/hot-metal/new/main/data/api/new?value=" +
@@ -69,7 +76,7 @@ export default function Home() {
 
   const handleAdd = () => {
     setActivityIdx(formState.activities.length);
-    setFormState((curr) => {
+    setFormState((curr: StrictRJSFSchema) => {
       return {
         ...curr,
         activities: [
@@ -94,17 +101,19 @@ export default function Home() {
         <h1>Hot Metal</h1>
         <p>First, log into Github. Then make your changes here!</p>
         <div>
-          {activitySchema ? (
+          {activitySchema && formState ? (
             <>
               <select
                 value={activityIdx}
                 onChange={(e) => setActivityIdx(parseInt(e.target.value) || 0)}
               >
-                {formState.activities.map((item, index) => (
-                  <option key={index} value={index} id="custom-select">
-                    {item.name}
-                  </option>
-                ))}
+                {formState?.activities?.map(
+                  (item: { name: string }, index: number) => (
+                    <option key={index} value={index} id="custom-select">
+                      {item.name}
+                    </option>
+                  )
+                )}
               </select>
               <button onClick={handleAdd}>Add new Activity +</button>
               <Form
