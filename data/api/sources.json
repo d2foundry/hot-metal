@@ -31,7 +31,8 @@
     },
     {
       "name": "Duality",
-      "description": "A dungeon"
+      "description": "A dungeon",
+      "rotationDuration": 666
     }
   ]
 }
