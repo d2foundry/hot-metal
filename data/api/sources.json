@@ -28,6 +28,21 @@
     {
       "name": "Cool cool cool",
       "description": "aaaa"
+    },
+    {
+      "lootSources": [
+        {
+          "lootItems": [
+            2527666306
+          ],
+          "name": "do stuff",
+          "description": "loot"
+        }
+      ],
+      "name": "Boboswaggins dungeon",
+      "description": "idk slugger",
+      "rotationStartDate": "1212-12-12T17:08:02.000Z",
+      "rotationDuration": 69420999999
     }
   ]
 }
