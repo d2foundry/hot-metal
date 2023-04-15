@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@octokit/auth-callback": "^3.0.0",
+    "@octokit/rest": "^19.0.7",
     "@rjsf/core": "^5.6.0",
     "@rjsf/utils": "^5.6.0",
     "@rjsf/validator-ajv8": "^5.6.0",
@@ -17,7 +19,11 @@
     "@types/react-dom": "18.0.11",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
+    "nanoid": "^4.0.2",
     "next": "13.3.0",
+    "next-auth": "^4.22.0",
+    "octokit": "^2.0.14",
+    "octokit-plugin-create-pull-request": "^4.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "swr": "^2.1.3",

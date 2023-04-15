@@ -6,24 +6,16 @@ import { StrictRJSFSchema, UiSchema } from "@rjsf/utils";
 import validator from "@rjsf/validator-ajv8";
 import Form, { FormProps } from "@rjsf/core";
 import { useEffect, useState } from "react";
+import { useSession, signIn, signOut } from "next-auth/react";
 
-const GITHUB_JSON_SCHEMA_URI =
-  "https://raw.githubusercontent.com/d2foundry/hot-metal/main/data/schemas/source_schema.json";
+// const GITHUB_JSON_SCHEMA_URI =
+//   "https://raw.githubusercontent.com/d2foundry/hot-metal/main/data/schemas/source_schema.json";
 
 const GITHUB_ACTIVITY_JSON_SCHEMA_URI =
   "https://raw.githubusercontent.com/d2foundry/hot-metal/main/data/schemas/activity_schema.json";
 
 const GITHUB_SOURCE_API_DATA_URI =
   "https://raw.githubusercontent.com/d2foundry/hot-metal/main/data/api/sources.json";
-
-// const formData = {
-//   activities: [
-//     {
-//       name: "Dares of Eternity",
-//       description: "Chill with your homie Xur",
-//     },
-//   ],
-// };
 
 const uiSchema: UiSchema = {
   activities: {
@@ -38,6 +30,7 @@ const uiSchema: UiSchema = {
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 export default function Home() {
+  const { data: session } = useSession();
   const [formState, setFormState] = useState<StrictRJSFSchema>();
   const { data: formData } = useSWR(GITHUB_SOURCE_API_DATA_URI, fetcher);
   useEffect(() => {
@@ -66,12 +59,21 @@ export default function Home() {
   const handleSubmitPullRequest = () => {
     const fileText = JSON.stringify(formState, undefined, 2);
 
-    const encodedFileText = encodeURIComponent(fileText);
-    const githubQueryLink =
-      "https://github.com/d2foundry/hot-metal/new/main/data/api/new?value=" +
-      encodedFileText +
-      `&filename=source-changes-${Date.now()}.json`;
-    window.open(githubQueryLink);
+    fetch("/api/submit", {
+      method: "POST",
+      body: fileText,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((value) => {
+        const pullUrl = value?.data?.html_url;
+        if (pullUrl) {
+          window.open(pullUrl);
+        }
+      })
+      .catch((err) => console.error(err));
   };
 
   const handleAdd = () => {
@@ -99,36 +101,48 @@ export default function Home() {
       </Head>
       <div className={styles.main}>
         <h1>Hot Metal</h1>
-        <p>First, log into Github. Then make your changes here!</p>
-        <div>
-          {activitySchema && formState ? (
-            <>
-              <select
-                value={activityIdx}
-                onChange={(e) => setActivityIdx(parseInt(e.target.value) || 0)}
-              >
-                {formState?.activities?.map(
-                  (item: { name: string }, index: number) => (
-                    <option key={index} value={index} id="custom-select">
-                      {item.name}
-                    </option>
-                  )
-                )}
-              </select>
-              <button onClick={handleAdd}>Add new Activity +</button>
-              <Form
-                formData={formState.activities[activityIdx]}
-                schema={activitySchema}
-                validator={validator}
-                uiSchema={uiSchema}
-                onSubmit={handleSubmit}
-              />
-              <button onClick={handleSubmitPullRequest}>
-                Submit All Changes
-              </button>
-            </>
-          ) : null}
+        <div className={styles.signup}>
+          {session && session.user ? (
+            <button onClick={() => signOut()}>Sign out</button>
+          ) : (
+            <button onClick={() => signIn()}>Sign in</button>
+          )}
         </div>
+        {session && session.user ? (
+          <div>
+            {activitySchema && formState ? (
+              <>
+                <select
+                  value={activityIdx}
+                  onChange={(e) =>
+                    setActivityIdx(parseInt(e.target.value) || 0)
+                  }
+                >
+                  {formState?.activities?.map(
+                    (item: { name: string }, index: number) => (
+                      <option key={index} value={index} id="custom-select">
+                        {item.name}
+                      </option>
+                    )
+                  )}
+                </select>
+                <button onClick={handleAdd}>Add new Activity +</button>
+                <Form
+                  formData={formState.activities[activityIdx]}
+                  schema={activitySchema}
+                  validator={validator}
+                  uiSchema={uiSchema}
+                  onSubmit={handleSubmit}
+                />
+                <button onClick={handleSubmitPullRequest}>
+                  Submit All Changes
+                </button>
+              </>
+            ) : null}
+          </div>
+        ) : (
+          <div>Sign in to Github to edit</div>
+        )}
       </div>
     </>
   );
