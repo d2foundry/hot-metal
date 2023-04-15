@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 
-import useSWRImmutable from "swr/immutable";
+import useSwr from "swr";
 import { StrictRJSFSchema, UiSchema } from "@rjsf/utils";
 import validator from "@rjsf/validator-ajv8";
 import Form, { FormProps } from "@rjsf/core";
@@ -32,20 +32,17 @@ const fetcher = (url: string) => fetch(url).then((r) => r.json());
 export default function Home() {
   const { data: session } = useSession();
   const [formState, setFormState] = useState<StrictRJSFSchema>();
-  const { data: formData } = useSWRImmutable(
-    GITHUB_SOURCE_API_DATA_URI,
-    fetcher
-  );
+  const { data: formData } = useSwr(GITHUB_SOURCE_API_DATA_URI, fetcher);
 
   useEffect(() => {
-    if (formData) {
+    if (formData && !formState) {
       setFormState(formData);
     }
-  }, [formData]);
+  }, [formData, formState]);
 
   const [activityIdx, setActivityIdx] = useState(0);
   // const { data, error, isLoading } = useSWR(GITHUB_JSON_SCHEMA_URI, fetcher);
-  const { data: activitySchema } = useSWRImmutable(
+  const { data: activitySchema } = useSwr(
     GITHUB_ACTIVITY_JSON_SCHEMA_URI,
     fetcher
   );
