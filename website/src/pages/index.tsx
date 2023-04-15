@@ -13,8 +13,6 @@ const GITHUB_JSON_SCHEMA_URI =
 const GITHUB_ACTIVITY_JSON_SCHEMA_URI =
   "https://raw.githubusercontent.com/d2foundry/hot-metal/main/data/schemas/activity_schema.json";
 
-const filename = "sources";
-
 const formData = {
   activities: [
     {
@@ -65,8 +63,7 @@ export default function Home() {
     const githubQueryLink =
       "https://github.com/d2foundry/hot-metal/new/main/data/api/new?value=" +
       encodedFileText +
-      "&filename=" +
-      filename;
+      `&filename=source-changes-${Date.now()}.json`;
     window.open(githubQueryLink);
   };
 
