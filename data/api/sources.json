@@ -5,12 +5,25 @@
       "description": "Fight Oryx and stuff"
     },
     {
-      "name": "New Activity 1",
+      "name": "ooo i changed the name",
+      "description": "and the description"
+    },
+    {
+      "name": "Renaming this",
       "description": "test"
     },
     {
-      "name": "New Activity 2",
-      "description": "test"
+      "lootSources": [
+        {
+          "lootItems": [
+            69420
+          ],
+          "name": "baz",
+          "description": "buzz"
+        }
+      ],
+      "name": "Foo",
+      "description": "Bar"
     }
   ]
 }
