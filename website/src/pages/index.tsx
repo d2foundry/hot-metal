@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 
-import useSWR from "swr";
+import useSWRImmutable from "swr/immutable";
 import { StrictRJSFSchema, UiSchema } from "@rjsf/utils";
 import validator from "@rjsf/validator-ajv8";
 import Form, { FormProps } from "@rjsf/core";
@@ -22,7 +22,7 @@ const uiSchema: UiSchema = {
     // "ui:widget": "CustomSelect", // could also be "select"
   },
   "ui:submitButtonOptions": {
-    norender: false,
+    norender: true,
     submitText: "Save",
   },
 };
@@ -32,13 +32,20 @@ const fetcher = (url: string) => fetch(url).then((r) => r.json());
 export default function Home() {
   const { data: session } = useSession();
   const [formState, setFormState] = useState<StrictRJSFSchema>();
-  const { data: formData } = useSWR(GITHUB_SOURCE_API_DATA_URI, fetcher);
+  const { data: formData } = useSWRImmutable(
+    GITHUB_SOURCE_API_DATA_URI,
+    fetcher
+  );
+
   useEffect(() => {
-    setFormState(formData);
+    if (formData) {
+      setFormState(formData);
+    }
   }, [formData]);
+
   const [activityIdx, setActivityIdx] = useState(0);
   // const { data, error, isLoading } = useSWR(GITHUB_JSON_SCHEMA_URI, fetcher);
-  const { data: activitySchema } = useSWR(
+  const { data: activitySchema } = useSWRImmutable(
     GITHUB_ACTIVITY_JSON_SCHEMA_URI,
     fetcher
   );
@@ -54,6 +61,23 @@ export default function Home() {
         ],
       };
     });
+  };
+
+  const handleChange: FormProps["onChange"] = (data) => {
+    setFormState((curr: StrictRJSFSchema) => {
+      return {
+        ...curr,
+        activities: [
+          ...curr.activities.slice(0, activityIdx),
+          data.formData,
+          ...curr.activities.slice(activityIdx + 1),
+        ],
+      };
+    });
+  };
+
+  const handleReset = () => {
+    setFormState(formData);
   };
 
   const handleSubmitPullRequest = () => {
@@ -112,27 +136,31 @@ export default function Home() {
           <div>
             {activitySchema && formState ? (
               <>
-                <select
-                  value={activityIdx}
-                  onChange={(e) =>
-                    setActivityIdx(parseInt(e.target.value) || 0)
-                  }
-                >
-                  {formState?.activities?.map(
-                    (item: { name: string }, index: number) => (
-                      <option key={index} value={index} id="custom-select">
-                        {item.name}
-                      </option>
-                    )
-                  )}
-                </select>
-                <button onClick={handleAdd}>Add new Activity +</button>
+                <div className={styles.buttonRow}>
+                  <select
+                    value={activityIdx}
+                    onChange={(e) =>
+                      setActivityIdx(parseInt(e.target.value) || 0)
+                    }
+                  >
+                    {formState?.activities?.map(
+                      (item: { name: string }, index: number) => (
+                        <option key={index} value={index} id="custom-select">
+                          {item.name}
+                        </option>
+                      )
+                    )}
+                  </select>
+                  <button onClick={handleAdd}>Add new Activity +</button>
+                  <button onClick={handleReset}>Reset All</button>
+                </div>
                 <Form
                   formData={formState.activities[activityIdx]}
                   schema={activitySchema}
                   validator={validator}
                   uiSchema={uiSchema}
-                  onSubmit={handleSubmit}
+                  onChange={handleChange}
+                  // onSubmit={handleSubmit}
                 />
                 <button onClick={handleSubmitPullRequest}>
                   Submit All Changes
