@@ -1,0 +1,16 @@
+{
+  "activities": [
+    {
+      "name": "King's Fall",
+      "description": "Fight Oryx and stuff"
+    },
+    {
+      "name": "New Activity 1",
+      "description": "test"
+    },
+    {
+      "name": "New Activity 2",
+      "description": "test"
+    }
+  ]
+}
