@@ -11,7 +11,7 @@ export const authOptions: AuthOptions = {
       authorization: {
         url: "https://github.com/login/oauth/authorize",
         params: {
-          scope: "user, repo",
+          scope: "read:user, user:email, repo",
         },
       },
     }),
