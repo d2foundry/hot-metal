@@ -9,12 +9,12 @@
       "title": "Rotation Start Date",
       "type": "string",
       "description": "If this activity has sources that rotate, the date at reset where the rotation starts.",
-      "format": "date-time"
+      "format": "date"
     },
     "rotationDuration": {
-      "title": "Rotation Duration (ms)",
+      "title": "Rotation Duration (days)",
       "type": "integer",
-      "description": "The time between each rotation change in millisconds"
+      "description": "The days between each rotation change"
     },
     "lootSources": {
       "title": "Loot Sources",
