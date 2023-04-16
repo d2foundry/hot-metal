@@ -5,8 +5,17 @@
       "description": "Fight Oryx and stuff"
     },
     {
-      "name": "ooo i changed the name",
-      "description": "and the description"
+      "lootSources": [
+        {
+          "lootItems": [
+            2171478765
+          ],
+          "name": "The Templar",
+          "description": "Drops from defeating The Templar in The Vault of Glass raid."
+        }
+      ],
+      "name": "The Vault of Glass",
+      "description": "Beneath Venus, evil stirs..."
     },
     {
       "name": "Renaming this again!!!",
