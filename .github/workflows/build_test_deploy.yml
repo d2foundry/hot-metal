@@ -29,7 +29,8 @@ jobs:
       
       - run: ./scripts/check-manifests.js
       - run: pnpm lint
-   verify-json-validation:
+
+  verify-json-validation:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
