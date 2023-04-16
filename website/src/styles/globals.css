@@ -77,6 +77,17 @@
   }
 }
 
+[cmdk-list] {
+  min-height: 300px;
+  height: var(--cmdk-list-height);
+  max-height: 500px;
+  overflow-y: scroll;
+  overscroll-behavior: contain;
+  transition: height 100ms ease;
+  scroll-padding-block-start: 8px;
+  scroll-padding-block-end: 8px;
+}
+
 /* * {
   box-sizing: border-box;
   padding: 0;
