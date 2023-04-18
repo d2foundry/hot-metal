@@ -8,10 +8,49 @@
       "lootSources": [
         {
           "lootItems": [
-            2171478765
+            2171478765,
+            3186018373,
+            471518543
           ],
           "name": "The Templar",
           "description": "Drops from defeating The Templar in The Vault of Glass raid."
+        },
+        {
+          "lootItems": [
+            3186018373,
+            3197270240,
+            471518543
+          ],
+          "name": "Confluxes",
+          "description": "Drops from completing the Confluxes ecounter in The Vault of Glass raid."
+        },
+        {
+          "lootItems": [
+            3653573172,
+            3186018373,
+            3197270240
+          ],
+          "name": "Oracles",
+          "description": "Drops from completing the Oracles encounter in The Vault of Glass raid. "
+        },
+        {
+          "lootItems": [
+            2171478765,
+            4050645223,
+            3197270240
+          ],
+          "name": "The Gatekeeper",
+          "description": "Drops from completing the Gatekeeper encounter in The Vault of Glass raid. "
+        },
+        {
+          "lootItems": [
+            4289226715,
+            3653573172,
+            471518543,
+            4050645223
+          ],
+          "name": "Atheon, Time's Conflux",
+          "description": "Drops from defeating Atheon, Time's Conflux in the Vault of Glass raid."
         }
       ],
       "name": "The Vault of Glass",
