@@ -58,7 +58,7 @@
         }
       ],
       "name": "King's Fall",
-      "description": "Defeat Oryx, the Taken King"
+      "description": "Long live the King.."
     },
     {
       "lootSources": [
@@ -137,6 +137,135 @@
       "name": "Duality",
       "description": "A dungeon",
       "rotationDuration": 666
+    },
+    {
+      "lootSources": [
+        {
+          "lootItems": [
+            4095896073,
+            2209003210
+          ],
+          "description": "Track the Unknown Artifact's Signal in the Garden of Salvation raid. ",
+          "name": "First Encounter? (idk what to call this one, evade?) "
+        },
+        {
+          "lootItems": [
+            4020742303,
+            3385326721
+          ],
+          "description": "Draw out the Consecrated Mind in the Garden of Salvation raid. ",
+          "name": "Summon"
+        },
+        {
+          "lootItems": [
+            2408405461,
+            48643186
+          ],
+          "name": "The Consecrated Mind",
+          "description": "Derops from defeating the Consecrated Mind in the Garden of Salvation raid. "
+        },
+        {
+          "lootItems": [
+            3454326177
+          ],
+          "name": "Sanctified Mind",
+          "description": "Drops from defeating the Sanctified Mind in the Garden of Salvation raid. "
+        },
+        {
+          "lootItems": [
+            4103414242
+          ],
+          "name": "Divine Fragmentation Quest",
+          "description": "Drops from completing the Divine Fragmentation quest and completion of the Garden of Salvation raid. "
+        }
+      ],
+      "name": "Garden of Salvation",
+      "description": "\"The Garden calls out to you.\""
+    },
+    {
+      "lootSources": [],
+      "name": "Last Wish",
+      "description": "\"The oppurtunity of a lifetime\""
+    },
+    {
+      "lootSources": [
+        {
+          "lootItems": [
+            135029084,
+            2972949637,
+            1491665733
+          ],
+          "name": "Cataclysm",
+          "description": "Drops from completing the Cataclysm encounter in the Root of NIghtmares raid. "
+        },
+        {
+          "lootItems": [
+            135029084,
+            231031173,
+            1471212226
+          ],
+          "name": "Scission",
+          "description": "Drops from completing the Scission encounter in the Root of Nightmares raid. "
+        },
+        {
+          "lootItems": [
+            2972949637,
+            231031173,
+            484515708
+          ],
+          "name": "Macrocosm",
+          "description": "Drops from defeating Zo'Aurc, Explicator of Planets boss in the Root of Nightmares raid. "
+        },
+        {
+          "lootItems": [
+            3371017761,
+            1471212226,
+            484515708,
+            1491665733
+          ],
+          "name": "Nezarec, Final God of Pain",
+          "description": "Drops from defeating Nezarec, Final God of Pain in the Root of Nightmares raid. "
+        }
+      ],
+      "name": "Root of Nightmares ",
+      "description": "A sinister threat has taken root"
+    },
+    {
+      "lootSources": [
+        {
+          "lootItems": [
+            1392919471
+          ],
+          "name": "Crypt Security",
+          "description": "Drops from completion of the Crypt Security encounter in the Deep Stone Crypt raid. "
+        },
+        {
+          "lootItems": [
+            4248569242,
+            2990047042
+          ],
+          "name": "Atraks-1",
+          "description": "Drops from defeating Atraks-1 in the Deep Stone Crypth raid. "
+        },
+        {
+          "lootItems": [
+            3281285075
+          ],
+          "name": "Rapture",
+          "description": "Drops from completing the Rapture encounter in the Deep Stone Crypt raid."
+        },
+        {
+          "lootItems": [
+            2399110176,
+            3366545721,
+            4230965989
+          ],
+          "name": "Taniks, the Abomination",
+          "description": "Drops from defeating Taniks, the Abomination in the Deep Stone Crypt raid. "
+        }
+      ],
+      "name": "Deep Stone Crypt",
+      "description": "The chains of legacy must be broken."
     }
   ]
 }
