@@ -1,8 +1,64 @@
 {
   "activities": [
     {
+      "lootSources": [
+        {
+          "lootItems": [
+            1937552980
+          ],
+          "name": "Gate",
+          "description": "Drops from opening the gate to The Kings Fall raid. "
+        },
+        {
+          "lootItems": [
+            1937552980,
+            1321506184
+          ],
+          "name": "Totems",
+          "description": "Drops from completing the Totems encounter in The Kings Fall raid. "
+        },
+        {
+          "lootItems": [
+            2221264583,
+            3228096719
+          ],
+          "name": "The Warpriest",
+          "description": "Drops from defeating the Warpriest boss in The Kings Fall raid. "
+        },
+        {
+          "lootItems": [
+            1937552980,
+            3969066556,
+            1321506184
+          ],
+          "name": "Golgoroth",
+          "description": "Drops from defeating Golgoroth in The Kings Fall raid. "
+        },
+        {
+          "lootItems": [
+            2221264583,
+            3228096719,
+            431721920
+          ],
+          "name": "Daughters",
+          "description": "Drops from defeating the Daughters of Oryx encounter in The Kings Fall raid. "
+        },
+        {
+          "lootItems": [
+            1937552980,
+            3228096719,
+            3969066556,
+            2221264583,
+            1321506184,
+            431721920,
+            1802135586
+          ],
+          "name": "Oryx, the Taken King",
+          "description": "Drops from defeating Oryx, the Taken King in the Kings Fall raid. "
+        }
+      ],
       "name": "King's Fall",
-      "description": "Fight Oryx and stuff"
+      "description": "Defeat Oryx, the Taken King"
     },
     {
       "lootSources": [
