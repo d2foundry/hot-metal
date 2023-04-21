@@ -37,6 +37,16 @@
           "path": "/docs/features/compare.md"
         }
       ]
+    },
+    {
+      "heading": true,
+      "title": "Calculations",
+      "routes": [
+        {
+          "title": "Range",
+          "path": "/docs/calculations/range.md"
+        }
+      ]
     }
   ]
 }
