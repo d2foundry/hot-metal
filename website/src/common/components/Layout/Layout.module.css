@@ -1,0 +1,33 @@
+.shineIcon {
+  position: relative;
+}
+
+.shineIcon::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  /* background: linear-gradient(
+    45deg,
+    hsla(0, 0%, 100%, 0.2) -6.28%,
+    hsla(0, 0%, 100%, 0.4) 9.84%,
+    #fff 38.59%,
+    hsla(0, 0%, 100%, 0.4) 66.93%,
+    hsla(0, 0%, 100%, 0) 122.67%
+  ); */
+  background: linear-gradient(
+    -45deg,
+    hsla(0, 0%, 100%, 0.2) -6.28%,
+    hsla(0, 0%, 100%, 0.4) 40%,
+    #fff 90%,
+    #fff 120%
+  );
+  -webkit-mask: linear-gradient(#000, #000) content-box,
+    linear-gradient(#000, #000);
+  mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+  mask-composite: add, add;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.5;
+}

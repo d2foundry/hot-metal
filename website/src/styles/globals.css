@@ -88,6 +88,60 @@
   scroll-padding-block-end: 8px;
 }
 
+.w-md-editor-text-input {
+  @apply bg-grayBgSubtle p-2 flex-1 w-full h-full text-grayTextContrast text-base;
+  resize: none;
+}
+.w-md-editor-toolbar {
+  @apply bg-grayBg flex w-full justify-between border border-grayBorder py-1 px-2 h-fit rounded-t !important;
+}
+.w-md-editor-toolbar ul {
+  @apply inline-flex;
+}
+.w-md-editor-toolbar li:not(:last-of-type) button {
+  @apply mr-1;
+}
+
+.w-md-editor-toolbar li button {
+  @apply text-grayText rounded-sm  p-1 hover:bg-grayBgHover transition;
+}
+
+.w-md-editor-preview {
+  @apply bg-grayBgSubtle p-2 prose prose-neutral dark:prose-invert overflow-y-auto h-full;
+}
+
+.w-md-editor-preview a.anchor {
+  display: none;
+}
+
+.w-md-editor-toolbar-divider {
+  @apply w-0 border-r border-grayBorder mx-2 h-4 my-auto;
+}
+
+.w-md-editor-text {
+  @apply flex h-full;
+}
+
+.w-md-editor-preview,
+.w-md-editor-input {
+  @apply flex-1 max-w-prose w-full;
+}
+.w-md-editor-text-pre {
+  display: none;
+}
+
+.w-md-editor {
+  max-width: 130ch;
+}
+
+.w-md-editor-bar {
+  display: none;
+}
+
+.w-md-editor-content {
+  @apply grid grid-cols-2 justify-stretch divide-x divide-grayBorder border-grayBorder border border-t-0 rounded-b overflow-hidden !important;
+}
+
 /* * {
   box-sizing: border-box;
   padding: 0;
