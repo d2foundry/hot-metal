@@ -41,7 +41,7 @@ export const Combobox: React.FC<ComboboxProps> = ({ onChange, values, id }) => {
           aria-expanded={open}
           className="w-80 justify-between"
         >
-          <span className="text-neutral-600">{"Select weapons..."}</span>
+          <span className="text-graySolid">{"Select weapons..."}</span>
           <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
