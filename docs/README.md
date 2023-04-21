@@ -1,7 +1,7 @@
 ---
-description: Foundry is an advanced weapon roll explorer and buildcrafting tool for Destiny 2.
+description: Foundry is an advanced weapon roll explorer and buildcrafting tool for Destiny
 ---
 
 # Introduction
 
-This is an introduction to the documentation.
+Foundry is an advanced weapon roll explorer and buildcrafting tool for Destiny 2.
