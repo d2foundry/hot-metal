@@ -20,7 +20,7 @@ export const File = ({
 }) => (
   <button
     className={cn(
-      "flex gap-2 text-sm items-center pl-6 py-1 w-full rounded text-ellipsis overflow-hidden text-grayText hover:bg-grayBgActive hover:text-grayTextContrast",
+      "flex transition-colors gap-2 text-sm items-center pl-6 py-1 w-full rounded text-ellipsis overflow-hidden text-grayText hover:bg-grayBgHover hover:text-grayTextContrast",
       active ? "bg-grayBgActive text-grayTextContrast" : ""
     )}
     onClick={onClick}
@@ -40,7 +40,7 @@ export const Folder: React.FC<PropsWithChildren<FolderProps>> = ({
   const [open, setOpen] = useState(false);
   return (
     <Collapsible.Root open={open} onOpenChange={setOpen}>
-      <Collapsible.Trigger className="flex text-sm items-center py-1 gap-2 rounded w-full hover:bg-grayBgActive hover:text-grayTextContrast">
+      <Collapsible.Trigger className="flex transition-colors text-sm items-center py-1 gap-2 rounded w-full hover:bg-grayBgHover hover:text-grayTextContrast">
         {open ? (
           <ChevronDownIcon className="h-4 w-4 shrink-0 opacity-50" />
         ) : (

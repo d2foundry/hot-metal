@@ -32,6 +32,7 @@ interface MatterData {
 }
 const Docs = () => {
   const [filePath, setFilePath] = useState("");
+  const [fileName, setFileName] = useState("");
 
   const [matterData, setMatterData] = useState<null | MatterData>();
   const [value, setValue] = useState("**Hello world!!!**");
@@ -39,15 +40,39 @@ const Docs = () => {
   const { data: manifest } = useSwr(GITHUB_DOCS_MANIFEST_URI, fetcher);
   const { data: mdFile } = useSwr(
     filePath ? `${GITHUB_DOCS_BASE_URI}${filePath}` : null,
-    mdFetcher
+    mdFetcher,
+    {
+      revalidateOnFocus: false,
+      revalidateIfStale: false,
+    }
   );
 
-  // console.log(filePath);
+  const handleSubmit = () => {
+    const fileText = matter.stringify(value, matterData ?? {});
+
+    const apiPath = filePath.split("/").slice(1).join("/").split(".md")[0];
+
+    fetch("/api/docs/" + apiPath, {
+      method: "POST",
+      body: fileText,
+      headers: {
+        "Content-Type": "text/plain; charset=utf-8",
+      },
+    })
+      .then((res) => res.json())
+      .then((value) => {
+        const pullUrl = value?.data?.html_url;
+        if (pullUrl) {
+          window.open(pullUrl);
+        }
+      })
+      .catch((err) => console.error(err));
+  };
 
   useEffect(() => {
     if (mdFile) {
       const gm = matter(mdFile);
-      // console.log(matter(mdFile));
+
       setMatterData(gm.data as MatterData);
       setValue(gm.content);
     }
@@ -55,6 +80,8 @@ const Docs = () => {
 
   const handleFileSelect = (v: string) => {
     setFilePath(v);
+    const fileName = (v ? v.split("/").at(-1) ?? "" : "").split(".md")[0];
+    setFileName(fileName);
   };
 
   const fileSelected = !!(mdFile && matterData);
@@ -68,8 +95,8 @@ const Docs = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex flex-col max-w-screen-2xl mx-auto">
-        <div className="flex flex-col md:flex-row gap-4">
+      <div className="flex flex-col h-full flex-1">
+        <div className="flex flex-col flex-1 md:flex-row gap-4">
           {manifest ? (
             <div className="md:max-w-xs w-full border-r border-grayBorder pt-4 px-2">
               <Tree.Root>
@@ -101,17 +128,12 @@ const Docs = () => {
             {matterData ? (
               <div className="flex flex-col gap-2 mb-2">
                 <div>
-                  <Label htmlFor="file-path">File</Label>
+                  <Label htmlFor="file-path">File Name</Label>
                   <Input
                     id="file-path"
-                    value={filePath}
-                    readOnly
-                    // onChange={(e) =>
-                    //   setMatterData((curr) => ({
-                    //     ...curr,
-                    //     description: e.target.value,
-                    //   }))
-                    // }
+                    value={fileName}
+                    // readOnly
+                    onChange={(e) => setFileName(e.target.value)}
                   />
                 </div>
                 <div>
@@ -122,7 +144,7 @@ const Docs = () => {
                     onChange={(e) =>
                       setMatterData((curr) => ({
                         ...curr,
-                        description: e.target.value,
+                        description: e.target.value.trim(),
                       }))
                     }
                   />
@@ -154,12 +176,14 @@ const Docs = () => {
                 // }}
               />
             ) : (
-              <div className="w-full flex justify-center items-center text-graySolid h-96">
+              <div className="w-full flex justify-center items-center text-graySolid h-full">
                 Select a file.
               </div>
             )}
             <div className="flex justify-end mt-8">
-              <Button disabled={!fileSelected}>Submit</Button>
+              <Button disabled={!fileSelected} onClick={handleSubmit}>
+                Submit
+              </Button>
             </div>
           </div>
         </div>

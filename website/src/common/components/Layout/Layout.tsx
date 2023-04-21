@@ -23,9 +23,9 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <>
-      <div className="max-w-full mx-auto px-4 py-4 pb-80">
-        <div className="max-w-screen-2xl mx-auto">
-          <div className="flex justify-between mb-2">
+      <div className="max-w-screen-2xl flex flex-col mx-auto min-h-screen px-4 py-4 mb-20">
+        <div className="">
+          <header className="flex justify-between mb-2">
             <h1 className="text-4xl font-extrabold tracking-tight flex items-center">
               <span className={cn("rounded mr-4", styles.shineIcon)}>
                 <Image
@@ -56,7 +56,7 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
                 </Button>
               )}
             </div>
-          </div>
+          </header>
           <nav>
             <ul className="flex gap-2 border-b border-grayBorder">
               <Link
