@@ -10,7 +10,9 @@ On occasion, Bungie provides us with "concrete" range numbers, and you may ask w
 
 The gun model root measurement issue also leads to slight changes in what ads range should be vs what it really is but they are so minute we generalize them by ads = hip * (zoom/10 -0.025) where the 0.025 is the physical movement of the gun back when you ads.
 
-These images will help visualize the difference between the two methods. <br>
+These images will help visualize the difference between the two methods. 
+
+
 ![Front POV Hip](https://raw.githubusercontent.com/oh-yes-0-fps/hot-metal/main/docs/faq/assets/front_hip_mod.jpg)
 ![Side POV ADS](https://raw.githubusercontent.com/oh-yes-0-fps/hot-metal/main/docs/faq/assets/side_ads_mod.jpg)
 ![Side POV Hip](https://raw.githubusercontent.com/oh-yes-0-fps/hot-metal/main/docs/faq/assets/side_hip_mod.jpg)
