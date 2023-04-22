@@ -1,5 +1,5 @@
 ---
-description: Learn more about how we test and calculate weapon range
+description: Learn more about how we test and calculate weapon reload
 ---
 
 # Reload
@@ -10,4 +10,4 @@ Reloading is simply a sequence of events that goes button(animation start) -> re
 
 Reload formulas aren't actually quadratic as many think they are, they can be more appropriatly and accurately represented by piecewise-linear functions. All that means is thye can consist of 1 or more linear functions stitched together.
 
-![Reload Formula Graph](https://raw.githubusercontent.com/oh-yes-0-fps/hot-metal/main/docs/faq/assets/reload_graph.jpg)
+![Reload Formula Graph](https://raw.githubusercontent.com/oh-yes-0-fps/hot-metal/main/docs/faq/assets/reload_graph.png)
