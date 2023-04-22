@@ -45,6 +45,10 @@
         {
           "title": "Range",
           "path": "/docs/calculations/range.md"
+        },
+        {
+          "title": "Reload",
+          "path": "/docs/calculations/reload.md"
         }
       ]
     }
