@@ -32,14 +32,15 @@ interface MatterData {
 }
 const Docs = () => {
   const [filePath, setFilePath] = useState("");
+  const [isNew, setIsNew] = useState(false);
   const [fileName, setFileName] = useState("");
 
   const [matterData, setMatterData] = useState<null | MatterData>();
-  const [value, setValue] = useState("**Hello world!!!**");
+  const [value, setValue] = useState("");
 
   const { data: manifest } = useSwr(GITHUB_DOCS_MANIFEST_URI, fetcher);
   const { data: mdFile } = useSwr(
-    filePath ? `${GITHUB_DOCS_BASE_URI}${filePath}` : null,
+    !!(filePath && !isNew) ? `${GITHUB_DOCS_BASE_URI}${filePath}` : null,
     mdFetcher,
     {
       revalidateOnFocus: false,
@@ -50,7 +51,18 @@ const Docs = () => {
   const handleSubmit = () => {
     const fileText = matter.stringify(value, matterData ?? {});
 
-    const apiPath = filePath.split("/").slice(1).join("/").split(".md")[0];
+    let apiPath = "";
+    if (isNew) {
+      // oh baby, we're writing some javascript!!!
+      apiPath = filePath
+        .split("/")
+        .slice(1, -1)
+        .concat(fileName)
+        .join("/")
+        .split(".md")[0];
+    } else {
+      apiPath = filePath.split("/").slice(1).join("/").split(".md")[0];
+    }
 
     fetch("/api/docs/" + apiPath, {
       method: "POST",
@@ -84,7 +96,7 @@ const Docs = () => {
     setFileName(fileName);
   };
 
-  const fileSelected = !!(mdFile && matterData);
+  const fileSelected = !!matterData;
 
   return (
     <>
@@ -109,10 +121,25 @@ const Docs = () => {
                               key={r?.title}
                               name={r?.title}
                               active={r?.path === filePath}
-                              onClick={() => handleFileSelect(r?.path || "")}
+                              onClick={() => {
+                                setIsNew(false);
+                                handleFileSelect(r?.path || "");
+                              }}
                             />
                           ))
                         : null}
+                      <Tree.File
+                        name={"New file..."}
+                        newFile
+                        onClick={() => {
+                          handleFileSelect(
+                            (route.path ?? "/") + "/untitled.md"
+                          );
+                          setIsNew(true);
+                          setMatterData({ description: "" });
+                          setValue("");
+                        }}
+                      />
                     </Tree.Folder>
                   ) : (
                     <Tree.Folder name={route?.title} key={route?.title} />
@@ -144,7 +171,7 @@ const Docs = () => {
                     onChange={(e) =>
                       setMatterData((curr) => ({
                         ...curr,
-                        description: e.target.value.trim(),
+                        description: e.target.value,
                       }))
                     }
                   />

@@ -4,28 +4,37 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
   FileTextIcon,
+  PlusIcon,
 } from "@radix-ui/react-icons";
 import { cn } from "@/common/utils";
 
 export const File = ({
   name,
   path,
+  newFile,
   active,
   onClick,
 }: {
   name: string;
   path?: string;
   active?: boolean;
+  newFile?: boolean;
   onClick: () => void;
 }) => (
   <button
     className={cn(
       "flex transition-colors gap-2 text-sm items-center pl-6 py-1 w-full rounded text-ellipsis overflow-hidden text-grayText hover:bg-grayBgHover hover:text-grayTextContrast",
-      active ? "bg-grayBgActive text-grayTextContrast" : ""
+      active ? "bg-grayBgActive text-grayTextContrast" : "",
+      newFile ? "opacity-50" : ""
     )}
     onClick={onClick}
   >
-    <FileTextIcon className="h-4 w-4 shrink-0 opacity-50" /> {name}
+    {newFile ? (
+      <PlusIcon className="h-4 w-4 shrink-0 opacity-50" />
+    ) : (
+      <FileTextIcon className="h-4 w-4 shrink-0 opacity-50" />
+    )}{" "}
+    {name}
   </button>
 );
 
