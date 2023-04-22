@@ -49,10 +49,16 @@ const Docs = () => {
   const [isNew, setIsNew] = useState(false);
   const [fileName, setFileName] = useState("");
 
+  const [hasChanges, setHasChanges] = useState(false);
+
   const [matterData, setMatterData] = useState<null | MatterData>();
   const [value, setValue] = useState("");
 
-  const { data: manifest } = useSwr(GITHUB_DOCS_MANIFEST_URI, fetcher);
+  const { data: manifest } = useSwr(GITHUB_DOCS_MANIFEST_URI, fetcher, {
+    revalidateOnFocus: false,
+    revalidateIfStale: false,
+  });
+
   const { data: mdFile } = useSwr(
     !!(filePath && !isNew) ? `${GITHUB_DOCS_BASE_URI}${filePath}` : null,
     mdFetcher,
@@ -89,6 +95,7 @@ const Docs = () => {
       .then((value) => {
         const pullUrl = value?.data?.html_url;
         if (pullUrl) {
+          setHasChanges(false);
           window.open(pullUrl);
         }
       })
@@ -111,6 +118,13 @@ const Docs = () => {
   };
 
   const fileSelected = !!matterData;
+
+  const handleEditorChange = (newValue: string) => {
+    if (!hasChanges) {
+      setHasChanges(true);
+    }
+    setValue(newValue);
+  };
 
   return (
     <>
@@ -163,6 +177,17 @@ const Docs = () => {
                                 name={r?.title}
                                 active={r?.path === filePath}
                                 onClick={() => {
+                                  if (hasChanges) {
+                                    if (
+                                      confirm(
+                                        "You have changes on this file you haven't submitted that will be lost. Are you sure you want to continue?"
+                                      )
+                                    ) {
+                                      setHasChanges(false);
+                                    } else {
+                                      return;
+                                    }
+                                  }
                                   setIsNew(false);
                                   handleFileSelect(r?.path || "");
                                 }}
@@ -221,7 +246,7 @@ const Docs = () => {
               </div>
             ) : null}
             {fileSelected ? (
-              <MarkdownEditor value={value} onChange={setValue} />
+              <MarkdownEditor value={value} onChange={handleEditorChange} />
             ) : (
               <div className="w-full flex justify-center items-center text-graySolid h-full">
                 Select a file.
