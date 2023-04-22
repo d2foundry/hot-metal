@@ -12,23 +12,21 @@ import {
   StrikethroughIcon,
 } from "@radix-ui/react-icons";
 import dynamic from "next/dynamic";
-import { HTMLAttributes, useEffect, useState } from "react";
-
-import orderedListIcon from "@/common/assets/ordered-list-icon.svg";
+import { HTMLAttributes } from "react";
+import katex from "katex";
+import "katex/dist/katex.css";
 
 const MDEditor = dynamic(
   () => import("@uiw/react-md-editor").then((mod) => mod.default),
   { ssr: false }
 );
-// const commands = dynamic(
-//   () => import("@uiw/react-md-editor").then((mod) => mod.commands),
-//   { ssr: false }
-// );
 
 import { commands } from "@uiw/react-md-editor";
-import rehypeSanitize from "rehype-sanitize";
 
-import Image from "next/image";
+// why doesn't this worth with KaTeX
+// import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
+
+import { cn } from "@/common/utils";
 
 export const MarkdownEditor = ({
   value,
@@ -73,27 +71,6 @@ export const MarkdownEditor = ({
       { ...commands.code, icon: <CodeIcon /> },
       {
         ...commands.codeBlock,
-        // name: "code block",
-        // keyCommand: "codeBlock",
-        // render: ({ execute }) => {
-        //   return (
-        //     <button
-        //       aria-label="Code block"
-        //       // disabled={disabled}
-        //       onClick={(evn) => {
-        //         // evn.stopPropagation();
-        //         execute();
-        //       }}
-        //     >
-        //       <svg width="12" height="12" viewBox="0 0 520 520">
-        //         <path
-        //           fill="currentColor"
-        //           d="M15.7083333,468 C7.03242448,468 0,462.030833 0,454.666667 L0,421.333333 C0,413.969167 7.03242448,408 15.7083333,408 L361.291667,408 C369.967576,408 377,413.969167 377,421.333333 L377,454.666667 C377,462.030833 369.967576,468 361.291667,468 L15.7083333,468 Z M21.6666667,366 C9.69989583,366 0,359.831861 0,352.222222 L0,317.777778 C0,310.168139 9.69989583,304 21.6666667,304 L498.333333,304 C510.300104,304 520,310.168139 520,317.777778 L520,352.222222 C520,359.831861 510.300104,366 498.333333,366 L21.6666667,366 Z M136.835938,64 L136.835937,126 L107.25,126 L107.25,251 L40.75,251 L40.75,126 L-5.68434189e-14,126 L-5.68434189e-14,64 L136.835938,64 Z M212,64 L212,251 L161.648438,251 L161.648438,64 L212,64 Z M378,64 L378,126 L343.25,126 L343.25,251 L281.75,251 L281.75,126 L238,126 L238,64 L378,64 Z M449.047619,189.550781 L520,189.550781 L520,251 L405,251 L405,64 L449.047619,64 L449.047619,189.550781 Z"
-        //         />
-        //       </svg>
-        //     </button>
-        //   );
-        // },
         buttonProps: {
           type: "button",
         },
@@ -106,7 +83,6 @@ export const MarkdownEditor = ({
             height={15}
             width={15}
             stroke="currentColor"
-            // className="w-4 h-4"
           >
             <path
               strokeLinecap="round"
@@ -152,14 +128,46 @@ export const MarkdownEditor = ({
       preview: (props: HTMLAttributes<HTMLDivElement>) => <div {...props} />,
     }}
     previewOptions={{
-      rehypePlugins: [[rehypeSanitize]],
+      components: {
+        code: ({ inline, children, className, ...props }) => {
+          const txt = children[0] || "";
+          if (inline) {
+            if (typeof txt === "string" && /^\$\$(.*)\$\$/.test(txt)) {
+              const html = katex.renderToString(
+                txt.replace(/^\$\$(.*)\$\$/, "$1"),
+                {
+                  throwOnError: false,
+                }
+              );
+              return (
+                <code
+                  className={cn(className, "not-prose")}
+                  dangerouslySetInnerHTML={{ __html: html }}
+                />
+              );
+            }
+            return <code className={cn(className, "not-prose")}>{txt}</code>;
+          }
+          if (
+            typeof txt === "string" &&
+            typeof className === "string" &&
+            /^language-katex/.test(className.toLocaleLowerCase())
+          ) {
+            const html = katex.renderToString(txt, {
+              throwOnError: false,
+            });
+            console.log("props", txt, className, props);
+            return (
+              <code
+                className={cn(className, "not-prose")}
+                dangerouslySetInnerHTML={{ __html: html }}
+              />
+            );
+          }
+          return <code className={String(className)}>{txt}</code>;
+        },
+      },
     }}
     height={800}
-    // visibleDragbar={false}
-
-    // textareaProps={{
-    //   // className: "bg-neutral-900",
-    //   placeholder: "Please enter Markdown text",
-    // }}
   />
 );
