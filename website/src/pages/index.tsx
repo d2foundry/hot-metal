@@ -21,7 +21,7 @@ import {
 import validator from "@rjsf/validator-ajv8";
 import Form, { FormProps } from "@rjsf/core";
 import { ChangeEvent, useEffect, useState, FocusEvent, useRef } from "react";
-import { useSession, signIn, signOut } from "next-auth/react";
+
 import { Button } from "@/common/components/Button";
 import { Input } from "@/common/components/Input";
 import {
@@ -159,7 +159,7 @@ const ItemCombobox = ({ onChange, ...props }: FieldProps) => {
               return (
                 <div
                   key={`${props.title}-selected-${itemHash}`}
-                  className="flex border items-center py-1 px-1 rounded border-neutral-700 text-xs text-neutral-300"
+                  className="flex border items-center py-1 px-1 rounded border-grayBorder text-xs text-grayTextContrast"
                 >
                   <Avatar className="rounded-sm mr-2 relative h-4 w-4 ">
                     <AvatarImage
@@ -256,7 +256,6 @@ function BaseInputTemplate(props: BaseInputTemplateProps) {
       onBlur={onTextBlur}
       onFocus={onTextFocus}
       {...inputProps}
-      // className="bg-black text-white rounded px-4 py-2 border border-solid border-neutral-700 transition hover:bg-neutral-900 hover:border-neutral-300"
     />
   );
 }
@@ -325,13 +324,13 @@ function CustomFieldTemplate(props: FieldTemplateProps) {
             {required ? "*" : null}
           </Label>
           {description ? (
-            <p className="text-sm text-neutral-500">{description}</p>
+            <p className="text-sm text-grayText">{description}</p>
           ) : null}
         </>
       ) : null}
       {children}
       {errors ? (
-        <p className="text-xs uppercase text-red-500">{errors}</p>
+        <p className="text-xs uppercase text-dangerText">{errors}</p>
       ) : null}
       {help}
     </div>
@@ -363,7 +362,7 @@ function ArrayFieldTemplate({
             <div
               key={element.key}
               // className=""
-              className="relative p-4 border rounded bg-neutral-700/20 border-neutral-700"
+              className="relative p-4 border rounded bg-grayBgSubtle border-grayBorder"
             >
               <div>{element.children}</div>
               <div className="absolute top-4 right-4 flex gap-2">
@@ -432,8 +431,7 @@ function ObjectFieldTemplate(props: ObjectFieldTemplateProps) {
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 export default function Home() {
-  const { data: session } = useSession();
-  const [formState, setFormState] = useState<StrictRJSFSchema>();
+  const [formState, setFormState] = useState<any | undefined>();
   const setInventoryItems = useSetAtom(inventoryItemsAtom);
   const { data: formData } = useSwr(GITHUB_SOURCE_API_DATA_URI, fetcher);
 
@@ -458,21 +456,26 @@ export default function Home() {
     fetcher
   );
 
-  const handleSubmit: FormProps["onSubmit"] = (data) => {
-    setFormState((curr: StrictRJSFSchema) => {
-      return {
-        ...curr,
-        activities: [
-          ...curr.activities.slice(0, activityIdx),
-          data.formData,
-          ...curr.activities.slice(activityIdx + 1),
-        ],
-      };
-    });
-  };
+  // const handleSubmit: FormProps["onSubmit"] = (data) => {
+  //   setFormState((curr: StrictRJSFSchema) => {
+  //     return {
+  //       ...curr,
+  //       activities: [
+  //         ...curr.activities.slice(0, activityIdx),
+  //         data.formData,
+  //         ...curr.activities.slice(activityIdx + 1),
+  //       ],
+  //     };
+  //   });
+  // };
 
   const handleChange: FormProps["onChange"] = (data) => {
-    setFormState((curr: StrictRJSFSchema) => {
+    setFormState((curr: any) => {
+      if (!curr || !curr?.activities) {
+        return {
+          activities: [data.formData],
+        };
+      }
       return {
         ...curr,
         activities: [
@@ -515,7 +518,7 @@ export default function Home() {
 
   const handleAdd = () => {
     setActivityIdx(formState.activities.length);
-    setFormState((curr: StrictRJSFSchema) => {
+    setFormState((curr: any) => {
       return {
         ...curr,
         activities: [
@@ -530,8 +533,6 @@ export default function Home() {
     });
   };
 
-  const isAuthed = !!(session && session.user);
-
   return (
     <>
       <Head>
@@ -540,105 +541,78 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="bg-black text-white max-w-prose mx-auto pb-80">
-        <div className="flex justify-between mb-4">
-          <h1 className="text-4xl font-extrabold tracking-tight">Hot Metal</h1>
-          <div className={styles.signup}>
-            {isAuthed ? (
-              <div className="flex justify-between gap-2">
-                <Avatar>
-                  {session?.user?.image ? (
-                    <AvatarImage src={session.user.image} />
-                  ) : null}{" "}
-                  <AvatarFallback>{session?.user?.name}</AvatarFallback>
-                </Avatar>
-                <Button onClick={() => signOut()} variant={"outline"}>
-                  <ExitIcon className="mr-2 h-4 w-4" /> Sign out
-                </Button>
-              </div>
-            ) : (
-              <Button onClick={() => signIn()}>
-                <GitHubLogoIcon className="mr-2 h-4 w-4" /> Sign in
+
+      <div className="flex flex-col gap-2 max-w-prose mx-auto pt-4">
+        {activitySchema && formState ? (
+          <>
+            <div className="flex gap-2 mb-4">
+              <Select
+                value={activityIdx.toString()}
+                onValueChange={(value) => {
+                  if (formRef.current) {
+                    const isValid = formRef.current.validateForm();
+                    if (!isValid) return;
+                    // formRef.current.renderErrors();
+                  }
+                  setActivityIdx(parseInt(value) || 0);
+                }}
+              >
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Select an activity" />
+                </SelectTrigger>
+                <SelectContent>
+                  {formState?.activities?.map(
+                    (item: { name: string }, index: number) => (
+                      <SelectItem
+                        key={index}
+                        value={index.toString()}
+                        id="custom-select"
+                      >
+                        {item.name}
+                      </SelectItem>
+                    )
+                  )}
+                </SelectContent>
+              </Select>
+              <Button onClick={handleAdd} variant={"outline"}>
+                <PlusIcon className="mr-2 h-4 w-4" /> Add new Activity
               </Button>
-            )}
-          </div>
-        </div>
-        {isAuthed ? (
-          <div className="flex flex-col gap-2">
-            {activitySchema && formState ? (
-              <>
-                <div className="flex gap-2 mb-4">
-                  <Select
-                    value={activityIdx.toString()}
-                    onValueChange={(value) => {
-                      if (formRef.current) {
-                        const isValid = formRef.current.validateForm();
-                        if (!isValid) return;
-                        // formRef.current.renderErrors();
-                      }
-                      setActivityIdx(parseInt(value) || 0);
-                    }}
-                  >
-                    <SelectTrigger className="w-[180px]">
-                      <SelectValue placeholder="Select an activity" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {formState?.activities?.map(
-                        (item: { name: string }, index: number) => (
-                          <SelectItem
-                            key={index}
-                            value={index.toString()}
-                            id="custom-select"
-                          >
-                            {item.name}
-                          </SelectItem>
-                        )
-                      )}
-                    </SelectContent>
-                  </Select>
-                  <Button onClick={handleAdd} variant={"outline"}>
-                    <PlusIcon className="mr-2 h-4 w-4" /> Add new Activity
-                  </Button>
-                  <Button onClick={handleReset} variant={"destructive"}>
-                    Reset All
-                  </Button>
-                </div>
-                <Form
-                  showErrorList={false}
-                  formData={formState.activities[activityIdx]}
-                  schema={activitySchema}
-                  validator={validator}
-                  uiSchema={uiSchema}
-                  onChange={handleChange}
-                  noHtml5Validate
-                  ref={(props) => {
-                    formRef.current = props;
-                  }}
-                  fields={fields}
-                  templates={{
-                    BaseInputTemplate,
-                    FieldTemplate: CustomFieldTemplate,
-                    ArrayFieldTemplate,
-                    // ArrayFieldTitleTemplate,
-                    // ArrayFieldDescriptionTemplate,
-                    // DescriptionFieldTemplate,
-                    ObjectFieldTemplate,
-                    ButtonTemplates: {
-                      AddButton,
-                      RemoveButton,
-                    },
-                  }}
-                  // onSubmit={handleSubmit}
-                />
-                <Button onClick={handleSubmitPullRequest} className="ml-auto">
-                  Submit All Changes
-                </Button>
-              </>
-            ) : null}
-          </div>
-        ) : (
-          <div className="text-center mt-20">Sign in to Github to edit</div>
-        )}
+              <Button onClick={handleReset} variant={"destructive"}>
+                Reset All
+              </Button>
+            </div>
+            <Form
+              showErrorList={false}
+              formData={formState.activities[activityIdx]}
+              schema={activitySchema}
+              validator={validator}
+              uiSchema={uiSchema}
+              onChange={handleChange}
+              noHtml5Validate
+              ref={(props) => {
+                formRef.current = props;
+              }}
+              fields={fields}
+              templates={{
+                BaseInputTemplate,
+                FieldTemplate: CustomFieldTemplate,
+                ArrayFieldTemplate,
+                // ArrayFieldTitleTemplate,
+                // ArrayFieldDescriptionTemplate,
+                // DescriptionFieldTemplate,
+                ObjectFieldTemplate,
+                ButtonTemplates: {
+                  AddButton,
+                  RemoveButton,
+                },
+              }}
+              // onSubmit={handleSubmit}
+            />
+            <Button onClick={handleSubmitPullRequest} className="ml-auto">
+              Submit All Changes
+            </Button>
+          </>
+        ) : null}
       </div>
     </>
   );

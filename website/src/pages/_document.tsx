@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="en" data-color-mode="dark">
       <Head>
         {/* <link
           rel="stylesheet"
@@ -11,7 +11,10 @@ export default function Document() {
           crossOrigin="anonymous"
         ></link> */}
       </Head>
-      <body className="bg-black text-white px-2 py-4">
+      <body
+        className="bg-grayBase text-grayTextContrast"
+        data-color-mode="dark"
+      >
         <Main />
         <NextScript />
       </body>
