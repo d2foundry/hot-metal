@@ -3,14 +3,27 @@ import { Button } from "@/common/components/Button";
 import Head from "next/head";
 
 import dynamic from "next/dynamic";
-import { HTMLAttributes, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import useSwr from "swr";
-import rehypeSanitize from "rehype-sanitize";
+
 import * as Tree from "@/common/components/Tree";
 import matter from "gray-matter";
 import { Input } from "@/common/components/Input";
 import { Label } from "@/common/components/Label";
-const MDEditor = dynamic(() => import("@uiw/react-md-editor"), { ssr: false });
+import { cn } from "@/common/utils";
+import { PinLeftIcon, PinRightIcon } from "@radix-ui/react-icons";
+
+const MarkdownEditor = dynamic(
+  () =>
+    import("@/common/components/MarkdownEditor").then(
+      (mod) => mod.MarkdownEditor
+    ),
+  { ssr: false }
+);
+// const commands = dynamic(
+//   () => import("@uiw/react-md-editor").then((mod) => mod.commands),
+//   { ssr: false }
+// );
 
 const GITHUB_DOCS_MANIFEST_URI =
   "https://raw.githubusercontent.com/d2foundry/hot-metal/main/docs/manifest.json";
@@ -31,6 +44,7 @@ interface MatterData {
   description: string;
 }
 const Docs = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [filePath, setFilePath] = useState("");
   const [isNew, setIsNew] = useState(false);
   const [fileName, setFileName] = useState("");
@@ -108,48 +122,76 @@ const Docs = () => {
       </Head>
 
       <div className="flex flex-col h-full flex-1">
-        <div className="flex flex-col flex-1 md:flex-row gap-4">
+        <div className="flex flex-col flex-1 md:flex-row gap-6">
           {manifest ? (
-            <div className="md:max-w-xs w-full border-r border-grayBorder pt-4 px-2">
-              <Tree.Root>
-                {manifest?.routes?.map((route: ManifestRoute) =>
-                  route.heading ? (
-                    <Tree.Folder name={route?.title} key={route?.title}>
-                      {route?.routes?.length
-                        ? route.routes.map((r) => (
-                            <Tree.File
-                              key={r?.title}
-                              name={r?.title}
-                              active={r?.path === filePath}
-                              onClick={() => {
-                                setIsNew(false);
-                                handleFileSelect(r?.path || "");
-                              }}
-                            />
-                          ))
-                        : null}
-                      <Tree.File
-                        name={"New file..."}
-                        newFile
-                        onClick={() => {
-                          handleFileSelect(
-                            (route.path ?? "/") + "/untitled.md"
-                          );
-                          setIsNew(true);
-                          setMatterData({ description: "" });
-                          setValue("");
-                        }}
-                      />
-                    </Tree.Folder>
-                  ) : (
-                    <Tree.Folder name={route?.title} key={route?.title} />
-                  )
-                )}
-              </Tree.Root>
+            <div
+              className={cn(
+                "md:max-w-xs w-full border-r border-grayBorder pt-2 px-2",
+                !sidebarOpen ? "w-auto" : ""
+              )}
+            >
+              <div className="flex justify-between mb-2 items-center">
+                {sidebarOpen ? (
+                  <a
+                    className="text-xs text-grayText hover:underline"
+                    href="https://github.com/d2foundry/hot-metal/tree/main/docs"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    hot-metal/main/docs
+                  </a>
+                ) : null}
+                <Button
+                  onClick={() => setSidebarOpen((curr) => !curr)}
+                  // disabled={!element.hasMoveDown}
+                  className="h-8 w-8 p-0 z-10"
+                  variant={"ghost"}
+                >
+                  {sidebarOpen ? <PinLeftIcon /> : <PinRightIcon />}
+                  {/* <ArrowDownIcon /> */}
+                </Button>
+              </div>
+              <div className={cn(!sidebarOpen ? "hidden" : "")}>
+                <Tree.Root>
+                  {manifest?.routes?.map((route: ManifestRoute) =>
+                    route.heading ? (
+                      <Tree.Folder name={route?.title} key={route?.title}>
+                        {route?.routes?.length
+                          ? route.routes.map((r) => (
+                              <Tree.File
+                                key={r?.title}
+                                name={r?.title}
+                                active={r?.path === filePath}
+                                onClick={() => {
+                                  setIsNew(false);
+                                  handleFileSelect(r?.path || "");
+                                }}
+                              />
+                            ))
+                          : null}
+                        <Tree.File
+                          name={"New file..."}
+                          newFile
+                          onClick={() => {
+                            handleFileSelect(
+                              (route.path ?? "/") + "/untitled.md"
+                            );
+                            setIsNew(true);
+                            setMatterData({ description: "" });
+                            setValue("");
+                          }}
+                        />
+                      </Tree.Folder>
+                    ) : (
+                      <Tree.Folder name={route?.title} key={route?.title} />
+                    )
+                  )}
+                </Tree.Root>
+              </div>
             </div>
           ) : null}
           <div
-            className="flex flex-col gap-2 w-full max-w-[130ch] pt-4"
+            className="flex flex-col gap-2 w-full max-w-[130ch] pt-4 relative"
             data-color-mode="dark"
           >
             {matterData ? (
@@ -179,29 +221,7 @@ const Docs = () => {
               </div>
             ) : null}
             {fileSelected ? (
-              <MDEditor
-                value={value}
-                onChange={(v) => setValue(v ?? "")}
-                draggable={false}
-                // @ts-ignore
-                overflow={true}
-                enableScroll={false}
-                components={{
-                  preview: (props: HTMLAttributes<HTMLDivElement>) => (
-                    <div {...props} />
-                  ),
-                }}
-                previewOptions={{
-                  rehypePlugins: [[rehypeSanitize]],
-                }}
-                height={800}
-                // visibleDragbar={false}
-
-                // textareaProps={{
-                //   // className: "bg-neutral-900",
-                //   placeholder: "Please enter Markdown text",
-                // }}
-              />
+              <MarkdownEditor value={value} onChange={setValue} />
             ) : (
               <div className="w-full flex justify-center items-center text-graySolid h-full">
                 Select a file.

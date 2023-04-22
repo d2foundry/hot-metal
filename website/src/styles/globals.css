@@ -92,18 +92,18 @@
   @apply bg-grayBgSubtle p-2 flex-1 w-full h-full text-grayTextContrast text-base;
   resize: none;
 }
-.w-md-editor-toolbar {
-  @apply bg-grayBg flex w-full justify-between border border-grayBorder py-1 px-2 h-fit rounded-t !important;
+.w-md-editor > .w-md-editor-toolbar {
+  @apply bg-grayBg flex w-full justify-between border border-grayBorder py-1 px-1 h-fit rounded-t !important;
 }
-.w-md-editor-toolbar ul {
+.w-md-editor > .w-md-editor-toolbar > ul {
   @apply inline-flex;
 }
-.w-md-editor-toolbar li:not(:last-of-type) button {
+.w-md-editor > .w-md-editor-toolbar > ul > li:not(:last-of-type) button {
   @apply mr-1;
 }
 
-.w-md-editor-toolbar li button {
-  @apply text-grayText rounded-sm  p-1 hover:bg-grayBgHover transition;
+.w-md-editor > .w-md-editor-toolbar > ul > li button {
+  @apply text-grayText rounded-sm  p-2 hover:bg-grayBgHover hover:text-grayTextContrast transition;
 }
 
 .w-md-editor-preview {
@@ -131,7 +131,7 @@
 }
 
 .w-md-editor {
-  max-width: 130ch;
+  max-width: calc(130ch + 3px);
 }
 
 .w-md-editor-bar {
@@ -140,6 +140,20 @@
 
 .w-md-editor-content {
   @apply grid grid-cols-2 justify-stretch divide-x divide-grayBorder border-grayBorder border border-t-0 rounded-b overflow-hidden !important;
+}
+.w-md-editor-toolbar-child {
+  @apply bg-grayBg shadow-md rounded border border-grayBorder;
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.w-md-editor-toolbar-child.active {
+  display: block;
+}
+
+.w-md-editor-toolbar-child li button {
+  @apply text-grayText w-full rounded-sm  p-2 hover:bg-grayBgHover hover:text-grayTextContrast transition;
 }
 
 /* * {
