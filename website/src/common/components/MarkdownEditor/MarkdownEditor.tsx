@@ -15,6 +15,7 @@ import dynamic from "next/dynamic";
 import { HTMLAttributes } from "react";
 
 import rehypeKatex from "rehype-katex";
+
 import remarkMath from "remark-math";
 import "katex/dist/katex.css";
 
@@ -26,7 +27,7 @@ const MDEditor = dynamic(
 import { commands } from "@uiw/react-md-editor";
 
 // why doesn't this worth with KaTeX
-// import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
+import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
 
 // import { cn } from "@/common/utils";
 
@@ -131,7 +132,42 @@ export const MarkdownEditor = ({
     }}
     previewOptions={{
       remarkPlugins: [remarkMath],
-      rehypePlugins: [rehypeKatex],
+      rehypePlugins: [
+        [
+          rehypeSanitize,
+          {
+            ...defaultSchema,
+            attributes: {
+              ...defaultSchema.attributes,
+              div: [
+                ...(defaultSchema.attributes?.div || []),
+                [
+                  "className",
+                  "math",
+                  "math-display",
+                  "katex",
+                  "katex-html",
+                  "katex-language",
+                  "katex-display",
+                ],
+              ],
+              span: [
+                ...(defaultSchema.attributes?.span || []),
+                [
+                  "className",
+                  "math",
+                  "math-inline",
+                  "katex",
+                  "katex-html",
+                  "katex-language",
+                  "katex-display",
+                ],
+              ],
+            },
+          },
+        ],
+        rehypeKatex,
+      ],
     }}
     height={800}
   />

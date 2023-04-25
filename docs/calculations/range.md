@@ -15,7 +15,7 @@ The weapon model root measurement issue also leads to slight discrepancies betwe
 If $d_{A}$ is the weapon's ADS damage falloff distance in meters, $d_{H}$ is the weapon's hip-fire damage falloff distance in meters, and $Z$ is weapon's Zoom stat, we are able to generalize for this with the following equation
 
 $$
-d_{A} = d_{H} * { Z  \over 10 - 0.025},
+d_{A} = d_{H} * { Z - 0.25 \over 10 },
 $$
 
 where $0.025$ is the distance caused by the physical movement of the weapon backwards when you ADS.
