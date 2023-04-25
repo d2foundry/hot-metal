@@ -13,7 +13,9 @@ import {
 } from "@radix-ui/react-icons";
 import dynamic from "next/dynamic";
 import { HTMLAttributes } from "react";
-import katex from "katex";
+
+import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
 import "katex/dist/katex.css";
 
 const MDEditor = dynamic(
@@ -26,7 +28,7 @@ import { commands } from "@uiw/react-md-editor";
 // why doesn't this worth with KaTeX
 // import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
 
-import { cn } from "@/common/utils";
+// import { cn } from "@/common/utils";
 
 export const MarkdownEditor = ({
   value,
@@ -128,45 +130,8 @@ export const MarkdownEditor = ({
       preview: (props: HTMLAttributes<HTMLDivElement>) => <div {...props} />,
     }}
     previewOptions={{
-      components: {
-        code: ({ inline, children, className, ...props }) => {
-          const txt = children[0] || "";
-          if (inline) {
-            if (typeof txt === "string" && /^\$\$(.*)\$\$/.test(txt)) {
-              const html = katex.renderToString(
-                txt.replace(/^\$\$(.*)\$\$/, "$1"),
-                {
-                  throwOnError: false,
-                }
-              );
-              return (
-                <code
-                  className={cn(className, "not-prose")}
-                  dangerouslySetInnerHTML={{ __html: html }}
-                />
-              );
-            }
-            return <code className={cn(className, "not-prose")}>{txt}</code>;
-          }
-          if (
-            typeof txt === "string" &&
-            typeof className === "string" &&
-            /^language-katex/.test(className.toLocaleLowerCase())
-          ) {
-            const html = katex.renderToString(txt, {
-              throwOnError: false,
-            });
-            console.log("props", txt, className, props);
-            return (
-              <code
-                className={cn(className, "not-prose")}
-                dangerouslySetInnerHTML={{ __html: html }}
-              />
-            );
-          }
-          return <code className={String(className)}>{txt}</code>;
-        },
-      },
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [rehypeKatex],
     }}
     height={800}
   />
