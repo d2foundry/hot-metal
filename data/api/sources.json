@@ -249,7 +249,8 @@
         },
         {
           "lootItems": [
-            3281285075
+            3281285075,
+            4248569242
           ],
           "name": "Rapture",
           "description": "Drops from completing the Rapture encounter in the Deep Stone Crypt raid."
