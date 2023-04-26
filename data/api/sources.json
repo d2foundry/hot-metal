@@ -266,6 +266,49 @@
       ],
       "name": "Deep Stone Crypt",
       "description": "The chains of legacy must be broken."
+    },
+    {
+      "lootSources": [
+        {
+          "lootItems": [
+            3886416794,
+            768621510,
+            999767358
+          ],
+          "name": "Acquisition",
+          "description": "Drops from beating the Acquisition encounter in Vow of the Disciple"
+        },
+        {
+          "lootItems": [
+            3886416794,
+            3428521585,
+            613334176,
+            999767358
+          ],
+          "name": "The Caretaker",
+          "description": "Drops from deafeating The Caretaker in Vow of the Disciple"
+        },
+        {
+          "lootItems": [
+            3886416794,
+            768621510
+          ],
+          "name": "Exhibition",
+          "description": "Drops from beating the Exhibition encounter in Vow of the Disciple"
+        },
+        {
+          "lootItems": [
+            2534546147,
+            613334176,
+            3428521585,
+            3505113722
+          ],
+          "name": "Rhulk, Disciple of the Witness",
+          "description": "Drops from defeating Rhulk in Vow of the Disciple"
+        }
+      ],
+      "name": "Vow of the Disciple",
+      "description": "Drown in the deep..."
     }
   ]
 }
