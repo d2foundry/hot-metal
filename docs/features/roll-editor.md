@@ -4,6 +4,10 @@ description: Learn how to navigate and use our advanced weapon roll editor
 
 # Roll Editor
 
+🚧 These docs are still under construction! 🚧
+
+You can contribute to them on [Github](https://github.com/d2foundry/hot-metal/tree/main/docs/features).
+
 ## Overview
 
 ### Navigating the Roll Editor
