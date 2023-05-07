@@ -54,6 +54,8 @@ A single pipe `|` works as a logical **OR** operator. Examples include:
 - `rpm:390|450 weapon:pulserifle` to get Pulse Rifles across both of those subfamilies
 - `energy:strand|stasis frame:lightweight` to get Lightweight Frame weapons that are one of the Darkness elements.
 
+> **Note:** If you are querying for multiple values that contain spaces using an operator, you must wrap the entire list in quotation marks. `weapon:"sniper rifle|glaive"`
+
 If you need to negate some part of a query, we have a **NOT** operator in the form of `!`. So to get all Shotguns that aren't Kinetic, you could do `weapon:shotgun energy:!kinetic`.
 
 You can also combine these operators to create more powerful queries. Let us know what you find!
