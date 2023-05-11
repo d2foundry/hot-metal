@@ -113,30 +113,9 @@
       "description": "Beneath Venus, evil stirs..."
     },
     {
-      "name": "Renaming this again!!!",
-      "description": "test"
-    },
-    {
-      "lootSources": [
-        {
-          "lootItems": [
-            69420
-          ],
-          "name": "baz",
-          "description": "buzz"
-        }
-      ],
-      "name": "Foo",
-      "description": "Bar"
-    },
-    {
-      "name": "Cool cool cool",
-      "description": "aaaa"
-    },
-    {
+      "lootSources": [],
       "name": "Duality",
-      "description": "A dungeon",
-      "rotationDuration": 666
+      "description": "Dive into the depths of the exiled emperor's mind in search of dark secrets."
     },
     {
       "lootSources": [
@@ -146,7 +125,7 @@
             2209003210
           ],
           "description": "Track the Unknown Artifact's Signal in the Garden of Salvation raid. ",
-          "name": "First Encounter? (idk what to call this one, evade?) "
+          "name": "First Encounter"
         },
         {
           "lootItems": [
