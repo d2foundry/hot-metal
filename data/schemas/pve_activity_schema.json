@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PVE Activities",
+  "type": "object",
+  "properties": {
+    "activities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "category": { "type": "string" },
+          "overrideCap": { "type": "number" },
+          "difficulty": {
+            "type": "string",
+            "enum": ["normal", "master", "raid"]
+          },
+          "recommendedPowerLevel": { "type": "number" },
+          "rplType": {
+            "type": "string",
+            "enum": ["floor", "static", "pinnacle"]
+          }
+        }
+      },
+      "additionalItems": {
+        "type": "boolean"
+      }
+    }
+  }
+}

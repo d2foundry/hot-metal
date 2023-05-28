@@ -6,7 +6,7 @@
     "activities": {
       "type": "array",
       "items": {
-        "$ref": "/data/schemas/activity_schema"
+        "$ref": "./activity_schema.json"
       },
       "additionalItems": {
         "type": "boolean"
