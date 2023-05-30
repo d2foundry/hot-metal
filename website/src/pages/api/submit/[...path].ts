@@ -24,8 +24,8 @@ export default async function submit(
   const { path } = req.query;
 
   // Maybe this should be a PATCH /shrug
-  if (req.method === "POST" && req.body) {
-    const finalPath = Array.isArray(path) ? path.slice(1).join("/") : path;
+  if (req.method === "POST" && req.body && path) {
+    const finalPath = Array.isArray(path) ? path.slice(0).join("/") : path;
     const fileName = "data/api/" + (finalPath ?? "untitled") + ".json";
 
     const pr = await octokit.createPullRequest({
