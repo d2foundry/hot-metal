@@ -249,36 +249,6 @@ function AddButton(props: IconButtonProps) {
   );
 }
 
-function DescriptionFieldTemplate(props: DescriptionFieldProps) {
-  return null;
-  const { description, id } = props;
-  return (
-    <details id={id}>
-      <summary>Description</summary>
-      {description}
-    </details>
-  );
-}
-
-function ArrayFieldTitleTemplate(props: ArrayFieldTitleProps) {
-  return null;
-  // const { description, idSchema } = props;
-  // const id = titleId(idSchema);
-  // return <h1 id={id}>{title}</h1>;
-}
-
-function ArrayFieldDescriptionTemplate(props: ArrayFieldDescriptionProps) {
-  return null;
-  // const { description, idSchema } = props;
-  // const id = descriptionId(idSchema);
-  // return (
-  //   <details id={id}>
-  //     <summary>Description</summary>
-  //     {description}
-  //   </details>
-  // );
-}
-
 function CustomFieldTemplate(props: FieldTemplateProps) {
   const {
     id,
@@ -413,10 +383,12 @@ export const JsonEditor = ({
   schemaEndpoint,
   dataEndpoint,
   uiSchema,
+  handleSubmit,
 }: {
   schemaEndpoint: string;
   dataEndpoint: string;
   uiSchema: UiSchema;
+  handleSubmit: (formData: string) => void;
 }) => {
   const [formState, setFormState] = useState<any | undefined>();
   // const setInventoryItems = useSetAtom(inventoryItemsAtom);
@@ -479,21 +451,7 @@ export const JsonEditor = ({
     }
     const fileText = JSON.stringify(formState, undefined, 2);
 
-    fetch("/api/submit", {
-      method: "POST",
-      body: fileText,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((value) => {
-        const pullUrl = value?.data?.html_url;
-        if (pullUrl) {
-          window.open(pullUrl);
-        }
-      })
-      .catch((err) => console.error(err));
+    handleSubmit(fileText);
   };
 
   // const handleAdd = () => {
@@ -512,8 +470,6 @@ export const JsonEditor = ({
   //     };
   //   });
   // };
-
-  console.log(formData, formState);
 
   return (
     <div className="flex flex-col gap-2 max-w-prose mx-auto pt-4">

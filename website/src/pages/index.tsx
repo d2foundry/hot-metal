@@ -499,7 +499,7 @@ export default function Home() {
     }
     const fileText = JSON.stringify(formState, undefined, 2);
 
-    fetch("/api/submit", {
+    fetch("/api/submit/sources", {
       method: "POST",
       body: fileText,
       headers: {

@@ -127,6 +127,23 @@ const uiSchema: UiSchema = {
 // const fields: RegistryFieldsType = { itemCombobox: ItemCombobox };
 
 export default function Activities() {
+  const handleSubmit = (fileText: string) => {
+    fetch("/api/submit/pve_activities", {
+      method: "POST",
+      body: fileText,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((value) => {
+        const pullUrl = value?.data?.html_url;
+        if (pullUrl) {
+          window.open(pullUrl);
+        }
+      })
+      .catch((err) => console.error(err));
+  };
   return (
     <>
       <Head>
@@ -140,6 +157,7 @@ export default function Activities() {
           dataEndpoint={GITHUB_PVE_ACTIVITIES_API_DATA_URI}
           schemaEndpoint={GITHUB_PVE_ACTIVITIES_JSON_SCHEMA_URI}
           uiSchema={uiSchema}
+          handleSubmit={handleSubmit}
         />
       </div>
     </>
