@@ -1,7 +1,3 @@
-import Head from "next/head";
-import styles from "@/styles/Home.module.css";
-
-import useSwr from "swr";
 import {
   ArrayFieldDescriptionProps,
   ArrayFieldTemplateProps,
@@ -20,7 +16,15 @@ import {
 } from "@rjsf/utils";
 import validator from "@rjsf/validator-ajv8";
 import Form, { FormProps } from "@rjsf/core";
-import { ChangeEvent, useEffect, useState, FocusEvent, useRef } from "react";
+import {
+  ChangeEvent,
+  useEffect,
+  useState,
+  FocusEvent,
+  useRef,
+  useId,
+} from "react";
+import useSwr from "swr";
 
 import { Button } from "@/common/components/Button";
 import { Input } from "@/common/components/Input";
@@ -59,71 +63,6 @@ import {
 import { Combobox } from "@/common/components/Combobox";
 import { atom, useAtom, useAtomValue, useSetAtom } from "jotai";
 import { inventoryItemsAtom } from "@/common/store";
-
-async function $http<T>(config: HttpClientConfig) {
-  // fill in the API key, handle OAuth, etc., then make an HTTP request using the config.
-  const res = await fetch(config.url, {});
-  const data: T = await res.json();
-  return data;
-}
-
-async function fetchManifest() {
-  const data = await getDestinyManifest($http);
-  return data.Response;
-}
-
-async function getManifestInventoryItemTable() {
-  const destinyManifest = await fetchManifest();
-  const manifestTables = await getDestinyManifestSlice($http, {
-    destinyManifest,
-    tableNames: ["DestinyInventoryItemDefinition"],
-    language: "en",
-  });
-  return manifestTables.DestinyInventoryItemDefinition;
-}
-
-// const GITHUB_JSON_SCHEMA_URI =
-//   "https://raw.githubusercontent.com/d2foundry/hot-metal/main/data/schemas/source_schema.json";
-
-const GITHUB_ACTIVITY_JSON_SCHEMA_URI =
-  "https://raw.githubusercontent.com/d2foundry/hot-metal/main/data/schemas/activity_schema.json";
-
-const GITHUB_SOURCE_API_DATA_URI =
-  "https://raw.githubusercontent.com/d2foundry/hot-metal/main/data/api/sources.json";
-
-const uiSchema: UiSchema = {
-  activities: {
-    // "ui:widget": "CustomSelect", // could also be "select"
-  },
-  "ui:submitButtonOptions": {
-    norender: true,
-    submitText: "Save",
-  },
-  rotationDuration: {
-    "ui:placeholder": "0",
-  },
-  name: {
-    "ui:placeholder": "The Vault of Glass",
-    "ui:inputType": "text",
-  },
-  description: {
-    "ui:placeholder": "Beneath Venus, evil stirs…",
-  },
-  lootSources: {
-    items: {
-      name: {
-        "ui:placeholder": "The Templar",
-      },
-      description: {
-        "ui:placeholder":
-          "Drops from defeating The Templar in The Vault of Glass",
-      },
-      lootItems: {
-        "ui:field": "itemCombobox",
-      },
-    },
-  },
-};
 
 const ItemCombobox = ({ onChange, ...props }: FieldProps) => {
   const [state, setState] = useState(props.formData ?? []);
@@ -200,7 +139,48 @@ const ItemCombobox = ({ onChange, ...props }: FieldProps) => {
   );
 };
 
-const fields: RegistryFieldsType = { itemCombobox: ItemCombobox };
+const JsonCombobox = ({ onChange, ...props }: FieldProps) => {
+  const [state, setState] = useState(props.formData ?? []);
+  const id = useId();
+
+  const handleChange = (value: string) => {
+    if (!value) return;
+    setState((curr: string) => {
+      onChange(value);
+      return value;
+    });
+  };
+  return (
+    <>
+      <Label className="mb-1" htmlFor={id}>
+        {props.schema.title ?? props.name}
+        {props.required ? "*" : ""}
+      </Label>
+      <Select value={state} onValueChange={handleChange}>
+        <SelectTrigger className="w-[180px]">
+          <SelectValue placeholder="Select an activity" />
+        </SelectTrigger>
+        <SelectContent>
+          {props.schema.enum?.map((name, index: number) => (
+            <SelectItem
+              key={`${name?.toString()}-${index}`}
+              value={name?.toString() ?? ""}
+              id="custom-select"
+            >
+              {name?.toString()}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+      {/* <Combobox onChange={handleChange} values={state} id={id} /> */}
+    </>
+  );
+};
+
+const fields: RegistryFieldsType = {
+  itemCombobox: ItemCombobox,
+  combobox: JsonCombobox,
+};
 
 function BaseInputTemplate(props: BaseInputTemplateProps) {
   const {
@@ -267,36 +247,6 @@ function AddButton(props: IconButtonProps) {
       <PlusIcon className="mr-2 h-4 w-4" /> Add
     </Button>
   );
-}
-
-function DescriptionFieldTemplate(props: DescriptionFieldProps) {
-  return null;
-  const { description, id } = props;
-  return (
-    <details id={id}>
-      <summary>Description</summary>
-      {description}
-    </details>
-  );
-}
-
-function ArrayFieldTitleTemplate(props: ArrayFieldTitleProps) {
-  return null;
-  // const { description, idSchema } = props;
-  // const id = titleId(idSchema);
-  // return <h1 id={id}>{title}</h1>;
-}
-
-function ArrayFieldDescriptionTemplate(props: ArrayFieldDescriptionProps) {
-  return null;
-  // const { description, idSchema } = props;
-  // const id = descriptionId(idSchema);
-  // return (
-  //   <details id={id}>
-  //     <summary>Description</summary>
-  //     {description}
-  //   </details>
-  // );
 }
 
 function CustomFieldTemplate(props: FieldTemplateProps) {
@@ -427,13 +377,22 @@ function ObjectFieldTemplate(props: ObjectFieldTemplateProps) {
     </div>
   );
 }
-
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
-export default function Home() {
+export const JsonEditor = ({
+  schemaEndpoint,
+  dataEndpoint,
+  uiSchema,
+  handleSubmit,
+}: {
+  schemaEndpoint: string;
+  dataEndpoint: string;
+  uiSchema: UiSchema;
+  handleSubmit: (formData: string) => void;
+}) => {
   const [formState, setFormState] = useState<any | undefined>();
-  const setInventoryItems = useSetAtom(inventoryItemsAtom);
-  const { data: formData } = useSwr(GITHUB_SOURCE_API_DATA_URI, fetcher);
+  // const setInventoryItems = useSetAtom(inventoryItemsAtom);
+  const { data: formData } = useSwr(dataEndpoint, fetcher);
 
   const formRef = useRef<Form | undefined | null>();
 
@@ -443,18 +402,15 @@ export default function Home() {
     }
   }, [formData, formState]);
 
-  useEffect(() => {
-    getManifestInventoryItemTable().then((res) => {
-      setInventoryItems(res);
-    });
-  }, [setInventoryItems]);
+  // useEffect(() => {
+  //   getManifestInventoryItemTable().then((res) => {
+  //     setInventoryItems(res);
+  //   });
+  // }, [setInventoryItems]);
 
-  const [activityIdx, setActivityIdx] = useState(0);
+  // const [activityIdx, setActivityIdx] = useState(0);
   // const { data, error, isLoading } = useSWR(GITHUB_JSON_SCHEMA_URI, fetcher);
-  const { data: activitySchema } = useSwr(
-    GITHUB_ACTIVITY_JSON_SCHEMA_URI,
-    fetcher
-  );
+  const { data: activitySchema } = useSwr(schemaEndpoint, fetcher);
 
   // const handleSubmit: FormProps["onSubmit"] = (data) => {
   //   setFormState((curr: StrictRJSFSchema) => {
@@ -473,16 +429,12 @@ export default function Home() {
     setFormState((curr: any) => {
       if (!curr || !curr?.activities) {
         return {
-          activities: [data.formData],
+          ...data.formData,
         };
       }
       return {
         ...curr,
-        activities: [
-          ...curr.activities.slice(0, activityIdx),
-          data.formData,
-          ...curr.activities.slice(activityIdx + 1),
-        ],
+        ...data.formData,
       };
     });
   };
@@ -499,121 +451,62 @@ export default function Home() {
     }
     const fileText = JSON.stringify(formState, undefined, 2);
 
-    fetch("/api/submit/sources", {
-      method: "POST",
-      body: fileText,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((value) => {
-        const pullUrl = value?.data?.html_url;
-        if (pullUrl) {
-          window.open(pullUrl);
-        }
-      })
-      .catch((err) => console.error(err));
+    handleSubmit(fileText);
   };
 
-  const handleAdd = () => {
-    setActivityIdx(formState.activities.length);
-    setFormState((curr: any) => {
-      return {
-        ...curr,
-        activities: [
-          ...curr.activities,
-          {
-            name: "",
-            description: "",
-            lootSources: [],
-          },
-        ],
-      };
-    });
-  };
+  // const handleAdd = () => {
+  //   setActivityIdx(formState.activities.length);
+  //   setFormState((curr: any) => {
+  //     return {
+  //       ...curr,
+  //       activities: [
+  //         ...curr.activities,
+  //         {
+  //           name: "",
+  //           description: "",
+  //           lootSources: [],
+  //         },
+  //       ],
+  //     };
+  //   });
+  // };
 
   return (
-    <>
-      <Head>
-        <title>Hot Metal // FOUNDRY</title>
-        <meta name="description" content="Foundry's data editor" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <div className="flex flex-col gap-2 max-w-prose mx-auto pt-4">
-        {activitySchema && formState ? (
-          <>
-            <div className="flex gap-2 mb-4">
-              <Select
-                value={activityIdx.toString()}
-                onValueChange={(value) => {
-                  if (formRef.current) {
-                    const isValid = formRef.current.validateForm();
-                    if (!isValid) return;
-                    // formRef.current.renderErrors();
-                  }
-                  setActivityIdx(parseInt(value) || 0);
-                }}
-              >
-                <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Select an activity" />
-                </SelectTrigger>
-                <SelectContent>
-                  {formState?.activities?.map(
-                    (item: { name: string }, index: number) => (
-                      <SelectItem
-                        key={index}
-                        value={index.toString()}
-                        id="custom-select"
-                      >
-                        {item.name}
-                      </SelectItem>
-                    )
-                  )}
-                </SelectContent>
-              </Select>
-              <Button onClick={handleAdd} variant={"outline"}>
-                <PlusIcon className="mr-2 h-4 w-4" /> Add new Activity
-              </Button>
-              <Button onClick={handleReset} variant={"destructive"}>
-                Reset All
-              </Button>
-            </div>
-            <Form
-              showErrorList={false}
-              formData={formState.activities[activityIdx]}
-              schema={activitySchema}
-              validator={validator}
-              uiSchema={uiSchema}
-              onChange={handleChange}
-              noHtml5Validate
-              ref={(props) => {
-                formRef.current = props;
-              }}
-              fields={fields}
-              templates={{
-                BaseInputTemplate,
-                FieldTemplate: CustomFieldTemplate,
-                ArrayFieldTemplate,
-                // ArrayFieldTitleTemplate,
-                // ArrayFieldDescriptionTemplate,
-                // DescriptionFieldTemplate,
-                ObjectFieldTemplate,
-                ButtonTemplates: {
-                  AddButton,
-                  RemoveButton,
-                },
-              }}
-              // onSubmit={handleSubmit}
-            />
-            <Button onClick={handleSubmitPullRequest} className="ml-auto">
-              Submit All Changes
-            </Button>
-          </>
-        ) : null}
-      </div>
-    </>
+    <div className="flex flex-col gap-2 max-w-prose mx-auto pt-4">
+      {!!(activitySchema && formState && formState.activities) ? (
+        <>
+          <Form
+            showErrorList={false}
+            formData={formState}
+            schema={activitySchema}
+            validator={validator}
+            uiSchema={uiSchema}
+            onChange={handleChange}
+            noHtml5Validate
+            ref={(props) => {
+              formRef.current = props;
+            }}
+            fields={fields}
+            templates={{
+              BaseInputTemplate,
+              FieldTemplate: CustomFieldTemplate,
+              ArrayFieldTemplate,
+              // ArrayFieldTitleTemplate,
+              // ArrayFieldDescriptionTemplate,
+              // DescriptionFieldTemplate,
+              ObjectFieldTemplate,
+              ButtonTemplates: {
+                AddButton,
+                RemoveButton,
+              },
+            }}
+            // onSubmit={handleSubmit}
+          />
+          <Button onClick={handleSubmitPullRequest} className="ml-auto">
+            Submit All Changes
+          </Button>
+        </>
+      ) : null}
+    </div>
   );
-}
+};

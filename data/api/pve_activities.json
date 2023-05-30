@@ -1,0 +1,87 @@
+{
+  "$schema": "../schemas/pve_activity_schema.json",
+  "floor": 1600,
+  "pinnacle": 1810,
+  "activities": [
+    {
+      "name": "Strikes",
+      "category": "Playlist",
+      "overrideCap": 0,
+      "difficulty": "normal",
+      "recommendedPowerLevel": 0,
+      "rplType": "floor"
+    },
+    {
+      "name": "Gambit",
+      "category": "Playlist",
+      "overrideCap": 0,
+      "difficulty": "normal",
+      "recommendedPowerLevel": 10,
+      "rplType": "static"
+    },
+    {
+      "name": "Dares of Eternity",
+      "category": "Playlist",
+      "overrideCap": 20,
+      "difficulty": "normal",
+      "recommendedPowerLevel": 930,
+      "rplType": "static"
+    },
+    {
+      "name": "Hero Nightfall",
+      "category": "Nightfall",
+      "overrideCap": -20,
+      "difficulty": "master",
+      "recommendedPowerLevel": -40,
+      "rplType": "pinnacle"
+    },
+    {
+      "name": "Legend Nightfall",
+      "category": "Nightfall",
+      "overrideCap": -15,
+      "difficulty": "master",
+      "recommendedPowerLevel": 20,
+      "rplType": "pinnacle"
+    },
+    {
+      "name": "Master Nightfall",
+      "category": "Nightfall",
+      "overrideCap": -20,
+      "difficulty": "master",
+      "recommendedPowerLevel": 30,
+      "rplType": "pinnacle"
+    },
+    {
+      "name": "Grandmaster Nightfall",
+      "category": "Nightfall",
+      "overrideCap": -25,
+      "difficulty": "master",
+      "recommendedPowerLevel": 30,
+      "rplType": "pinnacle"
+    },
+    {
+      "name": "Legend Lost Sector",
+      "category": "Lost Sector",
+      "overrideCap": 0,
+      "difficulty": "master",
+      "recommendedPowerLevel": 20,
+      "rplType": "pinnacle"
+    },
+    {
+      "name": "Master Lost Sector",
+      "category": "Lost Sector",
+      "overrideCap": 0,
+      "difficulty": "master",
+      "recommendedPowerLevel": 30,
+      "rplType": "pinnacle"
+    },
+    {
+      "name": "Master Raid/Dungeon",
+      "category": "Raid",
+      "overrideCap": -20,
+      "difficulty": "raid",
+      "recommendedPowerLevel": 30,
+      "rplType": "pinnacle"
+    }
+  ]
+}

@@ -71,6 +71,17 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
                 Sources
               </Link>
               <Link
+                href="/activities"
+                className={cn(
+                  "text-grayText hover:text-accentText border-b border-transparent mb-[-1px] py-2",
+                  pathname === "/activities"
+                    ? "text-grayTextContrast  border-grayTextContrast"
+                    : ""
+                )}
+              >
+                PVE Activities
+              </Link>
+              <Link
                 href={"/docs"}
                 className={cn(
                   "text-grayText hover:text-accentText border-b border-transparent mb-[-1px] py-2",

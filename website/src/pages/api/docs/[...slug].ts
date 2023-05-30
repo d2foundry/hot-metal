@@ -37,7 +37,7 @@ export default async function docs(req: NextApiRequest, res: NextApiResponse) {
           files: {
             [fileName]: req.body,
           },
-          commit: "Updating" + fileName,
+          commit: "Updating " + fileName,
         },
       ],
     });

@@ -1,7 +1,7 @@
 import { Octokit as BaseOctokit } from "octokit";
 import { createPullRequest } from "octokit-plugin-create-pull-request";
 
-import { authOptions } from "./auth/[...nextauth]";
+import { authOptions } from "../auth/[...nextauth]";
 import { getServerSession } from "next-auth/next";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -21,23 +21,28 @@ export default async function submit(
     auth: session.accessToken,
   });
 
+  const { path } = req.query;
+
   // Maybe this should be a PATCH /shrug
   if (req.method === "POST" && req.body) {
+    const finalPath = Array.isArray(path) ? path.slice(1).join("/") : path;
+    const fileName = "data/api/" + (finalPath ?? "untitled") + ".json";
+
     const pr = await octokit.createPullRequest({
       owner: process.env.GITHUB_ORG as string,
       repo: process.env.GITHUB_REPO as string,
-      title: "Update sources.json",
-      body: "Updating sources.json from the Hot Metal app.",
-      head: `source-edit-${Date.now()}`,
+      title: "Update " + fileName,
+      body: `Updating ${fileName} from the Hot Metal app.`,
+      head: `api-edit-${Date.now()}`,
       base: "main",
       update: true,
       changes: [
         {
           /* optional: if `files` is not passed, an empty commit is created instead */
           files: {
-            "data/api/sources.json": JSON.stringify(req.body, undefined, 2),
+            [fileName]: JSON.stringify(req.body, undefined, 2),
           },
-          commit: "updating sources.json",
+          commit: "Updating " + fileName,
         },
       ],
     });
