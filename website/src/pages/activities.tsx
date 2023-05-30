@@ -3,9 +3,9 @@ import { UiSchema } from "@rjsf/utils";
 import Head from "next/head";
 
 const GITHUB_PVE_ACTIVITIES_API_DATA_URI =
-  "https://raw.githubusercontent.com/d2foundry/hot-metal/add-pve-activities/data/api/pve_activities.json";
+  "https://raw.githubusercontent.com/d2foundry/hot-metal/main/data/api/pve_activities.json";
 const GITHUB_PVE_ACTIVITIES_JSON_SCHEMA_URI =
-  "https://raw.githubusercontent.com/d2foundry/hot-metal/add-pve-activities/data/schemas/pve_activity_schema.json";
+  "https://raw.githubusercontent.com/d2foundry/hot-metal/main/data/schemas/pve_activity_schema.json";
 
 const uiSchema: UiSchema = {
   activities: {
