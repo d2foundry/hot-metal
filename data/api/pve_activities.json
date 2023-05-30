@@ -1,5 +1,7 @@
 {
   "$schema": "../schemas/pve_activity_schema.json",
+  "floor": 1600,
+  "pinnacle": 1810,
   "activities": [
     {
       "name": "Strikes",

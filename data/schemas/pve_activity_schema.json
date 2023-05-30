@@ -3,6 +3,8 @@
   "title": "PVE Activities",
   "type": "object",
   "properties": {
+    "pinnacle": { "type": "number" },
+    "floor": { "type": "number" },
     "activities": {
       "type": "array",
       "items": {
@@ -20,11 +22,20 @@
             "type": "string",
             "enum": ["floor", "static", "pinnacle"]
           }
-        }
+        },
+        "required": [
+          "name",
+          "category",
+          "difficulty",
+          "rplType",
+          "recommendedPowerLevel",
+          "overrideCap"
+        ]
       },
       "additionalItems": {
         "type": "boolean"
       }
     }
-  }
+  },
+  "required": ["pinnacle", "floor", "activities"]
 }
