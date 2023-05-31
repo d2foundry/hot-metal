@@ -82,6 +82,14 @@
       "difficulty": "raid",
       "recommendedPowerLevel": 30,
       "rplType": "pinnacle"
+    },
+    {
+      "name": "Nezarec",
+      "category": "Root of Nightmares",
+      "difficulty": "raid",
+      "recommendedPowerLevel": 1800,
+      "overrideCap": 20,
+      "rplType": "static"
     }
   ]
 }
