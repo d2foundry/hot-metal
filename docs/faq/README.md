@@ -16,4 +16,6 @@ description: Learn more about Foundry with these frequently asked questions
 
   Whenever a new perk is added, it takes time for us to properly implement it. Some perks are easier than others, but they all require some amount of time to be added. In addition, some time may be required to test the perk to get accurate values as well. We appreciate your patience!
 
+  If an older perk is having issues please feel free to look in the support channel in our discord, and if needed, open a new thread.
+  
   </details>
