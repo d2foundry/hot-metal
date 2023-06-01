@@ -30,7 +30,22 @@ The metadata for a weapon will show what damage type it is, is it a primary, sec
 
 ## Weapon Stats
 
+A weapon's stats can placed into two categories; its basic stats and its advanced stats. The basic stats are what are shown on the weapon info screen in the game. For most weapons they are as follows: impact, range, stability, handling, reload speed, aim assistance, zoom, airborne effectivenes, rounds per minute, magazine size, and recoil direction. Some weapon types have stats that are unique to that type of weapon. The following are the unique stats for that given weapon type. Swords have the charge rate, guard resistance, guard effciency, and guard endurance stats. Rocket launchers and grendade launchers have the blast radius and velocity stats. Combat bows have accuracy and draw time stats. Fusion and linear fusion rifles have the charge time stat. Glaives have the shield duration stat.
+
+A weapon's advanced stats aren't shown on the weapon info screen directly or are not made entirely clear what the number means in terms of gameplay. There are things such as the damage profile, time-to-kill (PvP only), defining what range and stability mean, flinch resist, and reserves.
 ### Basic
+
+
+
+#### Impact
+
+Impact is the damage stat on most weapons. This number can be a little misleading however as it can only be used to reference damage within the same weapon type. E.g. the hand cannon "Targeted Redaction" has an impact stat value of 92 and does 80 crit damage in the crucible. Compare that to the combat bow "Tyranny of Heaven" which has an impact stat of 68 and does 137 crit damage in the crucible. This will be expanded on further within the [damage profile](#damage-profile) section. For the most part impact values are the same across a given frame for a weapon type. E.g. all legendary rapid fire snipers have 55 impact.
+
+If the weapon family is the same and the impact value is higher then impact translates to the difference between the two numbers as the differnce in damage percentage. The "Half Truths" and "Bequest" are both arc, adapative frame swords. The "Bequest" has an impact of 70 and the "Half Truths" has an impact of 60. This translates to the "Bequest" doing 10% more damge per swing than the "Half Truths"
+
+#### Range
+
+
 
 ### Advanced Stats
 
