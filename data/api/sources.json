@@ -8,7 +8,7 @@
             1937552980
           ],
           "name": "Gate",
-          "description": "Drops from opening the gate to The Kings Fall raid. "
+          "description": "Drops from opening the gate to the King's Fall raid. "
         },
         {
           "lootItems": [
@@ -16,7 +16,7 @@
             1321506184
           ],
           "name": "Totems",
-          "description": "Drops from completing the Totems encounter in The Kings Fall raid. "
+          "description": "Drops from completing the Totems encounter in the King's Fall raid. "
         },
         {
           "lootItems": [
@@ -24,7 +24,7 @@
             3228096719
           ],
           "name": "The Warpriest",
-          "description": "Drops from defeating the Warpriest boss in The Kings Fall raid. "
+          "description": "Drops from defeating The Warpriest in the King's Fall raid. "
         },
         {
           "lootItems": [
@@ -33,7 +33,7 @@
             1321506184
           ],
           "name": "Golgoroth",
-          "description": "Drops from defeating Golgoroth in The Kings Fall raid. "
+          "description": "Drops from defeating Golgoroth in the King's Fall raid. "
         },
         {
           "lootItems": [
@@ -42,7 +42,7 @@
             431721920
           ],
           "name": "Daughters",
-          "description": "Drops from defeating the Daughters of Oryx encounter in The Kings Fall raid. "
+          "description": "Drops from completing the Daughters of Oryx encounter in the King's Fall raid. "
         },
         {
           "lootItems": [
@@ -55,7 +55,7 @@
             1802135586
           ],
           "name": "Oryx, the Taken King",
-          "description": "Drops from defeating Oryx, the Taken King in the Kings Fall raid. "
+          "description": "Drops from defeating Oryx, the Taken King in the King's Fall raid. "
         }
       ],
       "name": "King's Fall",
@@ -172,7 +172,7 @@
             48643186
           ],
           "name": "The Consecrated Mind",
-          "description": "Derops from defeating the Consecrated Mind in the Garden of Salvation raid. "
+          "description": "Drops from defeating the Consecrated Mind in the Garden of Salvation raid. "
         },
         {
           "lootItems": [
@@ -267,7 +267,7 @@
         }
       ],
       "name": "Last Wish",
-      "description": "\"The oppurtunity of a lifetime.\""
+      "description": "\"The opportunity of a lifetime.\""
     },
     {
       "lootSources": [
@@ -319,7 +319,7 @@
             1392919471
           ],
           "name": "Crypt Security",
-          "description": "Drops from completion of the Crypt Security encounter in the Deep Stone Crypt raid. "
+          "description": "Drops from completing the Crypt Security encounter in the Deep Stone Crypt raid. "
         },
         {
           "lootItems": [
@@ -327,7 +327,7 @@
             2990047042
           ],
           "name": "Atraks-1",
-          "description": "Drops from defeating Atraks-1 in the Deep Stone Crypth raid. "
+          "description": "Drops from defeating Atraks-1 in the Deep Stone Crypt raid. "
         },
         {
           "lootItems": [
@@ -359,7 +359,7 @@
             999767358
           ],
           "name": "Acquisition",
-          "description": "Drops from beating the Acquisition encounter in Vow of the Disciple"
+          "description": "Drops from completing the Acquisition encounter in the Vow of the Disciple raid."
         },
         {
           "lootItems": [
@@ -369,7 +369,7 @@
             999767358
           ],
           "name": "The Caretaker",
-          "description": "Drops from deafeating The Caretaker in Vow of the Disciple"
+          "description": "Drops from defeating The Caretaker in the Vow of the Disciple raid."
         },
         {
           "lootItems": [
@@ -377,7 +377,7 @@
             768621510
           ],
           "name": "Exhibition",
-          "description": "Drops from beating the Exhibition encounter in Vow of the Disciple"
+          "description": "Drops from completing the Exhibition encounter in the Vow of the Disciple raid."
         },
         {
           "lootItems": [
@@ -387,7 +387,7 @@
             3505113722
           ],
           "name": "Rhulk, Disciple of the Witness",
-          "description": "Drops from defeating Rhulk in Vow of the Disciple"
+          "description": "Drops from defeating Rhulk, Disciple of the Witness in the Vow of the Disciple raid."
         }
       ],
       "name": "Vow of the Disciple",
