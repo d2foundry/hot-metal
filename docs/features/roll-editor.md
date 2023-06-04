@@ -80,7 +80,7 @@ The airborne effectiveness (AE) stat determines how your weapon's aim assistance
 
 ### Advanced Stats
 
-Advanced stats are not directly displayed in game most of the time and require a bit of research to understand them to their full potential. Many of the stats in this section can be quite the rabbit hole to delve into, but they are nonetheless very important and we seek to lower the barrier of entry to understanding these stats. 
+Advanced stats are not directly displayed in game most of the time and require a bit of research to understand them to their full potential. Many of the stats in this section can be quite the rabbit-hole to delve into, but they are nonetheless very important and we seek to lower the barrier of entry to understanding these stats. 
 
 #### Flinch Resistance
 
