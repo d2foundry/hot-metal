@@ -50,9 +50,11 @@ If the weapon family is the same and the impact value is higher then impact tran
 
 The range stat of a weapon seeks to show how far a weapon can shoot before it experiences to exhibit damage dropoff. This stat alone is what defines the hipfire range of a weapon's type. In order to find a weapon's ADS damage falloff you need to take the hipfire fall of distance in meters and multiply it by the weapon's zoon divided by ten. E.g. the "Autumn Wind" has a hipfire damage falloff of 18.69m and its zoom is 17. So if you multiply 18.69 * (17/10) you will get 31.773m. This is slightly different than the value that you will see listed on a weapon's page. Our exact formula accounts for the weapon moving backwards when you ADS, thus reducing the zoom value by .25. More details on this formula can be found in our [range explaination document](../calculations/range.md)
 
+When it comes to glaives the range stat affects its projectile speed. At 0 range it is 30m/s and at 100 range it is 100m/s. 
+
 #### Stability
 
-The stability stat of a weapon controls how it kicks as well as increasing your flinch resistance. A weapon with more stability will visually kick less, and will also return closer to its original position when the gun settles back after firing. Stability does not make the weapon return to its "resting position" any faster. When it comes to how much flinch resistance the stability stat grants, it differs per weapon type and will be defined in more detail in the [flinch resistance](#flinch-resistance) section. 
+The stability stat of a weapon controls how it kicks as well as increasing your flinch resistance. A weapon with more stability will visually kick less, and will also return closer to its original position when the gun settles back after firing. Stability does not make the weapon return to its "resting position" any faster. When it comes to how much flinch resistance the stability stat grants, it differs per weapon type and will be defined in more detail in the [flinch resistance](#flinch-resistance) section.
 
 ### Advanced Stats
 
