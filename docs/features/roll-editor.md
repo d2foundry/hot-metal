@@ -88,7 +88,6 @@ Flinch resistance determines how much your aim moves while taking damage. Stabil
 
 It should be noted that each source that affects flinch resistance does so as its own multiplicative scalar. So it is calculated as one minus all of the scalars multiplied together. 
 
-
 ## Perks, Mods, and Masterworks
 
 ## Effects
