@@ -114,7 +114,37 @@
       "description": "Beneath Venus, evil stirs..."
     },
     {
-      "lootSources": [],
+      "lootSources": [
+        {
+          "lootItems": [
+            2026087437,
+            2263839058
+          ],
+          "name": "Nightmare of Gahlran",
+          "description": "Drops from defeating the Nightmare of Gahlran in the Duality dungeon."
+        },
+        {
+          "lootItems": [
+            3000847393,
+            3652506829
+          ],
+          "name": "The Vault",
+          "description": "Drops from completing The Vault encounter in the Duality dungeon."
+        },
+        {
+          "lootItems": [
+            2026087437,
+            2263839058,
+            3000847393,
+            3652506829,
+            1780464822,
+            2194955522,
+            3664831848
+          ],
+          "name": "Nightmare of Caiatl",
+          "description": "Drops from defeating the Nightmare of Caiatl in the Duality dungeon."
+        }
+      ],
       "name": "Duality",
       "description": "Dive into the depths of the exiled emperor's mind in search of dark secrets."
     },
