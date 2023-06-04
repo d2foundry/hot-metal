@@ -48,7 +48,7 @@ If the weapon family is the same and the impact value is higher then impact tran
 
 #### Range
 
-The range stat of a weapon seeks to show how far a weapon can shoot before it experiences to exhibit damage dropoff. This stat alone is what defines the hipfire range of a weapon's type. In order to find a weapon's ADS damage falloff you need to take the hipfire fall of distance in meters and multiply it by the weapon's zoon divided by ten. E.g. the "Autumn Wind" has a hipfire damage falloff of 18.69m and its zoom is 17. So if you multiply 18.69 * (17/10) you will get 31.773m. This is slightly different than the value that you will see listed on a weapon's page. Our exact formula accounts for the weapon moving backwards when you ADS, thus reducing the zoom value by .25. More details on this formula can be found in our [range explaination document](../calculations/range.md)
+The range stat of a weapon seeks to show how far a weapon can shoot before it experiences to exhibit damage dropoff. This stat alone is what defines the hipfire range of a weapon's type. In order to find a weapon's ADS damage falloff you need to take the hipfire fall of distance in meters and multiply it by the weapon's zoon divided by ten. E.g. the "Autumn Wind" has a hipfire damage falloff of 18.69m and its zoom is 17. So if you multiply 18.69 * (17/10) you will get 31.773m. This is slightly different than the value that you will see listed on a weapon's page. Our exact formula accounts for the weapon moving backwards when you ADS, thus reducing the zoom value by .25. More details on this formula can be found in our [range explaination document](../calculations/range.md).
 
 When it comes to glaives the range stat affects its projectile speed. At 0 range it is 30m/s and at 100 range it is 100m/s. 
 
@@ -58,6 +58,10 @@ The stability stat of a weapon controls how it kicks as well as increasing your 
 #### Handling
 
 THe handling stat of a weapon affects three distinct characteristics of a weapon. It affects how fast the weapon is readied, stowed, and aimed down the sights. It should be noted that some perks may only benefit one or two of those as well. The perk quickdraw for example gives +100 handling for readying the weapon only. It should be noted that handling acts the same across weapons. A scout rifle with 50 handling will act the exact same as a pulse rifle with 50 handling.
+
+#### Reload Speed
+
+The reload speed stat of a weapon determines how fast a weapon will be able to be reloaded. A hidden stat can add an animation scalar to make the weapon reload faster as well. This way if a weapon is at 100 relaod speed stat it can still reload faster. Perks like feeding frenzy and exotic armor like speedloader slacks will add this hidden scaler. We have a [write up](../calculations/reload.md) on how reload speed can be written as a piecewise-linear function instead of a quadratic function.
 
 ### Advanced Stats
 
