@@ -30,7 +30,7 @@ The metadata for a weapon will show what damage type it is, is it a primary, sec
 
 ## Weapon Stats
 
-A weapon's stats can placed into two categories; its basic stats and its advanced stats. The basic stats are what are shown on the weapon info screen in the game. For most weapons they are as follows: impact, range, stability, handling, reload speed, aim assistance, zoom,and airborne effectivenes. Some weapon types have stats that are unique to that type of weapon. The following are the unique stats for that given weapon type. Swords have the charge rate, guard resistance, guard effciency, and guard endurance stats. Rocket launchers and grendade launchers have the blast radius and velocity stats. Combat bows have accuracy and draw time stats. Fusion and linear fusion rifles have the charge time stat. Glaives have the shield duration stat.
+A weapon's stats can placed into two categories; its basic stats and its advanced stats. The basic stats are what are shown on the weapon info screen in the game. For most weapons they are as follows: impact, range, stability, handling, reload speed, aim assistance, zoom, and airborne effectivenes. Some weapon types have stats that are unique to that type of weapon. The following are the unique stats for that given weapon type. Swords have the charge rate, guard resistance, guard effciency, and guard endurance stats. Rocket launchers and grendade launchers have the blast radius and velocity stats. Combat bows have accuracy and draw time stats. Fusion and linear fusion rifles have the charge time stat. Glaives have the shield duration stat.
 
 A weapon's advanced stats aren't shown on the weapon info screen directly or are not made entirely clear what the number means in terms of gameplay. There are things such as the damage profile, flinch resist, and reserves. These advanced stats are the result of combining two or more of the basic stats to give you a tangible value to see in the game. The range stat alone doesn't determine when your damage fall off occurs. Range and zoom together are what define the weapon's falloff distance among other things.
 
@@ -62,7 +62,7 @@ THe handling stat of a weapon affects three distinct characteristics of a weapon
 
 #### Reload Speed
 
-The reload speed stat of a weapon determines how fast a weapon will be able to be reloaded. A hidden stat can add an animation scalar to make the weapon reload faster as well. This way if a weapon is at 100 relaod speed stat it can still reload faster. Perks like feeding frenzy and exotic armor like speedloader slacks will add this hidden scaler. We have a [write up](../calculations/reload.md) on how reload speed can be written as a piecewise-linear function instead of a quadratic function.
+The reload speed stat of a weapon determines how fast a weapon will be able to be reloaded. A hidden stat can add an animation scalar to make the weapon reload faster as well. This way if a weapon is at 100 reload speed stat it can still reload faster. Perks like feeding frenzy and exotic armor like speedloader slacks will add this hidden scaler. We have a [write up](../calculations/reload.md) on how reload speed can be written as a piecewise-linear function instead of a quadratic function.
 
 #### Aim Assistance
 
@@ -79,6 +79,15 @@ The zoom stat on its own is rather . It determines the scalar used to adjust you
 The airborne effectiveness (AE) stat determines how your weapon's aim assistance cones and precision angle cones adjust while you are airborne. As a broad statement, primary weapons have the highest AE stats at base. Exotics and certain legendary weapons have hand tuned AE stats that may be considered out of band. Shotguns have had their AE penalties removed entirely. There are certain perks, abilities, and exotics that can adjust this value as well as the icarus grip weapon mod which gives a flat +15 AE. The higher your AE stat is, the less of a penalty your aim assist cones will recieve while airborne. 
 
 ### Advanced Stats
+
+Advanced stats need a little bit of explaining and are usually the combination of two or more basic stats.
+
+#### Flinch Resistance
+
+Flinch resistance determines how much your aim moves while taking damage. Stability is one way to build into this stat. How much flinch resistance you gain by X stability differs per weapon type. A broad rule is that primary weapon types gain the most flinch resistance while special and heavy weapons gain the least amount. Flinch resistance is also affected by your resilience tier as well. The amount gained is approximately equal to the tier of resilience you are. E.g. if you are T5 resilience then you will gain ~5% (.95x scalar) flinch resistance. The perk no distractions gives 35% flinch resistance once active (.65x scalar). The unflinching armor mods give 25% flich resistance with one and 30% with two mods. Lastly, the rally barricade gives 50% flinch resistance.
+
+It should be noted that each source that affects flinch resistance does so as its own multiplicative scalar. So it is calculated as one minus all of the scalars multiplied together. 
+
 
 ## Perks, Mods, and Masterworks
 
