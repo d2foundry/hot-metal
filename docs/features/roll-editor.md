@@ -55,6 +55,9 @@ When it comes to glaives the range stat affects its projectile speed. At 0 range
 #### Stability
 
 The stability stat of a weapon controls how it kicks as well as increasing your flinch resistance. A weapon with more stability will visually kick less, and will also return closer to its original position when the gun settles back after firing. Stability does not make the weapon return to its "resting position" any faster. When it comes to how much flinch resistance the stability stat grants, it differs per weapon type and will be defined in more detail in the [flinch resistance](#flinch-resistance) section.
+#### Handling
+
+THe handling stat of a weapon affects three distinct characteristics of a weapon. It affects how fast the weapon is readied, stowed, and aimed down the sights. It should be noted that some perks may only benefit one or two of those as well. The perk quickdraw for example gives +100 handling for readying the weapon only. It should be noted that handling acts the same across weapons. A scout rifle with 50 handling will act the exact same as a pulse rifle with 50 handling.
 
 ### Advanced Stats
 
