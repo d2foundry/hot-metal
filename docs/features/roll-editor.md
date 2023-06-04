@@ -63,6 +63,12 @@ THe handling stat of a weapon affects three distinct characteristics of a weapon
 
 The reload speed stat of a weapon determines how fast a weapon will be able to be reloaded. A hidden stat can add an animation scalar to make the weapon reload faster as well. This way if a weapon is at 100 relaod speed stat it can still reload faster. Perks like feeding frenzy and exotic armor like speedloader slacks will add this hidden scaler. We have a [write up](../calculations/reload.md) on how reload speed can be written as a piecewise-linear function instead of a quadratic function.
 
+#### Aim Assistance
+
+The aim assistance stat is a very complex one that deserves its own write up in the future. Aim assistance affects things such as the aim assist cone, reticle friction cone(controller only), and accuracy cone. The aim assist cone can be casually called "bullet magnetism" this is what causes you to say "that was a headshot ?" when your reticle was slightly off of the head. Reticle friction only applies to controller players. This is what slows down your aim as a target comes within the cone and what pulls your aim to stay on target while they move. Lastly, the accuracy cone is sometimes referred to as accuracy bloom. This cone adjusts as you continue to fire the weapon and blooms and bullets "stray" from the reticle. The length of these cones are tied to the hip-fire damage falloff range, and if aiming down sights, the ADS falloff range. This means that zoom currently affects how far out aim assistance cones reach and provide their effects.
+
+Until we write our own docs going into further details on aim assistance, we suggest taking a look at [this TWAB](https://www.bungie.net/en/News/Article/51319) where they go into some details on these cones in respect to airborne effectiveness.
+
 ### Advanced Stats
 
 ## Perks, Mods, and Masterworks
