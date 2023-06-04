@@ -163,9 +163,81 @@
       "description": "\"The Garden calls out to you.\""
     },
     {
-      "lootSources": [],
+      "lootSources": [
+        {
+          "lootItems": [
+            424291879,
+            1851777734,
+            501329015,
+            70083888,
+            3591141932,
+            2884596447,
+            3885259140,
+            3388655311
+          ],
+          "name": "Kalli, the Corrupted",
+          "description": "Drops from defeating Kalli, the Corrupted in the Last Wish raid."
+        },
+        {
+          "lootItems": [
+            424291879,
+            1851777734,
+            501329015,
+            70083888,
+            3591141932,
+            2884596447,
+            3885259140,
+            3388655311
+          ],
+          "name": "Shuro Chi, the Corrupted",
+          "description": "Drops from defeating Shuro Chi, the Corrupted in the Last Wish raid."
+        },
+        {
+          "lootItems": [
+            424291879,
+            1851777734,
+            501329015,
+            70083888,
+            3591141932,
+            2884596447,
+            3885259140,
+            3388655311
+          ],
+          "name": "Morgeth, the Spirekeeper",
+          "description": "Drops from defeating Morgeth, the Spirekeeper in the Last Wish raid."
+        },
+        {
+          "lootItems": [
+            424291879,
+            1851777734,
+            501329015,
+            70083888,
+            3591141932,
+            2884596447,
+            3885259140,
+            3388655311
+          ],
+          "name": "The Vault",
+          "description": "Drops from completing The Vault encounter in the Last Wish raid."
+        },
+        {
+          "lootItems": [
+            424291879,
+            1851777734,
+            501329015,
+            70083888,
+            3591141932,
+            2884596447,
+            3885259140,
+            3388655311,
+            2069224589
+          ],
+          "name": "Riven of a Thousand Voices",
+          "description": "Drops from defeating Riven in the Last Wish raid."
+        }
+      ],
       "name": "Last Wish",
-      "description": "\"The oppurtunity of a lifetime\""
+      "description": "\"The oppurtunity of a lifetime.\""
     },
     {
       "lootSources": [
