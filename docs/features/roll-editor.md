@@ -52,7 +52,7 @@ The range stat of a weapon seeks to show how far a weapon can shoot before it ex
 
 #### Stability
 
-
+The stability stat of a weapon controls how it kicks as well as increasing your flinch resistance. A weapon with more stability will visually kick less, and will also return closer to its original position when the gun settles back after firing. Stability does not make the weapon return to its "resting position" any faster. When it comes to how much flinch resistance the stability stat grants, it differs per weapon type and will be defined in more detail in the [flinch resistance](#flinch-resistance) section. 
 
 ### Advanced Stats
 
