@@ -392,6 +392,36 @@
       ],
       "name": "Vow of the Disciple",
       "description": "Drown in the deep..."
+    },
+    {
+      "lootSources": [
+        {
+          "lootItems": [
+            2563012876
+          ],
+          "name": "Phry'zhia, the Insatiable",
+          "description": "Drops from defeating Phry'zhia, the Insatiable in the Grasp of Avarice dungeon."
+        },
+        {
+          "lootItems": [
+            2139640995
+          ],
+          "name": "Fallen Shield",
+          "description": "Drops from completing the Fallen Shield encounter in the Grasp of Avarice dungeon."
+        },
+        {
+          "lootItems": [
+            2563012876,
+            2139640995,
+            4164201232,
+            235827225
+          ],
+          "name": "Captain Avarokk, the Covetous",
+          "description": "Drops from defeating Captain Avarokk, the Covetous in the Grasp of Avarice dungeon."
+        }
+      ],
+      "name": "Grasp of Avarice",
+      "description": "A cautionary tale for adventurers willing to trade their humanity for riches."
     }
   ]
 }
