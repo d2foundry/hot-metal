@@ -48,7 +48,11 @@ If the weapon family is the same and the Impact value is higher then Impact tran
 
 #### Range
 
-The Range stat of a weapon seeks to show how far a weapon can do max damage before it starts to experiences damage falloff. This stat alone is what defines the hip-fire range of a weapon's type. In order to find a weapon's ADS damage falloff you need to take the hip-fire falloff start distance in meters and multiply it by the weapon's Zoom divided by 10. E.g. Autumn Wind has a hip-fire damage falloff start distance of 18.69m and its Zoom is 17. So if you multiply 18.69 * (17/10) you will get 31.773m. This is slightly different than the value that you will see listed on a weapon's page. Our exact formula accounts for the weapon moving backwards when you ADS, thus reducing the Zoom value by .25. More details on this formula can be found in our [range explanation document](../calculations/range.md).
+The Range stat of a weapon seeks to show how far a weapon can do max damage before it starts to experience damage falloff. This stat alone is what defines the hip-fire range of a weapon's type. In order to find a weapon's ADS damage falloff you need to take the hip-fire falloff start distance in meters and multiply it by the weapon's Zoom divided by 10. Lastly, we take into account the weapon moving backwards when you ADS which reduces your Zoom value by .25. This can be interpreted by the following equation where $d_{A}$ is the ADS damage falloff distance in meters. In this example, Autumn Wind has a hip-fire damage falloff distance of 18.69m and its Zoom is 17
+
+$$ d_A = 31.305m = 18.69 * {( 17 - 0.25) \over 10 } $$
+
+With this calculation, Autumn Wind has an ADS damage falloff start distance of 31.305m. More details on this formula can be found in our [range explanation document](../calculations/range.md).
 
 When it comes to Glaives, the Range stat affects its projectile speed in addition to its damage falloff distance. At 0 range its projectile travels at 60m/s and at 100 range it is 100m/s. 
 
