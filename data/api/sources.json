@@ -397,6 +397,41 @@
       "lootSources": [
         {
           "lootItems": [
+            3262192268,
+            839786290,
+            1125217994
+          ],
+          "name": "Hive Ritual Disrupted",
+          "description": "Drops from disrupting the hive ritual in the Ghosts of the Deep dungeon."
+        },
+        {
+          "lootItems": [
+            3262192268,
+            839786290,
+            1757202961
+          ],
+          "name": "Ecthar, the Shield of Savathun",
+          "description": "Drops from defeating Ecthar, the Shield of Savathun in the Ghosts of the Deep dungeon."
+        },
+        {
+          "lootItems": [
+            3262192268,
+            839786290,
+            1125217994,
+            1757202961,
+            1441805468
+          ],
+          "name": "Simmumah ur-Nokru",
+          "description": "Drops from defeating Simmumah ur-Nokru in the Ghosts of the Deep dungeon."
+        }
+      ],
+      "name": "Ghosts of the Deep",
+      "description": "Drown in the deep, or rise from it."
+    },
+    {
+      "lootSources": [
+        {
+          "lootItems": [
             4070357005,
             8293111,
             487205709
@@ -458,7 +493,6 @@
       ],
       "name": "Grasp of Avarice",
       "description": "A cautionary tale for adventurers willing to trade their humanity for riches."
-
     }
   ]
 }
