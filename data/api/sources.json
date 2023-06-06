@@ -427,6 +427,72 @@
       ],
       "name": "Ghosts of the Deep",
       "description": "Drown in the deep, or rise from it."
+    },
+    {
+      "lootSources": [
+        {
+          "lootItems": [
+            4070357005,
+            8293111,
+            487205709
+          ],
+          "name": "Ascend the Spire",
+          "description": "Drops from completing the Ascend the Spire encounter in the Spire of the Watcher dungeon."
+        },
+        {
+          "lootItems": [
+            1555959830,
+            487205709
+          ],
+          "name": "Akelous, the Siren's Current",
+          "description": "Drops from defeating Akelous, the Siren's Current in the Spire of the Watcher dungeon."
+        },
+        {
+          "lootItems": [
+            4070357005,
+            8293111,
+            487205709,
+            1555959830,
+            2306182339,
+            3138208275,
+            4174431791
+          ],
+          "name": "Persys, Primordial Ruin",
+          "description": "Drops from defeating Persys, Primordial Ruin in the Spire of the Watcher dungeon."
+        }
+      ],
+      "name": "Spire of the Watcher",
+      "description": "Machinations run wild in this dust-ridden ruin. Bring them to heel."
+    },
+    {
+      "lootSources": [
+        {
+          "lootItems": [
+            2563012876
+          ],
+          "name": "Phry'zhia, the Insatiable",
+          "description": "Drops from defeating Phry'zhia, the Insatiable in the Grasp of Avarice dungeon."
+        },
+        {
+          "lootItems": [
+            2139640995
+          ],
+          "name": "Fallen Shield",
+          "description": "Drops from completing the Fallen Shield encounter in the Grasp of Avarice dungeon."
+        },
+        {
+          "lootItems": [
+            2563012876,
+            2139640995,
+            4164201232,
+            235827225
+          ],
+          "name": "Captain Avarokk, the Covetous",
+          "description": "Drops from defeating Captain Avarokk, the Covetous in the Grasp of Avarice dungeon."
+        }
+      ],
+      "name": "Grasp of Avarice",
+      "description": "A cautionary tale for adventurers willing to trade their humanity for riches."
     }
   ]
 }
