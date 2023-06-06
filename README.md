@@ -4,8 +4,14 @@
 
 Additional data and documentation for [Foundry](https://d2foundry.gg).
 
-Visit the editor app to submit a PR to our data: [hot-metal.vercel.app](https://hot-metal.vercel.app)
+## Contributing
 
-## Contributing to Documentation
+Please see our [CONTRIBUTING.md](CONTRIBUTING.md). 
 
-Please see our [CONTRIBUTING.md](CONTRIBUTING.md).
+You can contribute to our databases and documentation either by submitting a PR with changes to the JSON/Markdown files if you are comfortable, or using a UI via our editor app: [hot-metal.vercel.app](https://hot-metal.vercel.app)
+
+## Contributors 
+
+<a href="https://github.com/d2foundry/hot-metal/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=d2foundry/hot-metal" />
+</a>
