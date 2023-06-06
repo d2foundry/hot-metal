@@ -392,6 +392,42 @@
       ],
       "name": "Vow of the Disciple",
       "description": "Drown in the deep..."
+    },
+    {
+      "lootSources": [
+        {
+          "lootItems": [
+            4070357005,
+            8293111,
+            487205709
+          ],
+          "name": "Ascend the Spire",
+          "description": "Drops from completing the Ascend the Spire encounter in the Spire of the Watcher dungeon."
+        },
+        {
+          "lootItems": [
+            1555959830,
+            487205709
+          ],
+          "name": "Akelous, the Siren's Current",
+          "description": "Drops from defeating Akelous, the Siren's Current in the Spire of the Watcher dungeon."
+        },
+        {
+          "lootItems": [
+            4070357005,
+            8293111,
+            487205709,
+            1555959830,
+            2306182339,
+            3138208275,
+            4174431791
+          ],
+          "name": "Persys, Primordial Ruin",
+          "description": "Drops from defeating Persys, Primordial Ruin in the Spire of the Watcher dungeon."
+        }
+      ],
+      "name": "Spire of the Watcher",
+      "description": "Machinations run wild in this dust-ridden ruin. Bring them to heel."
     }
   ]
 }
