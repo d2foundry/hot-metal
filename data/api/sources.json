@@ -493,6 +493,22 @@
       ],
       "name": "Grasp of Avarice",
       "description": "A cautionary tale for adventurers willing to trade their humanity for riches."
-    }
+    },
+     {
+       "lootSources": [
+           {
+           "lootItems": [3890055324, 1081724548, 1769847435, 2883484461, 4066778670, 3016891299],
+           "name": "Deep Engrams",
+           "description": "Drops from Deep Engrams. Focusable at the H.E.L.M."
+         },
+         {
+           "lootItems": [3890055324, 1081724548, 1769847435, 2883484461, 4066778670, 3016891299],
+           "name": "Seasonal Activities",
+           "description": "Drops from Salvage and Deep Dive seasonal activities."
+         }
+       ],
+       "name": "Season of the Deep",
+       "description": "Seasonal weapons for Season 21."
+     }
   ]
 }

@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Activity",
   "type": "object",
   "description": "Top-level activity from which there can be multiple loot sources.",
@@ -16,6 +17,12 @@
       "type": "integer",
       "description": "The days between each rotation change"
     },
+    "isSingleSource": {
+      "title": "Is Single Source?",
+      "description": "If there's only one loot source for this activity.",
+      "type": "boolean",
+      "default": "false"
+    },
     "lootSources": {
       "title": "Loot Sources",
       "type": "array",
@@ -31,6 +38,12 @@
       "properties": {
         "name": { "title": "Source Name", "type": "string" },
         "description": { "title": "Source Description", "type": "string" },
+        "isPreferredLootSource": {
+          "title": "Is Preferred Loot Source?",
+          "description": "If this is the best source for these items due to drop rate/farmability",
+          "type": "boolean",
+          "default": "false"
+        },
         "lootItems": {
           "title": "Loot Items",
           "type": "array",
