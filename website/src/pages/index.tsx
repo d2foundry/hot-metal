@@ -13,6 +13,7 @@ import {
   IconButtonProps,
   ObjectFieldTemplateProps,
   RegistryFieldsType,
+  RegistryWidgetsType,
   StrictRJSFSchema,
   UiSchema,
   WidgetProps,
@@ -59,6 +60,7 @@ import {
 import { Combobox } from "@/common/components/Combobox";
 import { atom, useAtom, useAtomValue, useSetAtom } from "jotai";
 import { inventoryItemsAtom } from "@/common/store";
+import { Checkbox } from "@/common/components/Checkbox";
 
 async function $http<T>(config: HttpClientConfig) {
   // fill in the API key, handle OAuth, etc., then make an HTTP request using the config.
@@ -200,6 +202,26 @@ const ItemCombobox = ({ onChange, ...props }: FieldProps) => {
   );
 };
 
+const CustomCheckbox = (props: WidgetProps) => {
+  const { label, required, id, schema } = props;
+  return (
+    <div>
+      <div className="flex items-center space-x-2">
+        <Checkbox
+          checked={!!props.value}
+          onCheckedChange={(checked) => props.onChange(checked)}
+        />
+        <Label htmlFor={id}>
+          {label}
+          {required ? "*" : null}
+        </Label>
+      </div>
+      <p className="my-2 text-sm text-grayText">{schema.description}</p>
+    </div>
+  );
+};
+
+const customWidgets: RegistryWidgetsType = { CheckboxWidget: CustomCheckbox };
 const fields: RegistryFieldsType = { itemCombobox: ItemCombobox };
 
 function BaseInputTemplate(props: BaseInputTemplateProps) {
@@ -593,6 +615,7 @@ export default function Home() {
                 formRef.current = props;
               }}
               fields={fields}
+              widgets={customWidgets}
               templates={{
                 BaseInputTemplate,
                 FieldTemplate: CustomFieldTemplate,
