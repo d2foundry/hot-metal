@@ -2,8 +2,10 @@
   "$schema": "../schemas/source_schema.json",
   "activities": [
     {
+      "isSingleSource": false,
       "lootSources": [
         {
+          "isPreferredLootSource": false,
           "lootItems": [
             1937552980
           ],
@@ -11,6 +13,7 @@
           "description": "Drops from opening the gate to the King's Fall raid. "
         },
         {
+          "isPreferredLootSource": false,
           "lootItems": [
             1937552980,
             1321506184
@@ -19,6 +22,7 @@
           "description": "Drops from completing the Totems encounter in the King's Fall raid. "
         },
         {
+          "isPreferredLootSource": false,
           "lootItems": [
             2221264583,
             3228096719
@@ -27,6 +31,7 @@
           "description": "Drops from defeating The Warpriest in the King's Fall raid. "
         },
         {
+          "isPreferredLootSource": false,
           "lootItems": [
             1937552980,
             3969066556,
@@ -36,6 +41,7 @@
           "description": "Drops from defeating Golgoroth in the King's Fall raid. "
         },
         {
+          "isPreferredLootSource": false,
           "lootItems": [
             2221264583,
             3228096719,
@@ -45,6 +51,7 @@
           "description": "Drops from completing the Daughters of Oryx encounter in the King's Fall raid. "
         },
         {
+          "isPreferredLootSource": false,
           "lootItems": [
             1937552980,
             3228096719,
@@ -494,21 +501,35 @@
       "name": "Grasp of Avarice",
       "description": "A cautionary tale for adventurers willing to trade their humanity for riches."
     },
-     {
-       "lootSources": [
-           {
-           "lootItems": [3890055324, 1081724548, 1769847435, 2883484461, 4066778670, 3016891299],
-           "name": "Deep Engrams",
-           "description": "Drops from Deep Engrams. Focusable at the H.E.L.M."
-         },
-         {
-           "lootItems": [3890055324, 1081724548, 1769847435, 2883484461, 4066778670, 3016891299],
-           "name": "Seasonal Activities",
-           "description": "Drops from Salvage and Deep Dive seasonal activities."
-         }
-       ],
-       "name": "Season of the Deep",
-       "description": "Seasonal weapons for Season 21."
-     }
+    {
+      "lootSources": [
+        {
+          "lootItems": [
+            3890055324,
+            1081724548,
+            1769847435,
+            2883484461,
+            4066778670,
+            3016891299
+          ],
+          "name": "Deep Engrams",
+          "description": "Drops from Deep Engrams. Focusable at the H.E.L.M."
+        },
+        {
+          "lootItems": [
+            3890055324,
+            1081724548,
+            1769847435,
+            2883484461,
+            4066778670,
+            3016891299
+          ],
+          "name": "Seasonal Activities",
+          "description": "Drops from Salvage and Deep Dive seasonal activities."
+        }
+      ],
+      "name": "Season of the Deep",
+      "description": "Seasonal weapons for Season 21."
+    }
   ]
 }
