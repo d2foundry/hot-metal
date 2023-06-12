@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import { cn } from "@/common/utils";
 
 import styles from "./Layout.module.css";
+import { Separator } from "../Separator";
 
 export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
   const { data: session } = useSession();
@@ -91,6 +92,18 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
                 )}
               >
                 Docs
+              </Link>
+              <Separator orientation="vertical" className="h-5 mx-2 my-auto" />
+              <Link
+                href={"/felicity"}
+                className={cn(
+                  "text-grayText hover:text-accentText border-b border-transparent mb-[-1px] py-2",
+                  pathname === "/felicity"
+                    ? "text-grayTextContrast  border-grayTextContrast"
+                    : ""
+                )}
+              >
+                Felicity
               </Link>
             </ul>
           </nav>

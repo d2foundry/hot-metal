@@ -91,7 +91,7 @@ const ItemCombobox = ({ onChange, ...props }: FieldProps) => {
       </Label>
       <Combobox onChange={handleChange} values={state} id="loot-items" />
       <div className="flex gap-2 mt-4 flex-wrap">
-        {items
+        {items && Array.isArray(props.formData)
           ? props.formData?.map((itemHash: number) => {
               const weapon = items[itemHash];
               if (!weapon) return;
@@ -427,7 +427,7 @@ export const JsonEditor = ({
 
   const handleChange: FormProps["onChange"] = (data) => {
     setFormState((curr: any) => {
-      if (!curr || !curr?.activities) {
+      if (!curr) {
         return {
           ...data.formData,
         };
@@ -473,7 +473,7 @@ export const JsonEditor = ({
 
   return (
     <div className="flex flex-col gap-2 max-w-prose mx-auto pt-4">
-      {!!(activitySchema && formState && formState.activities) ? (
+      {!!(activitySchema && formState) ? (
         <>
           <Form
             showErrorList={false}

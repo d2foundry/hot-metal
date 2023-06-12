@@ -23,7 +23,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../Avatar";
 
 interface ComboboxProps {
   onChange: (value?: number) => void;
-  values: number[];
+  values?: number[];
   id: string;
 }
 
@@ -41,7 +41,11 @@ export const Combobox: React.FC<ComboboxProps> = ({ onChange, values, id }) => {
           aria-expanded={open}
           className="w-80 justify-between"
         >
-          <span className="text-graySolid">{"Select weapons..."}</span>
+          <span className="text-graySolid">
+            {values
+              ? "Select weapons..."
+              : weapons.find((w) => w.hash === value)?.displayProperties.name}
+          </span>
           <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -86,7 +90,13 @@ export const Combobox: React.FC<ComboboxProps> = ({ onChange, values, id }) => {
                 <CheckIcon
                   className={cn(
                     "ml-auto h-4 w-4",
-                    values.includes(weapon.hash) ? "opacity-100" : "opacity-0"
+                    (
+                      Array.isArray(values)
+                        ? values?.includes(weapon.hash)
+                        : weapon.hash === values
+                    )
+                      ? "opacity-100"
+                      : "opacity-0"
                   )}
                 />
               </CommandItem>
