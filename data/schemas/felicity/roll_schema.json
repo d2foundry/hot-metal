@@ -1,0 +1,102 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "weaponRolls": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "weaponHash": {
+              "type": "integer"
+            },
+            "authorId": {
+              "type": "integer"
+            },
+            "source": {
+              "type": "integer"
+            },
+            "notes": {
+              "type": "string"
+            },
+            "perks": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          },
+          "required": [
+            "weaponHash",
+            "authorId",
+            "source",
+            "notes",
+            "perks"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "weaponHash": {
+              "type": "integer"
+            },
+            "authorId": {
+              "type": "integer"
+            },
+            "source": {
+              "type": "integer"
+            },
+            "notes": {
+              "type": "string"
+            },
+            "perks": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          },
+          "required": [
+            "weaponHash",
+            "authorId",
+            "source",
+            "notes",
+            "perks"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "weaponRolls"
+  ]
+}
