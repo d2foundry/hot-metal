@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "rollAuthors": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "Id": {
+              "type": "integer"
+            },
+            "Name": {
+              "type": "string"
+            },
+            "Image": {
+              "type": "string"
+            },
+            "Url": {
+              "type": "string"
+            }
+          },
+          "required": ["Id", "Name", "Image", "Url"]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "Id": {
+              "type": "integer"
+            },
+            "Name": {
+              "type": "string"
+            },
+            "Image": {
+              "type": "string"
+            },
+            "Url": {
+              "type": "string"
+            }
+          },
+          "required": ["Id", "Name", "Image", "Url"]
+        }
+      ]
+    }
+  },
+  "required": ["rollAuthors"]
+}

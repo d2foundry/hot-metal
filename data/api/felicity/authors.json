@@ -1,0 +1,16 @@
+{
+  "rollAuthors": [
+    {
+      "Id": 0,
+      "Name": "Calm",
+      "Image": "https://cdn.tryfelicity.one/images/calmAvatar.jpg",
+      "Url": "https://twitter.com/calmqq_"
+    },
+    {
+      "Id": 1,
+      "Name": "Zempp",
+      "Image": "https://cdn.tryfelicity.one/images/zemppAvatar.jpg",
+      "Url": "https://twitter.com/zxmppr"
+    }
+  ]
+}
