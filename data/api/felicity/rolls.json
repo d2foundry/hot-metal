@@ -1,18 +1,30 @@
 {
   "weaponRolls": [
     {
+      "perks": [
+        1926090091,
+        3230963543,
+        1168162263,
+        2848615171,
+        758092021
+      ],
       "weaponHash": 123456789,
       "authorId": 1,
       "source": 18,
-      "notes": "Add Clear/General Use",
-      "perks": [1926090091, 3230963543, 1168162263, 2848615171, 758092021]
+      "notes": "Add Clear/General Use"
     },
     {
+      "perks": [
+        3250034553,
+        106909392,
+        1168162263,
+        2848615171,
+        758092021
+      ],
       "weaponHash": 48643186,
       "authorId": 2,
       "source": 7,
-      "notes": "thing goes boom",
-      "perks": [3250034553, 106909392, 1168162263, 2848615171, 758092021]
+      "notes": "thing goes boom??"
     }
   ]
 }
