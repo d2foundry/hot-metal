@@ -181,18 +181,8 @@ const JsonCombobox = ({ onChange, ...props }: FieldProps) => {
 };
 
 const WidgetCombobox = ({ onChange, ...props }: WidgetProps) => {
-  const [state, setState] = useState(props.formData ?? "");
-  // const id = useId();
-
-  const handleChange = (value: string) => {
-    // if (!value) return;
-    setState((curr: string) => {
-      onChange(value);
-      return value;
-    });
-  };
   return (
-    <Select value={state} onValueChange={handleChange}>
+    <Select value={props.value?.toString() ?? ""} onValueChange={onChange}>
       <SelectTrigger className="w-[180px]" id={props.id}>
         <SelectValue placeholder="Select an activity" />
       </SelectTrigger>
