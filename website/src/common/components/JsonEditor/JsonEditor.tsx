@@ -9,6 +9,7 @@ import {
   IconButtonProps,
   ObjectFieldTemplateProps,
   RegistryFieldsType,
+  RegistryWidgetsType,
   StrictRJSFSchema,
   UiSchema,
   WidgetProps,
@@ -167,7 +168,9 @@ const JsonCombobox = ({ onChange, ...props }: FieldProps) => {
               value={name?.toString() ?? ""}
               id="custom-select"
             >
-              {name?.toString()}
+              {props.schema?.enumNames
+                ? props.schema?.enumNames[index]
+                : name?.toString()}
             </SelectItem>
           ))}
         </SelectContent>
@@ -177,6 +180,31 @@ const JsonCombobox = ({ onChange, ...props }: FieldProps) => {
   );
 };
 
+const WidgetCombobox = ({ onChange, ...props }: WidgetProps) => {
+  return (
+    <Select value={props.value?.toString() ?? ""} onValueChange={onChange}>
+      <SelectTrigger className="w-[180px]" id={props.id}>
+        <SelectValue placeholder="Select an activity" />
+      </SelectTrigger>
+      <SelectContent>
+        {props.schema.enum?.map((name, index: number) => (
+          <SelectItem
+            key={`${name?.toString()}-${index}`}
+            value={name?.toString() ?? ""}
+          >
+            {props.schema?.enumNames
+              ? props.schema?.enumNames[index]
+              : name?.toString()}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
+  );
+};
+
+const widgets: RegistryWidgetsType = {
+  SelectWidget: WidgetCombobox,
+};
 const fields: RegistryFieldsType = {
   itemCombobox: ItemCombobox,
   combobox: JsonCombobox,
@@ -486,6 +514,7 @@ export const JsonEditor = ({
             ref={(props) => {
               formRef.current = props;
             }}
+            widgets={widgets}
             fields={fields}
             templates={{
               BaseInputTemplate,
