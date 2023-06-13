@@ -16,12 +16,12 @@
             "authorId": {
               "title": "Author",
               "enumNames": [
-                "Zempp",
-                "Mr Rebrand"
+                "Mr Rebrand",
+                "Zempp"
               ],
               "enum": [
-                1,
-                2
+                0,
+                1
               ],
               "type": "integer"
             },
