@@ -54,6 +54,8 @@
                 "Event",
                 "Kings Fall",
                 "Lightfall",
+                "Root of Nightmares",
+                "Ghosts of the Deep",
                 "Season of the Hunt",
                 "Season of the Chosen",
                 "Season of the Splicer",
@@ -66,7 +68,9 @@
                 "Season of the Deep"
               ],
               "enum": [
-                1, 2,
+                0,
+                1, 
+                2,
                 3,
                 4,
                 5,
@@ -90,6 +94,7 @@
                 23,
                 24,
                 25,
+                26,
                 112,
                 113,
                 114,
@@ -105,6 +110,10 @@
             "notes": {
               "title": "Notes / Usage info",
               "type": "string"
+            },
+            "canDrop": {
+              "title": "Can currently drop?",
+              "type": "boolean"
             },
             "perks": {
               "title": "Perks",
