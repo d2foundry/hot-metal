@@ -1,86 +1,156 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
     "weaponRolls": {
+      "title": "Weapon Roll list",
       "type": "array",
       "items": [
         {
           "type": "object",
           "properties": {
             "weaponHash": {
+              "title": "Weapon ID",
               "type": "integer"
             },
             "authorId": {
+              "title": "Author",
+              "enumNames": [
+                "Zempp",
+                "Mr Rebrand"
+              ],
+              "enum": [
+                1,
+                2
+              ],
               "type": "integer"
             },
             "source": {
-              "type": "integer"
-            },
-            "notes": {
-              "type": "string"
-            },
-            "perks": {
-              "type": "array",
-              "items": [
-                {
-                  "type": "integer"
-                },
-                {
-                  "type": "integer"
-                },
-                {
-                  "type": "integer"
-                },
-                {
-                  "type": "integer"
-                },
-                {
-                  "type": "integer"
-                }
+              "title": "Source",
+              "type": "integer",
+              "enumNames": [
+                "World Drop",
+                "Last Wish",
+                "Garden Of Salvation",
+                "Deep Stone Crypt",
+                "Vault Of Glass",
+                "Vow Of The Disciple",
+                "Grandmaster Nightfall",
+                "Shattered Throne",
+                "Pit Of Heresy",
+                "Prophecy",
+                "Grasp Of Avarice",
+                "Duality",
+                "Trials Of Osiris",
+                "Strikes",
+                "Iron Banner",
+                "Crucible",
+                "Gambit",
+                "Moon",
+                "Europa",
+                "Xûr Eternity",
+                "Throne World",
+                "Leviathan",
+                "Event",
+                "Kings Fall",
+                "Lightfall",
+                "Season of the Hunt",
+                "Season of the Chosen",
+                "Season of the Splicer",
+                "Season of the Lost",
+                "Season of the Risen",
+                "Season of the Haunted",
+                "Season of Plunder",
+                "Season of the Seraph",
+                "Season of Defiance",
+                "Season of the Deep"
+              ],
+              "enum": [
+                1, 2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                112,
+                113,
+                114,
+                115,
+                116,
+                117,
+                118,
+                119,
+                120,
+                121
               ]
-            }
-          },
-          "required": [
-            "weaponHash",
-            "authorId",
-            "source",
-            "notes",
-            "perks"
-          ]
-        },
-        {
-          "type": "object",
-          "properties": {
-            "weaponHash": {
-              "type": "integer"
-            },
-            "authorId": {
-              "type": "integer"
-            },
-            "source": {
-              "type": "integer"
             },
             "notes": {
+              "title": "Notes / Usage info",
               "type": "string"
             },
             "perks": {
+              "title": "Perks",
               "type": "array",
               "items": [
                 {
+                  "title": "Barrel",
                   "type": "integer"
                 },
                 {
+                  "title": "Magazine",
                   "type": "integer"
                 },
                 {
+                  "title": "Perk 1",
                   "type": "integer"
                 },
                 {
+                  "title": "Perk 2",
                   "type": "integer"
                 },
                 {
-                  "type": "integer"
+                  "title": "Masterwork",
+                  "type": "integer",
+                  "enumNames": [
+                    "Blast Radius",
+                    "Draw Time",
+                    "Handling",
+                    "Range",
+                    "Reload Speed",
+                    "Shield Duration",
+                    "Stability",
+                    "Target Acquisition",
+                    "Velocity"
+                  ],
+                  "enum": [
+                    3803457565,
+                    1639384016,
+                    186337601,
+                    2697220197,
+                    758092021,
+                    266016299,
+                    384158423,
+                    2993547493,
+                    1154004463
+                  ]
                 }
               ]
             }
@@ -93,7 +163,10 @@
             "perks"
           ]
         }
-      ]
+      ],
+      "additionalItems": {
+        "type": "boolean"
+      }
     }
   },
   "required": [
