@@ -98,7 +98,13 @@ It should be noted that each source that affects flinch resistance does so as it
 
 ## Screenshot Mode
 
+Screenshot Mode allows you to visualize a weapon roll similar to how it'd look in-game; to access it, select your preferred roll, then press the camera icon on the top-right section of the page. To save the image you will need to take a screenshot on your device while in this mode, as the image is not able to be directly downloaded or linked.<br>
+See [Screenshot Mode Settings](#screenshot-mode-settings) to edit the screenshot specifics.
+
 ### Screenshot Mode Settings
+
+To access the Settings menu, press the button with two sliders on it at the top-right of the screenshot. The Settings menu includes display settings such as a power level modifier, options to toggle the origin traits, infusion socket, and lock icon within the screenshot, as well as activity kill trackers and extras that include damage falloff in meters, handling times and reload time, both in seconds.
+This menu also includes a "Reset" button, in case you'd like to reset all values to their default parameters.
 
 ## Share Menu
 
