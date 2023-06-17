@@ -4,10 +4,6 @@ description: Learn how to navigate and use our advanced weapon roll editor
 
 # Roll Editor
 
-🚧 These docs are still under construction! 🚧
-
-You can contribute to them on [Github](https://github.com/d2foundry/hot-metal/tree/main/docs/features).
-
 ## Overview
 
 With the Roll Editor screen, you can see any weapon's stats, what perks are currently available, and how mods, abilities, and exotic armor can affect your weapon. If you have ever wondered how opening shot or heating up affects your weapons stats, the Roll Editor seeks to clarify that for you in a clear and concise way. Then, once you have created the perfect roll for your weapon, you can share it with your friends and/or export it to a DIM wishlist.
@@ -94,18 +90,23 @@ It should be noted that each source that affects flinch resistance does so as it
 
 ## Perks, Mods, and Masterworks
 
-Perks, Mods and Masterworks are in the center section of the Roll Editor, and grant [Effects](#effects) to your weapons. With Perks, you have the choice of selecting your own perks from the perk pool, or selecting Bungie's Curated roll. For Masterworks, you have the choice of the standard Masterworks per weapon type. <br>
+Perks, Mods and Masterworks are in the center section of the Roll Editor, and grant [Effects](#effects) to your weapons. With Perks, you have the choice of selecting your own perks from the perk pool, or selecting Bungie's Curated roll. For Masterworks, you have the choice of the standard Masterworks per weapon type. 
+
 While Perks mostly use a combination of standard stat Effects and Advanced Stat Effects, and Masterworks use entirely standard Effects, Mods use mostly Advanced Stat Effects, with most of them barely or incorrectly displaying in the in-game stat screen. 9 out of 13 mods use Advanced Stat Effects, using scalars for damage and handlings. We recommend you look at the Community Research section of the Mod descriptions while hovering over them, as they provide very valuable insight to lackluster descriptions. Mods are also the only parts of weapons that allow you to modify your radar, with the choice of removing the 1.5 radar return animation after not Aiming Down Sights or boosting your radar distance by a flat 8 metres. Other mods such as Specs allow for a flat increase to specific enemies, indicated by the Community Research.
-<br>Generally, the Perks, Masterworks and Mods sections are what allow you to truly customize your weapons and serve a crucial role in the Roll Editor.
+
+Generally, the Perks, Masterworks and Mods sections are what allow you to truly customize your weapons and serve a crucial role in the Roll Editor.
 
 ## Effects
 
 The Effects section on the rightmost section of the Roll Editor displays what effects the perks have on the weapons stats. This can range from very general stat modifications such as Range or Stability to Advanced Stats such as Accuracy Cone Size/Growth and Precision Aim Angle. Most perk effects can be toggled if they can ever be in a state of inactivity, such as Opening Shot, others can be modified by a drop-down menu and the stats will change accordingly, such as Elemental Capacitor, while others are permanently active and their effect will always be displayed, such as Snapshot Sights.
-Some Effects require you to open the accordion menus on the Stats section of the Roll Editor, which reveals most Advanced Stats. <br>Effects are provided by [Clarity](https://www.d2clarity.com/)'s research and [Compendium](https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/edit#gid=67704318)'s perk effect collection.
+Some Effects require you to open the accordion menus on the Stats section of the Roll Editor, which reveals most Advanced Stats. 
+
+Effects are collected from a variety of sources, including our own research, as well as from [Clarity](https://www.d2clarity.com/)'s research and [Compendium](https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/edit#gid=67704318)'s perk effect collection.
 
 ## Screenshot Mode
 
-Screenshot Mode allows you to visualize a weapon roll similar to how it'd look in-game; to access it, select your preferred roll, then press the camera icon on the top-right section of the page. To save the image you will need to take a screenshot on your device while in this mode, as the image is not able to be directly downloaded or linked.<br>
+Screenshot Mode allows you to visualize a weapon roll similar to how it'd look in-game; to access it, select your preferred roll, then press the camera icon on the top-right section of the page. To save the image you will need to take a screenshot on your device while in this mode, as the image is not able to be directly downloaded or linked.
+
 As mentioned previously, the sreenshot is also affected by the **Multi select** perk selection mode; this allows the screenshot mode to display multiple selectable perks, while maintaining the selected perks from the **Single select** mode.
 See [Screenshot Mode Settings](#screenshot-mode-settings) to edit the screenshot specifics.
 
