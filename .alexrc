@@ -20,6 +20,8 @@
     "hooks",
     "host-hostess",
     "invalid",
+    "kill",
+    "kills",
     "remains",
     "shoots",
     "slopes",
