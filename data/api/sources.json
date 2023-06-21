@@ -401,8 +401,10 @@
       "description": "Drown in the deep..."
     },
     {
+      "isSingleSource": false,
       "lootSources": [
         {
+          "isPreferredLootSource": false,
           "lootItems": [
             3262192268,
             839786290,
@@ -412,6 +414,7 @@
           "description": "Drops from disrupting the hive ritual in the Ghosts of the Deep dungeon."
         },
         {
+          "isPreferredLootSource": false,
           "lootItems": [
             3262192268,
             839786290,
@@ -421,6 +424,7 @@
           "description": "Drops from defeating Ecthar, the Shield of Savathun in the Ghosts of the Deep dungeon."
         },
         {
+          "isPreferredLootSource": false,
           "lootItems": [
             3262192268,
             839786290,
@@ -433,7 +437,8 @@
         }
       ],
       "name": "Ghosts of the Deep",
-      "description": "Drown in the deep, or rise from it."
+      "description": "Drown in the deep, or rise from it.",
+      "slug": "ghosts-of-the-deep"
     },
     {
       "lootSources": [
