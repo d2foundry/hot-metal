@@ -6,6 +6,8 @@
   "properties": {
     "name": { "title": "Activity Name", "type": "string" },
     "description": { "title": "Activity Description", "type": "string" },
+    "slug": { "title": "Slug", "description": "Pathname to link to this activity", "type": "string" },
+    "image": { "title": "Image", "description": "Image URL to use for this activity", "type": "string" },
     "rotationStartDate": {
       "title": "Rotation Start Date",
       "type": "string",
