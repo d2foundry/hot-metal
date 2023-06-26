@@ -507,8 +507,10 @@
       "description": "A cautionary tale for adventurers willing to trade their humanity for riches."
     },
     {
+      "isSingleSource": false,
       "lootSources": [
         {
+          "isPreferredLootSource": false,
           "lootItems": [
             3890055324,
             1081724548,
@@ -521,6 +523,7 @@
           "description": "Drops from Deep Engrams. Focusable at the H.E.L.M."
         },
         {
+          "isPreferredLootSource": false,
           "lootItems": [
             3890055324,
             1081724548,
@@ -534,7 +537,8 @@
         }
       ],
       "name": "Season of the Deep",
-      "description": "Seasonal weapons for Season 21."
+      "description": "Seasonal weapons for Season 21.",
+      "slug": "season-of-the-deep"
     }
   ]
 }
