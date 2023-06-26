@@ -128,7 +128,7 @@ const uiSchema: UiSchema = {
 
 export default function Activities() {
   const handleSubmit = (fileText: string) => {
-    fetch("/api/submit/pve_activities", {
+    return fetch("/api/submit/pve_activities", {
       method: "POST",
       body: fileText,
       headers: {

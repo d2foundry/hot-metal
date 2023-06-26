@@ -64,6 +64,7 @@ import {
 import { Combobox } from "@/common/components/Combobox";
 import { atom, useAtom, useAtomValue, useSetAtom } from "jotai";
 import { inventoryItemsAtom } from "@/common/store";
+import { Checkbox } from "@radix-ui/react-checkbox";
 
 const ItemCombobox = ({ onChange, ...props }: FieldProps) => {
   const [state, setState] = useState(props.formData ?? []);
@@ -202,8 +203,28 @@ const WidgetCombobox = ({ onChange, ...props }: WidgetProps) => {
   );
 };
 
+const CustomCheckbox = (props: WidgetProps) => {
+  const { label, required, id, schema } = props;
+  return (
+    <div>
+      <div className="flex items-center space-x-2">
+        <Checkbox
+          checked={!!props.value}
+          onCheckedChange={(checked) => props.onChange(checked)}
+        />
+        <Label htmlFor={id}>
+          {label}
+          {required ? "*" : null}
+        </Label>
+      </div>
+      <p className="my-2 text-sm text-grayText">{schema.description}</p>
+    </div>
+  );
+};
+
 const widgets: RegistryWidgetsType = {
   SelectWidget: WidgetCombobox,
+  CheckboxWidget: CustomCheckbox,
 };
 const fields: RegistryFieldsType = {
   itemCombobox: ItemCombobox,
@@ -292,7 +313,7 @@ function CustomFieldTemplate(props: FieldTemplateProps) {
   } = props;
   return (
     <div
-      className={`${classNames} grid w-full items-center gap-1 mb-6`}
+      className={`${classNames} grid w-full items-center gap-1 mb-3`}
       style={style}
     >
       {displayLabel ? (
@@ -318,7 +339,7 @@ function CustomFieldTemplate(props: FieldTemplateProps) {
 function RemoveButton(props: IconButtonProps) {
   const { icon, iconType, ...btnProps } = props;
   return (
-    <Button {...btnProps} variant={"destructive"}>
+    <Button {...btnProps} variant={"destructive"} size="icon">
       <Cross1Icon className="h-4 w-4" />
     </Button>
   );
@@ -343,7 +364,7 @@ function ArrayFieldTemplate({
               className="relative p-4 border rounded bg-grayBgSubtle border-grayBorder"
             >
               <div>{element.children}</div>
-              <div className="absolute top-4 right-4 flex gap-2">
+              <div className="absolute top-3 right-4 flex gap-2">
                 {element.hasToolbar ? (
                   <>
                     <Button
@@ -352,10 +373,10 @@ function ArrayFieldTemplate({
                         element.index - 1
                       )}
                       disabled={!element.hasMoveUp}
-                      className="h-8 w-8 p-0"
+                      size="icon"
                       variant={"outline"}
                     >
-                      <ArrowUpIcon />
+                      <ArrowUpIcon className="h-4 w-4" />
                     </Button>
                     <Button
                       onClick={element.onReorderClick(
@@ -363,19 +384,19 @@ function ArrayFieldTemplate({
                         element.index + 1
                       )}
                       disabled={!element.hasMoveDown}
-                      className="h-8 w-8 p-0"
+                      size="icon"
                       variant={"outline"}
                     >
-                      <ArrowDownIcon />
+                      <ArrowDownIcon className="h-4 w-4" />
                     </Button>
                   </>
                 ) : null}
                 <Button
                   onClick={element.onDropIndexClick(element.index)}
                   variant={"outline"}
-                  className="h-8 w-8 p-0"
+                  size="icon"
                 >
-                  <Cross1Icon />
+                  <Cross1Icon className="h-4 w-4" />
                 </Button>
               </div>
             </div>
@@ -416,9 +437,10 @@ export const JsonEditor = ({
   schemaEndpoint: string;
   dataEndpoint: string;
   uiSchema: UiSchema;
-  handleSubmit: (formData: string) => void;
+  handleSubmit: (formData: string) => Promise<void>;
 }) => {
   const [formState, setFormState] = useState<any | undefined>();
+  const [submitting, setSubmitting] = useState(false);
   // const setInventoryItems = useSetAtom(inventoryItemsAtom);
   const { data: formData } = useSwr(dataEndpoint, fetcher);
 
@@ -477,9 +499,12 @@ export const JsonEditor = ({
       const isValid = formRef.current.validateForm();
       if (!isValid) return;
     }
+    setSubmitting(true);
     const fileText = JSON.stringify(formState, undefined, 2);
 
-    handleSubmit(fileText);
+    handleSubmit(fileText).then(() => {
+      setSubmitting(false);
+    });
   };
 
   // const handleAdd = () => {
@@ -531,7 +556,11 @@ export const JsonEditor = ({
             }}
             // onSubmit={handleSubmit}
           />
-          <Button onClick={handleSubmitPullRequest} className="ml-auto">
+          <Button
+            onClick={handleSubmitPullRequest}
+            className="ml-auto"
+            disabled={submitting}
+          >
             Submit All Changes
           </Button>
         </>

@@ -16,7 +16,7 @@ const uiSchema: UiSchema = {
 
 export default function Felicity() {
   const handleSubmit = (fileText: string) => {
-    fetch("/api/submit/felicity/rolls", {
+    return fetch("/api/submit/felicity/rolls", {
       method: "POST",
       body: fileText,
       headers: {
