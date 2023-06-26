@@ -438,7 +438,8 @@
       ],
       "name": "Ghosts of the Deep",
       "description": "Drown in the deep, or rise from it.",
-      "slug": "ghosts-of-the-deep"
+      "slug": "ghosts-of-the-deep",
+      "image": "https://www.bungie.net/img/destiny_content/pgcr/dungeon_ghosts_of_the_deep.jpg"
     },
     {
       "lootSources": [
@@ -507,7 +508,7 @@
       "description": "A cautionary tale for adventurers willing to trade their humanity for riches."
     },
     {
-      "isSingleSource": false,
+      "isSingleSource": true,
       "lootSources": [
         {
           "isPreferredLootSource": false,
@@ -538,7 +539,8 @@
       ],
       "name": "Season of the Deep",
       "description": "Seasonal weapons for Season 21.",
-      "slug": "season-of-the-deep"
+      "slug": "season-of-the-deep",
+      "image": "https://www.bungie.net/img/destiny_content/pgcr/season_21_deep_dives.jpg"
     }
   ]
 }
