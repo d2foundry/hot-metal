@@ -1,8 +1,7 @@
 ---
+title: Roll Editor
 description: Learn how to navigate and use our advanced weapon roll editor
 ---
-
-# Roll Editor
 
 ## Overview
 

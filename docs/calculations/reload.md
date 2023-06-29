@@ -1,8 +1,7 @@
 ---
+title: Reload
 description: Learn more about how we test and calculate weapon reload
 ---
-
-# Reload
 
 ## How we calculate reload speed
 

@@ -1,8 +1,7 @@
 ---
+title: Compare
 description: Learn how to use our compare feature
 ---
-
-# Compare
 
 ## Starting a Compare session
 

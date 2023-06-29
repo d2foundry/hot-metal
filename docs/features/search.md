@@ -1,8 +1,7 @@
 ---
+title: Search
 description: Learn how to use our search feature
 ---
-
-# Search
 
 ## Navigating Search
 

@@ -1,8 +1,7 @@
 ---
+title: Frequently Asked Questions
 description: Learn more about Foundry with these frequently asked questions
 ---
-
-# Frequently Asked Questions
 
 <details>
   <summary>Why is the Magazine stat on X weapon slightly off?</summary>

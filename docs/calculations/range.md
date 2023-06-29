@@ -1,8 +1,7 @@
 ---
+title: Range
 description: Learn more about how we test and calculate weapon range
 ---
-
-# Range
 
 ## Why does Foundry's range differ from Bungie's?
 
