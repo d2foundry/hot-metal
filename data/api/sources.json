@@ -2,7 +2,7 @@
   "$schema": "../schemas/source_schema.json",
   "activities": [
     {
-      "isSingleSource": false,
+      "isSingleSource": true,
       "lootSources": [
         {
           "isPreferredLootSource": false,
