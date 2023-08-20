@@ -25,7 +25,7 @@ To get back to a selected roll's weapon page, you can click the card at the top 
 
 ### Reordering Compare rolls
 
-The Compare table will show whichever roll was selected first to the left, with rolls that were added after to the right. It shows the positive/negative deltas for those subsequent rolls compared to that first item. 
+The Compare table will show whichever roll was selected first to the left, with rolls that were added after to the right. It shows the positive/negative deltas for those subsequent rolls compared to that first item.
 
 If you would like to move a roll to be in that first slot to see how other rolls compare, locate the arrow icon at the top of the roll's column in the Compare table.
 
