@@ -22,7 +22,7 @@ description: Learn more about Foundry with these frequently asked questions
 <details>
   <summary>How is damage calculated?</summary>
 
-  The short answer is that we use formulas and base values from Mossy (Discord: Mossy#4649 // Reddit: u/LegoWitch)
+  The short answer is that we use formulas and base values from Mossy (Discord: mossy.max // Reddit: u/LegoWitch)
 
   They wrote a [reddit write-up](https://www.reddit.com/r/DestinyTheGame/comments/umnoex/exhaustive_breakdown_of_every_outgoing_damage/) where they answer a lot of questions pertaining to damage with topics ranging from comparing damage across different activites to how damage scales due the rank of the enenmy being hit.
 
