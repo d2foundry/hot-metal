@@ -7,7 +7,6 @@ description: Learn how to use our search feature
 
 You can find our Search menu at the top of the screen, within the navigation bar. It can be opened by clicking into it, or opened by pressing <kbd>↓</kbd> while it is closed but the text cursor is active. You can close Search by pressing <kbd>Esc</kbd>, clicking out of it, or pressing the "Cancel" button in the top right on mobile.
 
-
 Additionally, Search can be toggled open/closed at any time by pressing <kbd>Ctrl</kbd><kbd>K</kbd> or <kbd>⌘</kbd><kbd>K</kbd> depending on your OS.
 
 You can select options using either your mouse or touch-enabled device, or by navigating through the search menu using the <kbd>↑</kbd> and <kbd>↓</kbd> keys to highlight an item, and using <kbd>Enter</kbd> or <kbd>Return</kbd> to confirm your selection.
@@ -19,7 +18,6 @@ The base behavior of our search is to query for a weapon's name. As you type the
 We use a "fuzzy search" algorithm, which means you can input text that's relatively close to the weapon's actual name and it'll still match, which allows some tolerance for typos or misspellings.
 
 In addition, this works across the weapon's entire name, so you can type in something like `adept` and get results of all the weapons with "Adept" in their names (although we also have a search filter for finding Adept weapons that includes Master-level variants such as Timelost, etc.)
-
 
 ## Filters
 
@@ -33,7 +31,7 @@ If you want to remove a filter after having added it, you can press <kbd>Backspa
 
 As hinted at previously, you can select multiple filters to further narrow your search. Only weapons (and by extension, filters and their options) that match **all** of the filter conditions will be shown. This acts as as a logical **AND**.
 
-This works with filters of different types (so you can combine filters for `frame` and `weapon`), and with multiple `trait` selections. If you want to find weapons that can roll both Demolitionist and Adrenaline Junkie, selecting a `trait` filter and finding each will work, however they may not be in different columns. If you would like to query for traits in *different* columns, use the `trait_1` and `trait_2` filter.
+This works with filters of different types (so you can combine filters for `frame` and `weapon`), and with multiple `trait` selections. If you want to find weapons that can roll both Demolitionist and Adrenaline Junkie, selecting a `trait` filter and finding each will work, however they may not be in different columns. If you would like to query for traits in _different_ columns, use the `trait_1` and `trait_2` filter.
 
 It's also worth noting that since these work as a logical **AND**, choosing multiple filters of the same type won't be able to match anything (aside from traits, as we previously went over). This is because a weapon can't be both a Sidearm **AND** a Hand Cannon.
 
@@ -49,7 +47,8 @@ If your query requires text with spaces in it, you can either escape it with dou
 
 White space works as a logical **AND** operator for multiple key/value pairs, in the same way as selecting multiple filters does. However you can also use a comma-separated list of values. For example, `trait:demolitionist,adrenalinejunkie` or `trait:demo,junkie`.
 
-A single pipe `|` works as a logical **OR** operator. Examples include: 
+A single pipe `|` works as a logical **OR** operator. Examples include:
+
 - `rpm:390|450 weapon:pulserifle` to get Pulse Rifles across both of those subfamilies
 - `energy:strand|stasis frame:lightweight` to get Lightweight Frame weapons that are one of the Darkness elements.
 
