@@ -59,12 +59,34 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
             </div>
           </header>
           <nav>
-            <ul className="flex gap-2 border-b border-grayBorder">
+            <ul className="flex gap-4 border-b border-grayBorder">
               <Link
                 href="/"
                 className={cn(
                   "text-grayText hover:text-accentText border-b border-transparent mb-[-1px] py-2",
                   pathname === "/"
+                    ? "text-grayTextContrast  border-grayTextContrast"
+                    : ""
+                )}
+              >
+                Home
+              </Link>
+              <Link
+                href="/fits"
+                className={cn(
+                  "text-grayText hover:text-accentText border-b border-transparent mb-[-1px] py-2",
+                  pathname === "/fits"
+                    ? "text-grayTextContrast  border-grayTextContrast"
+                    : ""
+                )}
+              >
+                Item Tagging
+              </Link>
+              <Link
+                href="/sources"
+                className={cn(
+                  "text-grayText hover:text-accentText border-b border-transparent mb-[-1px] py-2",
+                  pathname === "/sources"
                     ? "text-grayTextContrast  border-grayTextContrast"
                     : ""
                 )}
