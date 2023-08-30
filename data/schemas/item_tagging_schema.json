@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Item Tagging Service",
+  "type": "object",
+  "properties": {
+    "tags": {
+      "type": "array",
+      "items": {
+        "title": "Tag",
+        "type": "object",
+        "description": "Tags have a name and bucket multiple items together.",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "description": "Must be alphanumeric. Can be spaced by - or _. Should be unique.",
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]+$"
+          },
+          "displayName": {
+            "title": "Display Name",
+            "description": "Name that's displayed to users.",
+            "type": "string"
+          },
+          "description": {
+            "title": "Description",
+            "description": "If additional information is needed for this tag.",
+            "type": "string"
+          },
+          "items": {
+            "title": "Tag Items",
+            "type": "array",
+            "items": {
+              "description": "Bungie InventoryItem hash to link to this tag.",
+              "type": "integer"
+            }
+          }
+        },
+        "required": ["displayName", "name"]
+      }
+    }
+  }
+}
