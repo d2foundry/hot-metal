@@ -2,16 +2,22 @@
   "$schema": "../schemas/item_tagging_schema.json",
   "tags": [
     {
+      "items": [
+        501329015
+      ],
       "name": "testTag",
       "displayName": "Test Tag",
-      "description": "I'm using this to test a tag.",
-      "items": [501329015]
+      "description": "I'm using this to test a tag."
     },
     {
+      "items": [
+        2510526114,
+        2290416,
+        1999697514
+      ],
       "name": "testTag2",
       "displayName": "2 Test 2 Tag",
-      "description": "It's a second tag, for testing.",
-      "items": [2510526114]
+      "description": "It's a second tag, for testing."
     }
   ]
 }
