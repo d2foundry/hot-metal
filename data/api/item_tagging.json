@@ -18,6 +18,32 @@
       "name": "testTag2",
       "displayName": "2 Test 2 Tag",
       "description": "It's a second tag, for testing."
+    },
+    {
+      "items": [
+        20935540,
+        2492081469,
+        1019000888,
+        1788603939,
+        4070357005,
+        507038823,
+        577528837,
+        4019668921,
+        3514096004,
+        3628991658,
+        1751893422,
+        2342054803,
+        3341893443,
+        66875353,
+        2065081837,
+        1621657423,
+        2481758391,
+        3335343363,
+        297296830
+      ],
+      "name": "Highlights",
+      "displayName": "Highlights targets",
+      "description": "When aiming down sights, this weapon highlights targets (such as with a red or green glow)."
     }
   ]
 }
