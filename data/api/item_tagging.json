@@ -5,7 +5,7 @@
       "items": [
         501329015
       ],
-      "name": "testTag",
+      "name": "Highlights-target",
       "displayName": "Test Tag",
       "description": "I'm using this to test a tag."
     },
@@ -18,6 +18,14 @@
       "name": "testTag2",
       "displayName": "2 Test 2 Tag",
       "description": "It's a second tag, for testing."
+    },
+    {
+      "items": [
+        20935540
+      ],
+      "name": "Highlights",
+      "displayName": "Highlights target",
+      "description": "when aiming down sights, this weapon highlighta the target. "
     }
   ]
 }
