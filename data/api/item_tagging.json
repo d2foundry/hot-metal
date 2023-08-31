@@ -3,11 +3,13 @@
   "tags": [
     {
       "items": [
-        501329015
+        2492081469,
+        20935540,
+        1019000888
       ],
-      "name": "testTag",
-      "displayName": "Test Tag",
-      "description": "I'm using this to test a tag."
+      "name": "Highlights",
+      "displayName": "When ADS, this weapon or ornament highlights the target (in red or green, for example).",
+      "description": ""
     },
     {
       "items": [
