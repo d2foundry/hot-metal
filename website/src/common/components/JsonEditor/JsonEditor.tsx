@@ -433,11 +433,13 @@ export const JsonEditor = ({
   dataEndpoint,
   uiSchema,
   handleSubmit,
+  disableSubmit,
 }: {
   schemaEndpoint: string;
   dataEndpoint: string;
   uiSchema: UiSchema;
   handleSubmit: (formData: string) => Promise<void>;
+  disableSubmit?: boolean;
 }) => {
   const [formState, setFormState] = useState<any | undefined>();
   const [submitting, setSubmitting] = useState(false);
@@ -559,7 +561,7 @@ export const JsonEditor = ({
           <Button
             onClick={handleSubmitPullRequest}
             className="ml-auto"
-            disabled={submitting}
+            disabled={submitting || disableSubmit}
           >
             Submit All Changes
           </Button>

@@ -34,6 +34,7 @@
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
     "gray-matter": "^4.0.3",
+    "idb-keyval": "^6.2.1",
     "jotai": "^2.0.4",
     "katex": "^0.16.6",
     "nanoid": "^4.0.2",

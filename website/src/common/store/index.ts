@@ -1,9 +1,12 @@
 import { DestinyInventoryItemDefinition } from "bungie-api-ts/destiny2";
 import { atom, useAtomValue } from "jotai";
+// import { atomWithStorage } from "jotai/utils";
+import { atomWithAsyncStorage } from "@/common/utils/atomWithAsyncStorage";
 
-export const inventoryItemsAtom = atom<{
+export const inventoryItemsAtom = atomWithAsyncStorage<{
   [key: number]: DestinyInventoryItemDefinition;
-}>({});
+}>("inv_store", {});
+
 export const weaponsAtom = atom((get) => {
   const itemDefs = get(inventoryItemsAtom);
   let res = [];

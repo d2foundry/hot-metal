@@ -1,7 +1,9 @@
 import { JsonEditor } from "@/common/components/JsonEditor";
 import { useInventoryItems } from "@/common/hooks/useInventoryItems";
+import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import { UiSchema } from "@rjsf/utils";
 import Head from "next/head";
+import { useState } from "react";
 
 const GITHUB_ITEM_TAGGING_API_DATA_URI =
   "https://raw.githubusercontent.com/d2foundry/hot-metal/main/data/api/item_tagging.json";
@@ -129,7 +131,10 @@ const uiSchema: UiSchema = {
 // const fields: RegistryFieldsType = { itemCombobox: ItemCombobox };
 
 export default function Fits() {
+  const [pullUrl, setPullUrl] = useState("");
+
   useInventoryItems();
+
   const handleSubmit = (fileText: string) => {
     return fetch(FITS_SUBMIT_ENDPOINT, {
       method: "POST",
@@ -142,7 +147,7 @@ export default function Fits() {
       .then((value) => {
         const pullUrl = value?.data?.html_url;
         if (pullUrl) {
-          window.open(pullUrl);
+          setPullUrl(pullUrl);
         }
       })
       .catch((err) => console.error(err));
@@ -161,7 +166,20 @@ export default function Fits() {
           schemaEndpoint={GITHUB_ITEM_TAGGING_JSON_SCHEMA_URI}
           uiSchema={uiSchema}
           handleSubmit={handleSubmit}
+          disableSubmit={!!pullUrl}
         />
+        {pullUrl ? (
+          <div className="flex justify-end max-w-prose mx-auto w-full mt-4">
+            <a
+              className="text-grayText hover:text-accentText underline flex items-center gap-2"
+              href={pullUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Success! Open Pull Request page <ExternalLinkIcon />
+            </a>
+          </div>
+        ) : null}
       </div>
     </>
   );
