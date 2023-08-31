@@ -101,7 +101,7 @@
         3514096004,
         3745990145
       ],
-      "name": "Highlighting_Scopes",
+      "name": "Highlights_Scopes",
       "displayName": "Highlights targets",
       "description": "If in-game Scope description includes \"Highlights targets\", aiming down sights will outline targets in a red or green glow."
     }
