@@ -33,7 +33,6 @@
         1751893422,
         2342054803,
         3341893443,
-        66875353,
         2065081837,
         1621657423,
         2481758391,
@@ -86,11 +85,13 @@
         2490988246,
         3849444474,
         2272041093,
-        3103325054
+        3103325054,
+        1168625549,
+        1096206669
       ],
-      "name": "Highlights",
+      "name": "Highlights_Normal",
       "displayName": "Highlights targets",
-      "description": "When aiming down sights, this weapon highlights targets (such as with a red or green glow)."
+      "description": "When aiming down sights, this weapon outlines targets (such as with a red or green glow)."
     },
     {
       "items": [
@@ -101,9 +102,35 @@
         3514096004,
         3745990145
       ],
-      "name": "Highlights_Scopes",
-      "displayName": "Highlights targets",
-      "description": "If in-game Scope description includes \"Highlights targets\", aiming down sights will outline targets in a red or green glow."
+      "name": "Highlights_Outliers_Scopes",
+      "displayName": "Highlights targets (in specific cases)",
+      "description": "If in-game Scope description includes \"Highlights targets\", aiming down sights will outline targets in a red glow."
+    },
+    {
+      "items": [
+        1081724548,
+        1769847435,
+        3016891299
+      ],
+      "name": "Highlights_Outliers_Taken",
+      "displayName": "Highlights Targets (in specific cases)",
+      "description": "Taken enemies will be outlined with a red glow when aiming down sights (ornaments remove this effect)"
+    },
+    {
+      "items": [
+        1331482397,
+        3844694310,
+        4293613902,
+        1473821207,
+        3628991658,
+        3524313097,
+        3141979346,
+        2694576561,
+        2399110176
+      ],
+      "name": "Highlights_Exotics",
+      "displayName": "Highlights Targets",
+      "description": "When aiming down sights, this weapon outlines targets (such as with a red or green glow). Ornaments may remove or alter this effect."
     }
   ]
 }
