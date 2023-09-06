@@ -6,39 +6,60 @@
       "lootSources": [
         {
           "isPreferredLootSource": false,
-          "lootItems": [1937552980],
+          "lootItems": [
+            1937552980
+          ],
           "name": "Gate",
           "description": "Drops from opening the gate to the King's Fall raid. "
         },
         {
           "isPreferredLootSource": false,
-          "lootItems": [1937552980, 1321506184],
+          "lootItems": [
+            1937552980,
+            1321506184
+          ],
           "name": "Totems",
           "description": "Drops from completing the Totems encounter in the King's Fall raid. "
         },
         {
           "isPreferredLootSource": false,
-          "lootItems": [2221264583, 3228096719],
+          "lootItems": [
+            2221264583,
+            3228096719
+          ],
           "name": "The Warpriest",
           "description": "Drops from defeating The Warpriest in the King's Fall raid. "
         },
         {
           "isPreferredLootSource": false,
-          "lootItems": [1937552980, 3969066556, 1321506184],
+          "lootItems": [
+            1937552980,
+            3969066556,
+            1321506184
+          ],
           "name": "Golgoroth",
           "description": "Drops from defeating Golgoroth in the King's Fall raid. "
         },
         {
           "isPreferredLootSource": false,
-          "lootItems": [2221264583, 3228096719, 431721920],
+          "lootItems": [
+            2221264583,
+            3228096719,
+            431721920
+          ],
           "name": "Daughters",
           "description": "Drops from completing the Daughters of Oryx encounter in the King's Fall raid. "
         },
         {
           "isPreferredLootSource": false,
           "lootItems": [
-            1937552980, 3228096719, 3969066556, 2221264583, 1321506184,
-            431721920, 1802135586
+            1937552980,
+            3228096719,
+            3969066556,
+            2221264583,
+            1321506184,
+            431721920,
+            1802135586
           ],
           "name": "Oryx, the Taken King",
           "description": "Drops from defeating Oryx, the Taken King in the King's Fall raid. "
@@ -50,27 +71,48 @@
     {
       "lootSources": [
         {
-          "lootItems": [2171478765, 3186018373, 471518543],
+          "lootItems": [
+            2171478765,
+            3186018373,
+            471518543
+          ],
           "name": "The Templar",
           "description": "Drops from defeating The Templar in The Vault of Glass raid."
         },
         {
-          "lootItems": [3186018373, 3197270240, 471518543],
+          "lootItems": [
+            3186018373,
+            3197270240,
+            471518543
+          ],
           "name": "Confluxes",
           "description": "Drops from completing the Confluxes ecounter in The Vault of Glass raid."
         },
         {
-          "lootItems": [3653573172, 3186018373, 3197270240],
+          "lootItems": [
+            3653573172,
+            3186018373,
+            3197270240
+          ],
           "name": "Oracles",
           "description": "Drops from completing the Oracles encounter in The Vault of Glass raid. "
         },
         {
-          "lootItems": [2171478765, 4050645223, 3197270240],
+          "lootItems": [
+            2171478765,
+            4050645223,
+            3197270240
+          ],
           "name": "The Gatekeeper",
           "description": "Drops from completing the Gatekeeper encounter in The Vault of Glass raid. "
         },
         {
-          "lootItems": [4289226715, 3653573172, 471518543, 4050645223],
+          "lootItems": [
+            4289226715,
+            3653573172,
+            471518543,
+            4050645223
+          ],
           "name": "Atheon, Time's Conflux",
           "description": "Drops from defeating Atheon, Time's Conflux in the Vault of Glass raid."
         }
@@ -81,19 +123,30 @@
     {
       "lootSources": [
         {
-          "lootItems": [2026087437, 2263839058],
+          "lootItems": [
+            2026087437,
+            2263839058
+          ],
           "name": "Nightmare of Gahlran",
           "description": "Drops from defeating the Nightmare of Gahlran in the Duality dungeon."
         },
         {
-          "lootItems": [3000847393, 3652506829],
+          "lootItems": [
+            3000847393,
+            3652506829
+          ],
           "name": "The Vault",
           "description": "Drops from completing The Vault encounter in the Duality dungeon."
         },
         {
           "lootItems": [
-            2026087437, 2263839058, 3000847393, 3652506829, 1780464822,
-            2194955522, 3664831848
+            2026087437,
+            2263839058,
+            3000847393,
+            3652506829,
+            1780464822,
+            2194955522,
+            3664831848
           ],
           "name": "Nightmare of Caiatl",
           "description": "Drops from defeating the Nightmare of Caiatl in the Duality dungeon."
@@ -105,27 +158,40 @@
     {
       "lootSources": [
         {
-          "lootItems": [4095896073, 2209003210],
+          "lootItems": [
+            4095896073,
+            2209003210
+          ],
           "description": "Track the Unknown Artifact's Signal in the Garden of Salvation raid. ",
           "name": "First Encounter"
         },
         {
-          "lootItems": [4020742303, 3385326721],
+          "lootItems": [
+            4020742303,
+            3385326721
+          ],
           "description": "Draw out the Consecrated Mind in the Garden of Salvation raid. ",
           "name": "Summon"
         },
         {
-          "lootItems": [2408405461, 48643186],
+          "lootItems": [
+            2408405461,
+            48643186
+          ],
           "name": "The Consecrated Mind",
           "description": "Drops from defeating the Consecrated Mind in the Garden of Salvation raid. "
         },
         {
-          "lootItems": [3454326177],
+          "lootItems": [
+            3454326177
+          ],
           "name": "Sanctified Mind",
           "description": "Drops from defeating the Sanctified Mind in the Garden of Salvation raid. "
         },
         {
-          "lootItems": [4103414242],
+          "lootItems": [
+            4103414242
+          ],
           "name": "Divine Fragmentation Quest",
           "description": "Drops from completing the Divine Fragmentation quest and completion of the Garden of Salvation raid. "
         }
@@ -137,40 +203,71 @@
       "lootSources": [
         {
           "lootItems": [
-            424291879, 1851777734, 501329015, 70083888, 3591141932, 2884596447,
-            3885259140, 3388655311
+            424291879,
+            1851777734,
+            501329015,
+            70083888,
+            3591141932,
+            2884596447,
+            3885259140,
+            3388655311
           ],
           "name": "Kalli, the Corrupted",
           "description": "Drops from defeating Kalli, the Corrupted in the Last Wish raid."
         },
         {
           "lootItems": [
-            424291879, 1851777734, 501329015, 70083888, 3591141932, 2884596447,
-            3885259140, 3388655311
+            424291879,
+            1851777734,
+            501329015,
+            70083888,
+            3591141932,
+            2884596447,
+            3885259140,
+            3388655311
           ],
           "name": "Shuro Chi, the Corrupted",
           "description": "Drops from defeating Shuro Chi, the Corrupted in the Last Wish raid."
         },
         {
           "lootItems": [
-            424291879, 1851777734, 501329015, 70083888, 3591141932, 2884596447,
-            3885259140, 3388655311
+            424291879,
+            1851777734,
+            501329015,
+            70083888,
+            3591141932,
+            2884596447,
+            3885259140,
+            3388655311
           ],
           "name": "Morgeth, the Spirekeeper",
           "description": "Drops from defeating Morgeth, the Spirekeeper in the Last Wish raid."
         },
         {
           "lootItems": [
-            424291879, 1851777734, 501329015, 70083888, 3591141932, 2884596447,
-            3885259140, 3388655311
+            424291879,
+            1851777734,
+            501329015,
+            70083888,
+            3591141932,
+            2884596447,
+            3885259140,
+            3388655311
           ],
           "name": "The Vault",
           "description": "Drops from completing The Vault encounter in the Last Wish raid."
         },
         {
           "lootItems": [
-            424291879, 1851777734, 501329015, 70083888, 3591141932, 2884596447,
-            3885259140, 3388655311, 2069224589
+            424291879,
+            1851777734,
+            501329015,
+            70083888,
+            3591141932,
+            2884596447,
+            3885259140,
+            3388655311,
+            2069224589
           ],
           "name": "Riven of a Thousand Voices",
           "description": "Drops from defeating Riven in the Last Wish raid."
@@ -182,22 +279,39 @@
     {
       "lootSources": [
         {
-          "lootItems": [135029084, 2972949637, 1491665733],
+          "lootItems": [
+            135029084,
+            2972949637,
+            1491665733
+          ],
           "name": "Cataclysm",
           "description": "Drops from completing the Cataclysm encounter in the Root of NIghtmares raid. "
         },
         {
-          "lootItems": [135029084, 231031173, 1471212226],
+          "lootItems": [
+            135029084,
+            231031173,
+            1471212226
+          ],
           "name": "Scission",
           "description": "Drops from completing the Scission encounter in the Root of Nightmares raid. "
         },
         {
-          "lootItems": [2972949637, 231031173, 484515708],
+          "lootItems": [
+            2972949637,
+            231031173,
+            484515708
+          ],
           "name": "Macrocosm",
           "description": "Drops from defeating Zo'Aurc, Explicator of Planets boss in the Root of Nightmares raid. "
         },
         {
-          "lootItems": [3371017761, 1471212226, 484515708, 1491665733],
+          "lootItems": [
+            3371017761,
+            1471212226,
+            484515708,
+            1491665733
+          ],
           "name": "Nezarec, Final God of Pain",
           "description": "Drops from defeating Nezarec, Final God of Pain in the Root of Nightmares raid. "
         }
@@ -208,22 +322,34 @@
     {
       "lootSources": [
         {
-          "lootItems": [1392919471],
+          "lootItems": [
+            1392919471
+          ],
           "name": "Crypt Security",
           "description": "Drops from completing the Crypt Security encounter in the Deep Stone Crypt raid. "
         },
         {
-          "lootItems": [4248569242, 2990047042],
+          "lootItems": [
+            4248569242,
+            2990047042
+          ],
           "name": "Atraks-1",
           "description": "Drops from defeating Atraks-1 in the Deep Stone Crypt raid. "
         },
         {
-          "lootItems": [3281285075, 4248569242],
+          "lootItems": [
+            3281285075,
+            4248569242
+          ],
           "name": "Rapture",
           "description": "Drops from completing the Rapture encounter in the Deep Stone Crypt raid."
         },
         {
-          "lootItems": [2399110176, 3366545721, 4230965989],
+          "lootItems": [
+            2399110176,
+            3366545721,
+            4230965989
+          ],
           "name": "Taniks, the Abomination",
           "description": "Drops from defeating Taniks, the Abomination in the Deep Stone Crypt raid. "
         }
@@ -234,22 +360,39 @@
     {
       "lootSources": [
         {
-          "lootItems": [3886416794, 768621510, 999767358],
+          "lootItems": [
+            3886416794,
+            768621510,
+            999767358
+          ],
           "name": "Acquisition",
           "description": "Drops from completing the Acquisition encounter in the Vow of the Disciple raid."
         },
         {
-          "lootItems": [3886416794, 3428521585, 613334176, 999767358],
+          "lootItems": [
+            3886416794,
+            3428521585,
+            613334176,
+            999767358
+          ],
           "name": "The Caretaker",
           "description": "Drops from defeating The Caretaker in the Vow of the Disciple raid."
         },
         {
-          "lootItems": [3886416794, 768621510],
+          "lootItems": [
+            3886416794,
+            768621510
+          ],
           "name": "Exhibition",
           "description": "Drops from completing the Exhibition encounter in the Vow of the Disciple raid."
         },
         {
-          "lootItems": [2534546147, 613334176, 3428521585, 3505113722],
+          "lootItems": [
+            2534546147,
+            613334176,
+            3428521585,
+            3505113722
+          ],
           "name": "Rhulk, Disciple of the Witness",
           "description": "Drops from defeating Rhulk, Disciple of the Witness in the Vow of the Disciple raid."
         }
@@ -262,20 +405,32 @@
       "lootSources": [
         {
           "isPreferredLootSource": false,
-          "lootItems": [3262192268, 839786290, 1125217994],
+          "lootItems": [
+            3262192268,
+            839786290,
+            1125217994
+          ],
           "name": "Hive Ritual Disrupted",
           "description": "Drops from disrupting the hive ritual in the Ghosts of the Deep dungeon."
         },
         {
           "isPreferredLootSource": false,
-          "lootItems": [3262192268, 839786290, 1757202961],
+          "lootItems": [
+            3262192268,
+            839786290,
+            1757202961
+          ],
           "name": "Ecthar, the Shield of Savathun",
           "description": "Drops from defeating Ecthar, the Shield of Savathun in the Ghosts of the Deep dungeon."
         },
         {
           "isPreferredLootSource": false,
           "lootItems": [
-            3262192268, 839786290, 1125217994, 1757202961, 1441805468
+            3262192268,
+            839786290,
+            1125217994,
+            1757202961,
+            1441805468
           ],
           "name": "Simmumah ur-Nokru",
           "description": "Drops from defeating Simmumah ur-Nokru in the Ghosts of the Deep dungeon."
@@ -289,18 +444,30 @@
     {
       "lootSources": [
         {
-          "lootItems": [4070357005, 8293111, 487205709],
+          "lootItems": [
+            4070357005,
+            8293111,
+            487205709
+          ],
           "name": "Ascend the Spire",
           "description": "Drops from completing the Ascend the Spire encounter in the Spire of the Watcher dungeon."
         },
         {
-          "lootItems": [1555959830, 487205709],
+          "lootItems": [
+            1555959830,
+            487205709
+          ],
           "name": "Akelous, the Siren's Current",
           "description": "Drops from defeating Akelous, the Siren's Current in the Spire of the Watcher dungeon."
         },
         {
           "lootItems": [
-            4070357005, 8293111, 487205709, 1555959830, 2306182339, 3138208275,
+            4070357005,
+            8293111,
+            487205709,
+            1555959830,
+            2306182339,
+            3138208275,
             4174431791
           ],
           "name": "Persys, Primordial Ruin",
@@ -313,17 +480,26 @@
     {
       "lootSources": [
         {
-          "lootItems": [2563012876],
+          "lootItems": [
+            2563012876
+          ],
           "name": "Phry'zhia, the Insatiable",
           "description": "Drops from defeating Phry'zhia, the Insatiable in the Grasp of Avarice dungeon."
         },
         {
-          "lootItems": [2139640995],
+          "lootItems": [
+            2139640995
+          ],
           "name": "Fallen Shield",
           "description": "Drops from completing the Fallen Shield encounter in the Grasp of Avarice dungeon."
         },
         {
-          "lootItems": [2563012876, 2139640995, 4164201232, 235827225],
+          "lootItems": [
+            2563012876,
+            2139640995,
+            4164201232,
+            235827225
+          ],
           "name": "Captain Avarokk, the Covetous",
           "description": "Drops from defeating Captain Avarokk, the Covetous in the Grasp of Avarice dungeon."
         }
@@ -337,7 +513,11 @@
         {
           "isPreferredLootSource": false,
           "lootItems": [
-            3890055324, 1081724548, 1769847435, 2883484461, 4066778670,
+            3890055324,
+            1081724548,
+            1769847435,
+            2883484461,
+            4066778670,
             3016891299
           ],
           "name": "Deep Engrams",
@@ -346,7 +526,11 @@
         {
           "isPreferredLootSource": false,
           "lootItems": [
-            3890055324, 1081724548, 1769847435, 2883484461, 4066778670,
+            3890055324,
+            1081724548,
+            1769847435,
+            2883484461,
+            4066778670,
             3016891299
           ],
           "name": "Seasonal Activities",
@@ -357,6 +541,63 @@
       "description": "Seasonal weapons for Season 21.",
       "slug": "season-of-the-deep",
       "image": "https://www.bungie.net/img/destiny_content/pgcr/season_21_deep_dives.jpg"
+    },
+    {
+      "isSingleSource": false,
+      "lootSources": [
+        {
+          "isPreferredLootSource": false,
+          "lootItems": [
+            2828278545,
+            833898322,
+            1432682459
+          ],
+          "name": "Abyss",
+          "description": "Drops from entering the Abyss in Crota's End"
+        },
+        {
+          "isPreferredLootSource": false,
+          "lootItems": [
+            3163900678,
+            1098171824,
+            1432682459
+          ],
+          "name": "Oversoul Throne Bridge",
+          "description": "Drops from the Bridge encounter of Crota's End"
+        },
+        {
+          "isPreferredLootSource": false,
+          "lootItems": [
+            2828278545,
+            1098171824,
+            120706239
+          ],
+          "name": "Ir Yût, the Deathsinger",
+          "description": "Drops from defeating Ir Yût in Crota's End"
+        },
+        {
+          "isPreferredLootSource": false,
+          "lootItems": [
+            3163900678,
+            833898322,
+            120706239
+          ],
+          "name": "Crota, Son of Oryx",
+          "description": "Drops from defeating Crota in Crota's End"
+        },
+        {
+          "isPreferredLootSource": false,
+          "lootItems": [
+            3319810952,
+            3319810953,
+            1034055198
+          ],
+          "name": "Bottomless Pit",
+          "description": "Drops from the Bottomless Pit Exotic quest, available after defeating Crota in Crota's End"
+        }
+      ],
+      "name": "Crota's End",
+      "description": "He waits in the dark below."
     }
   ]
 }
