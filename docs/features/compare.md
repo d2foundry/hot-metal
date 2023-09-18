@@ -11,6 +11,9 @@ You can start a Compare session by pressing the "+ Compare" button located at th
 
 All selected perks and effect levels will be added to that weapon roll. You can safely navigate to other weapon pages, reload the page, or come back at a later time and your session will persist.
 
+
+asdfasdf
+
 ### Adding additional rolls
 
 If you would like to add additional rolls of the same weapon, you can make your selections and press the same "+ Compare" button. Duplicate roll selections will be prevented from being added by greying out the button and showing it has already been added.
