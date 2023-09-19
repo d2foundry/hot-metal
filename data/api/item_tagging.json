@@ -2,9 +2,7 @@
   "$schema": "../schemas/item_tagging_schema.json",
   "tags": [
     {
-      "items": [
-        501329015
-      ],
+      "items": [],
       "name": "testTag",
       "displayName": "Test Tag",
       "description": "I'm using this to test a tag."
@@ -30,7 +28,6 @@
         577528837,
         4019668921,
         3514096004,
-        1751893422,
         2342054803,
         3341893443,
         2065081837,
@@ -51,8 +48,6 @@
         2742490609,
         1271343896,
         2852052802,
-        1399243961,
-        2475355656,
         2513965917,
         1911060537,
         2349907931,
@@ -76,22 +71,18 @@
         3667553455,
         2870169846,
         3512349612,
-        2827764482,
         1766088024,
         42351395,
         4230965989,
         1994645182,
         3175851496,
         2490988246,
-        3849444474,
-        2272041093,
-        3103325054,
         1168625549,
         1096206669
       ],
       "name": "Highlights_Normal",
       "displayName": "Highlights targets",
-      "description": "When aiming down sights, this weapon outlines targets (such as with a red or green glow)."
+      "description": "When aiming down sights, this weapon outlines targets in a red glow."
     },
     {
       "items": [
@@ -114,14 +105,58 @@
       ],
       "name": "Highlights_Outliers_Taken",
       "displayName": "Highlights Targets (in specific cases)",
-      "description": "Taken enemies will be outlined with a red glow when aiming down sights (ornaments remove this effect)"
+      "description": "Taken enemies will be outlined with a red glow when aiming down sights. Ornaments remove this effect."
+    },
+    {
+      "items": [
+        1907698332,
+        3514144928,
+        2638190703,
+        3245493570,
+        2653171213,
+        1697682876,
+        854379020,
+        532746994,
+        276080079,
+        679281855,
+        3164743584,
+        3637570176,
+        1399243961,
+        2475355656,
+        2386979999,
+        2478792241
+      ],
+      "name": "Highlights_Outliers_Trials",
+      "displayName": "Highlights Targets (in specific cases)",
+      "description": "When aiming down sights, this weapon will highlight targets in a faint red full body effect. The perk Celerity may amplify this effect to include a red outline. "
+    },
+    {
+      "items": [
+        2827764482,
+        1473821207,
+        3849444474,
+        3103325054,
+        1751893422,
+        2272041093
+      ],
+      "name": "Highlights_Outliers_S19",
+      "description": "When aiming down sights, this weapon outlines targets in a green glow.",
+      "displayName": "Highlights Targets"
+    },
+    {
+      "items": [
+        2453357042,
+        981718087
+      ],
+      "name": "Highlights_Outliers_S12",
+      "displayName": "Highlights Targets (in specific cases)",
+      "description": "After aiming on a target for a short time, this weapon will outline a single target in a red glow."
     },
     {
       "items": [
         1331482397,
         3844694310,
         4293613902,
-        1473821207,
         3628991658,
         3524313097,
         3141979346,
@@ -130,7 +165,7 @@
       ],
       "name": "Highlights_Exotics",
       "displayName": "Highlights Targets",
-      "description": "When aiming down sights, this weapon outlines targets (such as with a red or green glow). Ornaments may remove or alter this effect."
+      "description": "When aiming down sights, this weapon outlines targets with a red glow. Ornaments may remove or alter this effect."
     }
   ]
 }
