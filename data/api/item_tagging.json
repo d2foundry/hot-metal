@@ -81,7 +81,7 @@
         1096206669
       ],
       "name": "Highlights_Normal",
-      "displayName": "Highlights targets",
+      "displayName": "Highlights Targets",
       "description": "When aiming down sights, this weapon outlines targets in a red glow."
     },
     {
@@ -159,13 +159,20 @@
         4293613902,
         3628991658,
         3524313097,
-        3141979346,
         2694576561,
         2399110176
       ],
       "name": "Highlights_Exotics",
       "displayName": "Highlights Targets",
       "description": "When aiming down sights, this weapon outlines targets with a red glow. Ornaments may remove or alter this effect."
+    },
+    {
+      "items": [
+        3141979346
+      ],
+      "name": "Highlights_DARCI",
+      "displayName": "Highlights Targets (in specific cases)",
+      "description": "When aiming down sights on a single target within 150 meters for a short duration, said target will be outlined in a red glow"
     }
   ]
 }
