@@ -156,8 +156,10 @@
       "description": "Dive into the depths of the exiled emperor's mind in search of dark secrets."
     },
     {
+      "isSingleSource": "false",
       "lootSources": [
         {
+          "isPreferredLootSource": "false",
           "lootItems": [
             4095896073,
             2209003210
@@ -166,6 +168,7 @@
           "name": "First Encounter"
         },
         {
+          "isPreferredLootSource": "false",
           "lootItems": [
             4020742303,
             3385326721
@@ -174,6 +177,7 @@
           "name": "Summon"
         },
         {
+          "isPreferredLootSource": "false",
           "lootItems": [
             2408405461,
             48643186
@@ -182,6 +186,7 @@
           "description": "Drops from defeating the Consecrated Mind in the Garden of Salvation raid. "
         },
         {
+          "isPreferredLootSource": "false",
           "lootItems": [
             3454326177
           ],
@@ -189,6 +194,7 @@
           "description": "Drops from defeating the Sanctified Mind in the Garden of Salvation raid. "
         },
         {
+          "isPreferredLootSource": "false",
           "lootItems": [
             4103414242
           ],
@@ -598,6 +604,63 @@
       ],
       "name": "Crota's End",
       "description": "He waits in the dark below."
+    },
+    {
+      "isSingleSource": false,
+      "lootSources": [
+        {
+          "isPreferredLootSource": false,
+          "lootItems": [
+            1770490683,
+            859869931
+          ],
+          "name": "Substratum",
+          "description": "Salvation's Edge First Encounter"
+        },
+        {
+          "isPreferredLootSource": false,
+          "lootItems": [
+            1258168956,
+            535198113,
+            1770490683
+          ],
+          "description": "Salvation's Edge Second Encounter",
+          "name": "Herald of Finality"
+        },
+        {
+          "isPreferredLootSource": false,
+          "lootItems": [
+            445197843,
+            535198113,
+            859869931
+          ],
+          "name": "Repository",
+          "description": "Salvation's Edge Third Encounter"
+        },
+        {
+          "isPreferredLootSource": false,
+          "lootItems": [
+            1258168956,
+            3569407878,
+            1770490683
+          ],
+          "name": "Verity",
+          "description": "Salvation's Edge Fourth Encounter"
+        },
+        {
+          "isPreferredLootSource": false,
+          "lootItems": [
+            445197843,
+            3569407878,
+            859869931,
+            3284383335
+          ],
+          "name": "The Witness",
+          "description": "Salvation's Edge Fifth Encounter (Final Boss)"
+        }
+      ],
+      "name": "Salvation's Edge",
+      "description": "Free the Light"
     }
   ]
 }
